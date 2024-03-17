@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d17mrgvfw7dtf"]
+
+[ext_resource type="PackedScene" uid="uid://ch08aaedtsb03" path="res://data/assets/main/hex.glb" id="1_qgc7a"]
+[ext_resource type="Script" path="res://data/src/scenes/hex_tile.gd" id="1_uvljd"]
+
+[node name="HexTile" type="Node3D"]
+script = ExtResource("1_uvljd")
+
+[node name="hex" parent="." instance=ExtResource("1_qgc7a")]
+transform = Transform3D(1, 1.07407e-09, 0.000296706, -1.07407e-09, 1, -2.15768e-13, -0.000296706, -2.15768e-13, 1, 0, 0, 0)
+visible = false
