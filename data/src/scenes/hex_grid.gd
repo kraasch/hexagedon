@@ -9,6 +9,9 @@ const OFFSET_RATIO : float = cos(deg_to_rad(30))
 func _ready():
 	generate_grid()
 
+func _process(delta):
+	handle_input()
+
 func generate_grid():
 	for x in range(grid_size):
 		var coords := Vector2.ZERO
@@ -19,3 +22,11 @@ func generate_grid():
 			add_child(tile)
 			tile.translate(Vector3(coords.x, 0, coords.y))
 			coords.y += TILE_SIZE
+
+func handle_input():
+	if Input.is_action_just_pressed("my_cycle_next"):
+		pass
+	if Input.is_action_just_pressed("my_cycle_prev"):
+		pass
+	if Input.is_action_just_pressed("my_cycle_center"):
+		pass
