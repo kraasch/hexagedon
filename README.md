@@ -1,6 +1,11 @@
 
 # Hexagedon Game
 
+## Tasks
+
+ - [ ] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
+ - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
+
 ## Resources
 
 To do:
