@@ -7,7 +7,8 @@ var COLORS : Array
 func _ready():
 	var r : Material = preload("res://data/assets/materials/red.tres")
 	var g : Material = preload("res://data/assets/materials/green.tres")
-	var b : Material = preload("res://data/assets/materials/blue.tres")
+	var b : ShaderMaterial = ShaderMaterial.new()
+	b.shader = preload("res://data/src/shaders/cube_shader.gdshader")
 	COLORS = [r, g, b]
 
 func rand_color() -> Material:
