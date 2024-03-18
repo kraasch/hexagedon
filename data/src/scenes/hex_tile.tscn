@@ -7,5 +7,3 @@
 script = ExtResource("1_uvljd")
 
 [node name="hex" parent="." instance=ExtResource("1_qgc7a")]
-transform = Transform3D(1, 1.07407e-09, 0.000296706, -1.07407e-09, 1, -2.15768e-13, -0.000296706, -2.15768e-13, 1, 0, 0, 0)
-visible = false
