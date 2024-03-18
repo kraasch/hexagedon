@@ -35,25 +35,37 @@ func _ready():
 	vertices.push_back(TFR) # 7
 
 	var indexes = PackedInt32Array([
-			# bottom face.
-			0,1,2,
-			2,1,3,
-			# top face.
-			6,5,4,
-			7,5,6,
-			# left-side face.
-			0,2,4,
-			4,2,6,
-			# right-side face.
-			5,3,1,
-			7,3,5,
-			# front face.
-			2,3,6,
-			7,6,3,
-			# rear face.
-			4,1,0,
-			1,4,5,
-		])
+		# bottom face.
+		0,1,2,
+		2,1,3,
+		# top face.
+		6,5,4,
+		7,5,6,
+		# left-side face.
+		0,2,4,
+		4,2,6,
+		# right-side face.
+		5,3,1,
+		7,3,5,
+		# front face.
+		2,3,6,
+		7,6,3,
+		# rear face.
+		4,1,0,
+		1,4,5,
+	])
+
+	var uvs = PackedVector2Array([
+		Vector2(0,0),
+		Vector2(1,0),
+		Vector2(1,1),
+		Vector2(0,1),
+
+		Vector2(0,0),
+		Vector2(1,0),
+		Vector2(1,1),
+		Vector2(0,1),
+	])
 
 	# Initialize the ArrayMesh.
 	var arr_mesh = ArrayMesh.new()
@@ -61,6 +73,7 @@ func _ready():
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = vertices
 	arrays[Mesh.ARRAY_INDEX] = indexes
+	arrays[Mesh.ARRAY_TEX_UV] = uvs
 	arr_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 
 	# Create the Mesh.
