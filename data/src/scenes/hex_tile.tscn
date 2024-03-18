@@ -7,3 +7,4 @@
 script = ExtResource("1_uvljd")
 
 [node name="hex" parent="." instance=ExtResource("1_qgc7a")]
+visible = false

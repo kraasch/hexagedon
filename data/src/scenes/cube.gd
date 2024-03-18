@@ -1,6 +1,7 @@
 @tool
 extends Node3D
 
+
 ### TODO: give each hexagon a random color.
 var rng = RandomNumberGenerator.new()
 const RED = preload("res://data/assets/materials/red.tres")
@@ -13,47 +14,55 @@ func rand_color():
 	return COLORS[i]
 
 func _ready():
-	const MARGIN : float = 0.02
-	
+
 	const H_TO_N_RATIO : float = 1.0 / cos(deg_to_rad(30.0))
-	const TILE_SIZE : float = 1.0 - MARGIN # distance from one tile to the next.
 	const ELEVATION : float = 0.3          # elevation i.e. distance above the ground (y coordinate).
-	const H : float = TILE_SIZE / 2.0      # height of triangles.
-	const N : float = H * H_TO_N_RATIO     # length of hexagon edges (also length of triangle edges).
-	const M : float = N / 2.0              # half of N.
+	const CUBE_HEIGHT : float = 0.2        # choose size (eg. half the tile distance).
+	const F : float = CUBE_HEIGHT / 2.0    # half of N.
+	const ELEVATION_TOP : float = ELEVATION + CUBE_HEIGHT
 
-	var CENTER    := Vector3(  0.0,  ELEVATION,  0.0 )
-	var RIGHT     := Vector3(   -N,  ELEVATION,  0.0 )
-	var LEFT      := Vector3(    N,  ELEVATION,  0.0 )
-	var TOP_LEFT  := Vector3(    M,  ELEVATION,    H )
-	var TOP_RIGHT := Vector3(   -M,  ELEVATION,    H)
-	var BOT_LEFT  := Vector3(    M,  ELEVATION,   -H )
-	var BOT_RIGHT := Vector3(   -M,  ELEVATION,   -H )
+	# bottom square.
+	var BRL := Vector3(-F, ELEVATION, +F)
+	var BRR := Vector3(+F, ELEVATION, +F)
+	var BFL := Vector3(-F, ELEVATION, -F)
+	var BFR := Vector3(+F, ELEVATION, -F)
 
+	# tops square.
+	var TRL := Vector3(-F, ELEVATION_TOP, +F)
+	var TRR := Vector3(+F, ELEVATION_TOP, +F)
+	var TFL := Vector3(-F, ELEVATION_TOP, -F)
+	var TFR := Vector3(+F, ELEVATION_TOP, -F)
+	
 	var vertices = PackedVector3Array()
-	vertices.push_back(CENTER)
-	vertices.push_back(TOP_LEFT)
-	vertices.push_back(TOP_RIGHT)
-	vertices.push_back(RIGHT)
-	vertices.push_back(BOT_RIGHT)
-	vertices.push_back(BOT_LEFT)
-	vertices.push_back(LEFT)
+	vertices.push_back(BRL) # 0
+	vertices.push_back(BRR) # 1
+	vertices.push_back(BFL) # 2
+	vertices.push_back(BFR) # 3
+
+	vertices.push_back(TRL) # 4
+	vertices.push_back(TRR) # 5
+	vertices.push_back(TFL) # 6
+	vertices.push_back(TFR) # 7
 
 	var indexes = PackedInt32Array([
-			# top face.
-			0,1,2,
-			0,2,3,
-			0,3,4,
-			0,4,5,
-			0,5,6,
-			0,6,1,
 			# bottom face.
-			2,1,0,
-			3,2,0,
-			4,3,0,
-			5,4,0,
-			6,5,0,
-			1,6,0,
+			0,1,2,
+			2,1,3,
+			# top face.
+			6,5,4,
+			7,5,6,
+			# left-side face.
+			0,2,4,
+			4,2,6,
+			# right-side face.
+			5,3,1,
+			7,3,5,
+			# front face.
+			2,3,6,
+			7,6,3,
+			# rear face.
+			4,1,0,
+			1,4,5,
 		])
 
 	# Initialize the ArrayMesh.

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://nswg084k6da7"]
+
+[ext_resource type="Script" path="res://data/src/scenes/field.gd" id="1_0vo4u"]
+[ext_resource type="PackedScene" uid="uid://d17mrgvfw7dtf" path="res://data/src/scenes/hex_tile.tscn" id="1_dqd3m"]
+
+[node name="Field" type="Node3D"]
+script = ExtResource("1_0vo4u")
+
+[node name="HexTile" parent="." instance=ExtResource("1_dqd3m")]
