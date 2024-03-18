@@ -1,7 +1,6 @@
 @tool
 extends Node3D
 
-var type_index : int = -1
 
 const CUBE_HEIGHT : float = 0.2
 const HEX_TILE = preload("res://data/src/scenes/hex_tile.tscn")
@@ -10,16 +9,16 @@ var max_stack_height : int = Globals.MAX_STACK_HEIGHT
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	type_index = ColorGenerator.rand_num()
-	generate_hex_tile()
-	generate_cube_stack()
+	var type_index : int = ColorGenerator.rand_num()
+	generate_hex_tile(type_index)
+	generate_cube_stack(type_index)
 
-func generate_hex_tile():
+func generate_hex_tile(type_index : int):
 	var tile = HEX_TILE.instantiate()
 	tile.mymaterial = ColorGenerator.get_shader(type_index)
 	add_child(tile)
 
-func generate_cube_stack():
+func generate_cube_stack(type_index : int):
 	var stack_height : int = rng.randf_range(0, max_stack_height)
 	for i in range(0, stack_height):
 		var cube = CUBE.instantiate()

@@ -13,5 +13,5 @@ func get_shader(type_index : int) -> ShaderMaterial:
 	return sm
 
 func rand_num() -> int:
-	var i : int = rng.randf_range(0, max_types)
-	return i
+	return rng.randf_range(0, max_types)
+
