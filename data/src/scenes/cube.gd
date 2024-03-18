@@ -1,17 +1,7 @@
 @tool
 extends Node3D
 
-
-### TODO: give each hexagon a random color.
-var rng = RandomNumberGenerator.new()
-const RED = preload("res://data/assets/materials/red.tres")
-const GREEN = preload("res://data/assets/materials/green.tres")
-const BLUE = preload("res://data/assets/materials/blue.tres")
-const COLORS : Array = [RED, GREEN, BLUE]
-
-func rand_color():
-	var i : int = rng.randf_range(0, 3)
-	return COLORS[i]
+var mymaterial : Material = Material.new()
 
 func _ready():
 
@@ -76,5 +66,5 @@ func _ready():
 	# Create the Mesh.
 	var m = MeshInstance3D.new()
 	m.mesh = arr_mesh
-	m.material_override = rand_color()
+	m.material_override = mymaterial
 	add_child(m)
