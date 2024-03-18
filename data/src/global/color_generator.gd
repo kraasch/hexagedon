@@ -5,13 +5,13 @@ var rng = RandomNumberGenerator.new()
 var max_types : int = 3
 var colors : Array
 
-func _ready():
-	for i in range(0, max_types):
-		var sm : ShaderMaterial = ShaderMaterial.new()
-		sm.shader = preload("res://data/src/shaders/cube_shader.gdshader")
-		sm.set_shader_parameter("type", i)
-		colors.push_back(sm)
+func get_shader(type_index : int) -> ShaderMaterial:
+	var sm : ShaderMaterial = ShaderMaterial.new()
+	sm.shader = preload("res://data/src/shaders/cube_shader.gdshader")
+	sm.set_shader_parameter("type", type_index)
+	sm.set_shader_parameter("random", rng.randf())
+	return sm
 
-func rand_color() -> Material:
+func rand_num() -> int:
 	var i : int = rng.randf_range(0, max_types)
-	return colors[i]
+	return i
