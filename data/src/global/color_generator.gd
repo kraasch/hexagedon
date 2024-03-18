@@ -2,7 +2,7 @@
 extends Node
 
 var rng = RandomNumberGenerator.new()
-var max_types : int = 3
+var max_types : int = 6
 var colors : Array
 
 func get_shader(type_index : int) -> ShaderMaterial:

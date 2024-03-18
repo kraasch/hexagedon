@@ -13,6 +13,12 @@ void fragment() {
 		color = vec3(0.5, main, 0.4);
 	} else if (type == 2) { // blue.
 		color = vec3(0.1, 0.1, main);
+	} else if (type == 3) { // pink?
+		color = vec3(main, main, 0.1);
+	} else if (type == 4) { // magenta?
+		color = vec3(0.1, main, main);
+	} else if (type == 5) { // cyan?
+		color = vec3(main, 0.1, main);
 	} else { // error.
 		color = vec3(1.0);
 	}
