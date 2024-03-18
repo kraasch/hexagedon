@@ -9,6 +9,7 @@ func _ready():
 	var g : Material = preload("res://data/assets/materials/green.tres")
 	var b : ShaderMaterial = ShaderMaterial.new()
 	b.shader = preload("res://data/src/shaders/cube_shader.gdshader")
+	b.set_shader_parameter("intensity", 0.9)
 	COLORS = [r, g, b]
 
 func rand_color() -> Material:
