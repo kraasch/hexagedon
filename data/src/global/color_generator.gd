@@ -2,16 +2,16 @@
 extends Node
 
 var rng = RandomNumberGenerator.new()
-var COLORS : Array
+var max_types : int = 3
+var colors : Array
 
 func _ready():
-	var r : Material = preload("res://data/assets/materials/red.tres")
-	var g : Material = preload("res://data/assets/materials/green.tres")
-	var b : ShaderMaterial = ShaderMaterial.new()
-	b.shader = preload("res://data/src/shaders/cube_shader.gdshader")
-	b.set_shader_parameter("intensity", 0.9)
-	COLORS = [r, g, b]
+	for i in range(0, max_types):
+		var sm : ShaderMaterial = ShaderMaterial.new()
+		sm.shader = preload("res://data/src/shaders/cube_shader.gdshader")
+		sm.set_shader_parameter("type", i)
+		colors.push_back(sm)
 
 func rand_color() -> Material:
-	var i : int = rng.randf_range(0, len(COLORS))
-	return COLORS[i]
+	var i : int = rng.randf_range(0, max_types)
+	return colors[i]
