@@ -6,9 +6,9 @@ var mymaterial : Material = Material.new()
 func _ready():
 
 	const H_TO_N_RATIO : float = 1.0 / cos(deg_to_rad(30.0))
-	const ELEVATION : float = 0.3          # elevation i.e. distance above the ground (y coordinate).
-	const CUBE_HEIGHT : float = 0.2        # choose size (eg. half the tile distance).
-	const F : float = CUBE_HEIGHT / 2.0    # half of N.
+	const ELEVATION : float = 0.3                 # elevation i.e. distance above the ground (y coordinate).
+	const CUBE_HEIGHT : float = Globals.CUBE_SIZE # choose size (eg. half the tile distance).
+	const F : float = CUBE_HEIGHT / 2.0           # half of N.
 	const ELEVATION_TOP : float = ELEVATION + CUBE_HEIGHT
 
 	# bottom square.

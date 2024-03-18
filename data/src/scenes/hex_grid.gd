@@ -1,9 +1,9 @@
 @tool
 extends Node3D
 
-const TILE_SIZE : float = 1.0
+const TILE_SIZE : float = Globals.EDGE_SIZE
 const HEX_TILE = preload("res://data/src/scenes/field.tscn")
-@export_range (2, 20) var grid_size : int = 10
+var grid_size : int = Globals.MAX_GRID_SIZE
 const OFFSET_RATIO : float = cos(deg_to_rad(30))
 
 func _ready():
