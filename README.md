@@ -10,7 +10,6 @@
 
 To do:
 
- - [ ] [How to make 3D Hexagonal maps in Godot NAD LABS](https://www.youtube.com/watch?v=mTvaSnzGRyw)
  - [ ] [My 1st Video + Quick way to make a Custom Hexagon Grid in Godot 3.x - Tutorial by Aarimous](https://www.youtube.com/watch?v=hmDavGzy1Hw)
 
 Remarkable resources:
@@ -25,6 +24,7 @@ Documentation:
 
 Other:
 
+ - [X] [How to make 3D Hexagonal maps in Godot NAD LABS](https://www.youtube.com/watch?v=mTvaSnzGRyw)
  - [X] [How to Make a 3D Hexagon Grid in Godot (Tutorial) by jmbiv](https://www.youtube.com/watch?v=3Lt2TfP8WEw).
   - [X] https://github.com/josephmbustamante/Godot-3D-Hex-Grid-Tutorial/blob/master/HexGrid.gd
  - [X] [Basics of MESH GENERATION in Godot 4 0 by Chevifier](https://www.youtube.com/watch?v=8wy_dH9RLI4).
