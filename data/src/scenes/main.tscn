@@ -7,7 +7,8 @@
 [node name="HexGrid" parent="." instance=ExtResource("1_4yu7j")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.692508, 0.72141, 0, -0.72141, 0.692508, 4.10693, 3.84141, 10.8623)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 4, 4, 10.862)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.170249, 0.545927, -0.820353, 0.0558857, 0.836516, 0.545085, 0.983815, 0.0469542, -0.172926, -3, 4, 3.29633)
