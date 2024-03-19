@@ -12,3 +12,10 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.170249, 0.545927, -0.820353, 0.0558857, 0.836516, 0.545085, 0.983815, 0.0469542, -0.172926, -3, 4, 3.29633)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.099339, 0.995026, 0.00737536, -0.995049, -0.0993138, -0.00370782, -0.0029569, -0.00770718, 0.999966, 4.4681, 0.900099, -1.00318)
+light_color = Color(0.301961, 1, 0.372549, 1)
+light_energy = 10.0
+shadow_enabled = true
+shadow_opacity = 0.88
