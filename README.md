@@ -13,6 +13,10 @@ To do:
  - [ ] [How to make 3D Hexagonal maps in Godot NAD LABS](https://www.youtube.com/watch?v=mTvaSnzGRyw)
  - [ ] [My 1st Video + Quick way to make a Custom Hexagon Grid in Godot 3.x - Tutorial by Aarimous](https://www.youtube.com/watch?v=hmDavGzy1Hw)
 
+Remarkable resources:
+
+ - [X] A great interactive page on hexagons, more than I would ever want to read about hexagons, [Hexagonal Grids by Red Blob Games](https://www.redblobgames.com/grids/hexagons/).
+
 Documentation:
 
  - [X] https://docs.godotengine.org/en/stable/classes/class_arraymesh.html
