@@ -7,6 +7,7 @@ func _ready():
 	%GridSizeSliderDisplay.set_data('Grid size', 1, 30, Globals.MAX_GRID_SIZE)
 	%StackHeightSliderDisplay.set_data('Stack height', 0, 12, Globals.MAX_STACK_HEIGHT)
 
+var rng = RandomNumberGenerator.new()
 func _button_pressed():
 	Globals.MAX_NUM_OF_PARTIES = %PartySliderDisplay.val
 	Globals.MAX_GRID_SIZE      = %GridSizeSliderDisplay.val
