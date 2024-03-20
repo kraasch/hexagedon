@@ -8,19 +8,6 @@
 [node name="MapViewerTool" type="Node3D"]
 script = ExtResource("1_hvakq")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="SubViewport/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="SubViewport/VBoxContainer/CenterContainer"]
-layout_mode = 2
-text = "Test"
-
 [node name="HexGrid" parent="." instance=ExtResource("1_680dd")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -39,3 +26,24 @@ sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0.866025, -0.5, 0, 0.5, 0.866025, 1, 3.78552e-08, -2.18557e-08, 0, 10, 5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "Toast"
