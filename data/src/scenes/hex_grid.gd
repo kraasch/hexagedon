@@ -19,7 +19,7 @@ func generate_grid():
 
 	var map_parties = MapGenerator.get_party_grid()
 	var map_groups  = MapGenerator.get_group_grid()
-	var groups_num  = MapGenerator.group_num
+	var groups_num  = MapGenerator.groups_num
 
 	# build grid.
 	for x in range(len(map_parties)):
