@@ -20,7 +20,6 @@ func generate_hex_tile(type_index : int):
 	if not is_debug:
 		tile.mymaterial = ColorGenerator.get_shader(type_index)
 	else:
-		print('now debug')
 		tile.mymaterial = ColorGenerator.get_shader(-1)
 	add_child(tile)
 
@@ -33,5 +32,4 @@ func generate_cube_stack(type_index : int):
 		cube.translate(Vector3(0.0, CUBE_HEIGHT * i, 0.0))
 
 func set_debug():
-	print('yes debug')
 	is_debug = true

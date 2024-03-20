@@ -15,7 +15,6 @@ func get_shader(type_index : int) -> ShaderMaterial:
 		# for debug purposes.
 		sm.set_shader_parameter("type", max_types + 1)
 		sm.set_shader_parameter("random", rng.randf())
-		print('and now')
 	return sm
 
 func rand_num() -> int:

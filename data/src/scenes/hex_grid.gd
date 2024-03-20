@@ -18,7 +18,6 @@ func generate_grid():
 			var tile = HEX_TILE.instantiate()
 			if x == 0 and y == 0:
 				tile.set_debug()
-				print('now')
 			add_child(tile)
 			tile.translate(Vector3(coords.x, 0, coords.y))
 			coords.y += tile_size
