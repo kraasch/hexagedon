@@ -17,7 +17,7 @@ func _ready():
 func generate_hex_tile(type_index : int):
 	var tile = HEX_TILE.instantiate()
 	if is_debug: # TODO: remove later.
-		tile.mymaterial = ColorGenerator.get_shader(0)
+		tile.mymaterial = ColorGenerator.get_shader(-1)
 	else:
 		tile.mymaterial = ColorGenerator.get_shader(type_index)
 	add_child(tile)
