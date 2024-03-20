@@ -5,21 +5,28 @@
 
 Basic:
 
- - [ ] implement end-of-game screen.
- - [ ] implement start screen.
- - [ ] implement predefined camera perspectives.
- - [ ] implement free camera movement.
- - [ ] implement highlighting of active field group.
- - [ ] implement basic AI behavior.
- - [ ] click on second field group executes attack.
- - [ ] implement click behavior (click on field activates respective field group).
- - [ ] draw borders around field groups.
- - [ ] set UV map for hexagon meshes.
- - [ ] every field is in exactly one field group.
- - [ ] a field group has several fields.
- - [ ] extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
- - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
- - [ ] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
+ - [ ] write basic game
+  - [ ] implement predefined camera perspectives.
+  - [ ] implement free camera movement.
+  - [ ] implement highlighting of active field group.
+  - [ ] implement basic AI behavior.
+  - [ ] click on second field group executes attack.
+  - [ ] implement click behavior (click on field activates respective field group).
+  - [ ] draw borders around field groups.
+  - [ ] set UV map for hexagon meshes.
+  - [ ] every field is in exactly one field group.
+  - [ ] a field group has several fields.
+  - [ ] extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
+ - [ ] implement user interface.
+  - [ ] implement end-of-game screen.
+  - [ ] implement splash screen.
+  - [ ] implement start menu.
+  - [ ] implement in-game menu.
+  - [ ] implement map generator menu.
+  - [ ] implement basic HUD.
+ - [ ] make some fixes.
+  - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
+  - [ ] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
 
 Extra tasks:
 
