@@ -30,6 +30,8 @@ Basic:
 
 Extra tasks:
 
+ - [ ] implement good splash screen shader (eg tron themed).
+ - [ ] implement good in-game shaders (eg. tron themed).
  - [ ] implement multi-player.
  - [ ] implement more AI behavior.
 
