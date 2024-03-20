@@ -5,18 +5,19 @@
 
 Basic:
 
- - [ ] write basic game
-   - [ ] implement predefined camera perspectives.
-   - [ ] implement free camera movement.
+ - [ ] essential tasks.
    - [ ] implement highlighting of active field group.
-   - [ ] implement basic AI behavior.
    - [ ] click on second field group executes attack.
    - [ ] implement click behavior (click on field activates respective field group).
    - [ ] draw borders around field groups.
-   - [ ] set UV map for hexagon meshes.
    - [ ] every field is in exactly one field group.
    - [ ] a field group has several fields.
    - [ ] extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
+ - [ ] write basic game
+   - [ ] implement predefined camera perspectives.
+   - [ ] implement free camera movement.
+   - [ ] set UV map for hexagon meshes.
+   - [ ] implement basic AI behavior.
  - [ ] implement user interface.
    - [ ] implement end-of-game screen.
    - [ ] implement splash screen.
