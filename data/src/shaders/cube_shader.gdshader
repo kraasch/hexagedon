@@ -27,7 +27,7 @@ void fragment() {
 		color = vec3(main, 0.1, main);
 
 	} else { // error.
-		color = vec3(1.0);
+		color = vec3(main);
 	}
 
 	ALBEDO = color;

@@ -8,6 +8,8 @@ const CUBE = preload("res://data/src/scenes/cube.tscn")
 var max_stack_height : int = Globals.MAX_STACK_HEIGHT
 var rng = RandomNumberGenerator.new()
 
+var is_debug : bool = false # NOTE: remove later. only for debugging colors.
+
 func _ready():
 	var type_index : int = ColorGenerator.rand_num()
 	generate_hex_tile(type_index)
@@ -15,7 +17,11 @@ func _ready():
 
 func generate_hex_tile(type_index : int):
 	var tile = HEX_TILE.instantiate()
-	tile.mymaterial = ColorGenerator.get_shader(type_index)
+	if not is_debug:
+		tile.mymaterial = ColorGenerator.get_shader(type_index)
+	else:
+		print('now debug')
+		tile.mymaterial = ColorGenerator.get_shader(-1)
 	add_child(tile)
 
 func generate_cube_stack(type_index : int):
@@ -25,3 +31,7 @@ func generate_cube_stack(type_index : int):
 		cube.mymaterial = ColorGenerator.get_shader(type_index)
 		add_child(cube)
 		cube.translate(Vector3(0.0, CUBE_HEIGHT * i, 0.0))
+
+func set_debug():
+	print('yes debug')
+	is_debug = true

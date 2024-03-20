@@ -8,8 +8,14 @@ var colors : Array
 func get_shader(type_index : int) -> ShaderMaterial:
 	var sm : ShaderMaterial = ShaderMaterial.new()
 	sm.shader = preload("res://data/src/shaders/cube_shader.gdshader")
-	sm.set_shader_parameter("type", type_index)
-	sm.set_shader_parameter("random", rng.randf())
+	if type_index != -1:
+		sm.set_shader_parameter("type", type_index)
+		sm.set_shader_parameter("random", rng.randf())
+	else:
+		# for debug purposes.
+		sm.set_shader_parameter("type", max_types + 1)
+		sm.set_shader_parameter("random", rng.randf())
+		print('and now')
 	return sm
 
 func rand_num() -> int:
