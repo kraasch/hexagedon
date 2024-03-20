@@ -13,7 +13,7 @@ var is_debug : bool = false # NOTE: remove later. only for debugging colors.
 func _ready():
 	var type_index : int = ColorGenerator.rand_num()
 	generate_hex_tile(type_index)
-#	generate_cube_stack(type_index) # TODO: render in center of field.
+	generate_cube_stack(type_index) # TODO: render in center of field.
 
 func generate_hex_tile(type_index : int):
 	var tile = HEX_TILE.instantiate()
