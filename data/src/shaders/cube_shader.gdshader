@@ -26,8 +26,20 @@ void fragment() {
 	} else if (type == 5) { // cyan?
 		color = vec3(main, 0.1, main);
 
+	} else if (type == 6) { // TODO: write name of color here.
+		color = vec3(0.5, 0.1, 0.4);
+
+	} else if (type == 7) { // TODO: write name of color here.
+		color = vec3(0.1, 0.4, 0.7);
+
+	} else if (type == 8) { // TODO: write name of color here.
+		color = vec3(0.6, 0.3, 0.5);
+
+	} else if (type == 9) { // TODO: write name of color here.
+		color = vec3(0.5, 0.7, 0.4);
+
 	} else { // error.
-		color = vec3(main);
+		color = vec3(1.0);
 	}
 
 	ALBEDO = color;
