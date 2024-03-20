@@ -8,6 +8,9 @@ web_all:
 	make web_show
 
 web_export:
+	rm -rf ./channels/web/
+	mkdir -p ./channels/
+	mkdir -p ./channels/web/
 	cd ..; godot4 --headless --path . --export-release Web ./export/channels/web/index.html
 
 web_push:
