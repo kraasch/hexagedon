@@ -10,8 +10,8 @@ func _ready():
 func generate_grid():
 	clean_grid()
 	clean_grid()
-	var   tile_size    : float       = Globals.EDGE_SIZE
-	var   grid_size    : int         = Globals.MAX_GRID_SIZE
+	var tile_size : float = Globals.EDGE_SIZE
+	var grid_size : int   = Globals.MAX_GRID_SIZE
 	for x in range(grid_size):
 		var coords := Vector2.ZERO
 		coords.x = x * tile_size * OFFSET_RATIO

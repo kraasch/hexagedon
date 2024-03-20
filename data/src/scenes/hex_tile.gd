@@ -8,7 +8,7 @@ func _ready():
 	
 	const H_TO_N_RATIO : float = 1.0 / cos(deg_to_rad(30.0))
 	var TILE_SIZE : float = Globals.EDGE_SIZE - MARGIN # distance from one tile to the next.
-	const ELEVATION : float = 0.3          # elevation i.e. distance above the ground (y coordinate).
+	const ELEVATION : float = 0.3        # elevation i.e. distance above the ground (y coordinate).
 	var H : float = TILE_SIZE / 2.0      # height of triangles.
 	var N : float = H * H_TO_N_RATIO     # length of hexagon edges (also length of triangle edges).
 	var M : float = N / 2.0              # half of N.

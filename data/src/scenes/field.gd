@@ -22,12 +22,25 @@ func generate_hex_tile(type_index : int):
 func generate_cube_stack(type_index : int):
 	var max_stack_height : int = Globals.MAX_STACK_HEIGHT
 	var cube_height : float = Globals.CUBE_SIZE
+	var split_index : int = max_stack_height / 2
+	var half_stack_height : float = cube_height * split_index
 	var stack_height : int = rng.randi_range(0, max_stack_height)
-	for i in range(0, stack_height): # TODO: if stack heigh is more than 4 or so split into two columns.
+	for i in range(0, stack_height):
+		# basic cube setup.
 		var cube = CUBE.instantiate()
 		cube.mymaterial = ColorGenerator.get_shader(type_index)
 		add_child(cube)
-		cube.translate(Vector3(0.0, cube_height * i, 0.0))
+		# calculate height offset.
+		var height_offset : float = cube_height * i
+		# subtract half the stack height for second part of stack.
+		if i >= split_index: height_offset -= half_stack_height
+		# calculate sidewas offset.
+		var sideways_offset : float = 0.0
+		var left_or_right_offset : float = 1.0 if i < split_index else -1.0
+		sideways_offset = cube_height / 2.0 + Globals.STACK_SPLIT_GAP
+		sideways_offset = sideways_offset * left_or_right_offset
+		# move cube to right place.
+		cube.translate(Vector3(0.0, height_offset, sideways_offset))
 
 func set_debug(): # TODO: remove later.
 	is_debug = true
