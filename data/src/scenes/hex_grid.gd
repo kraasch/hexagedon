@@ -14,23 +14,8 @@ func generate_grid():
 	clean_grid()
 	var tile_size : float = Globals.EDGE_SIZE
 	var grid_size : int   = Globals.GRID_SIZE
-
-	map = [
-		[1, 1, 3, 0],
-		[1, 0, 3, 3],
-		[2, 2, 0, 1],
-		[0, 2, 1, 0],
-	]
-
-	# create grid.
-#	map = []
-#	for x in range(grid_size):
-#		var map_line = []
-#		for y in range(grid_size):
-#			var type_index : int = ColorGenerator.rand_num()
-#			map_line.push_back(type_index)
-#		map.push_back(map_line)
-
+	var map = MapGenerator.create_new_map() # TODO: remove later.
+#	var map = MapGenerator.create_new_map(grid_size, grid_size) # TODO: comment back in.
 	# build grid.
 	for x in range(len(map)):
 		var x_coord : float = x * tile_size * OFFSET_RATIO
