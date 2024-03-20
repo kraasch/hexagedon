@@ -14,4 +14,4 @@ func _button_pressed():
 	Globals.MAX_STACK_HEIGHT   = %StackHeightSliderDisplay.val
 	%HexGrid.new_map()
 	# TODO: make an animated translate from old to new cam position here.
-	%Cam.global_position.z = %GridSizeSliderDisplay.val / 4
+	%Cam.global_position.z = %GridSizeSliderDisplay.val / 2
