@@ -7,11 +7,11 @@ func _ready():
 	const MARGIN : float = 0.02
 	
 	const H_TO_N_RATIO : float = 1.0 / cos(deg_to_rad(30.0))
-	const TILE_SIZE : float = Globals.EDGE_SIZE - MARGIN # distance from one tile to the next.
+	var TILE_SIZE : float = Globals.EDGE_SIZE - MARGIN # distance from one tile to the next.
 	const ELEVATION : float = 0.3          # elevation i.e. distance above the ground (y coordinate).
-	const H : float = TILE_SIZE / 2.0      # height of triangles.
-	const N : float = H * H_TO_N_RATIO     # length of hexagon edges (also length of triangle edges).
-	const M : float = N / 2.0              # half of N.
+	var H : float = TILE_SIZE / 2.0      # height of triangles.
+	var N : float = H * H_TO_N_RATIO     # length of hexagon edges (also length of triangle edges).
+	var M : float = N / 2.0              # half of N.
 
 	var CENTER    := Vector3(  0.0,  ELEVATION,  0.0 )
 	var RIGHT     := Vector3(   -N,  ELEVATION,  0.0 )

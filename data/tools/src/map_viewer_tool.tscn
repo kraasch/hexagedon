@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://we64qri3wg6a"]
+[gd_scene load_steps=5 format=3 uid="uid://we64qri3wg6a"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_680dd"]
 [ext_resource type="Script" path="res://data/tools/src/map_viewer_tool.gd" id="1_hvakq"]
+[ext_resource type="PackedScene" uid="uid://cse8yjnhn0f4x" path="res://data/src/hud/card_container.tscn" id="3_262sb"]
 
 [sub_resource type="Environment" id="Environment_kghhm"]
 
@@ -9,6 +10,7 @@
 script = ExtResource("1_hvakq")
 
 [node name="HexGrid" parent="." instance=ExtResource("1_680dd")]
+unique_name_in_owner = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kghhm")
@@ -40,11 +42,40 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 100)
+[node name="CardContainer1" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_262sb")]
 layout_mode = 2
 
-[node name="UpdateButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/CenterContainer"]
+[node name="UpdateButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/CardContainer1"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Update"
+
+[node name="CardContainer2" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_262sb")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/CardContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/CardContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Number of parties"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/HBoxContainer/CardContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="PartyNum" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer/CardContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PartySlider" type="HSlider" parent="CanvasLayer/VBoxContainer/HBoxContainer/CardContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 6.0
+value = 6.0

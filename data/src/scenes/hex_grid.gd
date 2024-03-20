@@ -3,11 +3,11 @@ extends Node3D
 
 const HEX_TILE     : PackedScene = preload("res://data/src/scenes/field.tscn")
 const OFFSET_RATIO : float       = Globals.HEX_RATIO
-const tile_size    : float       = Globals.EDGE_SIZE
+var   tile_size    : float       = Globals.EDGE_SIZE
 var   grid_size    : int         = Globals.MAX_GRID_SIZE
 
 func _ready():
-	generate_grid()
+	new_map()
 
 func generate_grid():
 	for x in range(grid_size):
@@ -21,3 +21,6 @@ func generate_grid():
 			add_child(tile)
 			tile.translate(Vector3(coords.x, 0, coords.y))
 			coords.y += tile_size
+
+func new_map():
+	generate_grid()

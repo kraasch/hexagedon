@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ColorGenerator="*res://data/src/global/color_generator.gd"
 Globals="*res://data/src/global/globals.gd"
+ColorGenerator="*res://data/src/global/color_generator.gd"
 
 [input]
 
