@@ -17,4 +17,4 @@ func get_shader(type_index : int) -> ShaderMaterial:
 
 func rand_num() -> int:
 	var max_types : int = Globals.NUM_OF_PARTIES
-	return rng.randi_range(0, max_types - 1)
+	return rng.randi_range(1, max_types)
