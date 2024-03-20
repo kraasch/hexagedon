@@ -34,7 +34,8 @@ Extra tasks:
  - [ ] implement good map generation.
  - [ ] implement good splash screen shader (eg tron themed).
  - [ ] implement good in-game shaders (eg. tron themed).
- - [ ] implement multi-player.
+ - [ ] implement multi-player offline.
+ - [ ] implement multi-player online.
  - [ ] implement more AI behavior.
 
 Done:
