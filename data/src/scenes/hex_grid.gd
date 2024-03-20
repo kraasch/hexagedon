@@ -37,7 +37,7 @@ func generate_grid():
 				tile.translate(Vector3(x_coord, 0, y_coord))
 			y_coord += tile_size
 
-	# build borders.
+	# build borders of field groups.
 	# - [ ] create a bucket for every group using `groups_num`.
 	for x in range(len(map_groups)):
 		for y in range(len(map_groups[x])):
@@ -47,6 +47,13 @@ func generate_grid():
 			#   - [ ] IF neighbor is different group OR outside of bounds OR empty field
 			#     - [ ] THEN create border object from mesh.
 			#     - [ ] AND THEN add border object id to bucket of both groups (if bucket doesn't contain border yet).
+
+	# find centers of field groups.
+	# - [ ] create a array of coordinates (x and y) for every group using `groups_num`.
+	for x in range(len(map_groups)):
+		for y in range(len(map_groups[x])):
+			pass
+			# - [ ] find field most at center of group and add field's coordinates to array of coordinates.
 
 func clean_grid():
 	if %GridContainer.get_child_count() > 0:
