@@ -15,7 +15,10 @@ func generate_grid():
 	for x in range(grid_size):
 		var coords := Vector2.ZERO
 		coords.x = x * tile_size * OFFSET_RATIO
-		coords.y = 0 if (x % 2 == 0) else (tile_size / 2)
+		var new_y = 0
+		if x % 2 == 1:
+			new_y = tile_size / 2
+		coords.y = new_y
 		for y in range(grid_size):
 			var tile = HEX_TILE.instantiate()
 			if x == 0 and y == 0: # TODO: remove later.
