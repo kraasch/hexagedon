@@ -5,10 +5,9 @@ const HEX_TILE     : PackedScene = preload("res://data/src/scenes/field.tscn")
 const OFFSET_RATIO : float       = Globals.HEX_RATIO
 
 func _ready():
-	new_map()
+	generate_grid()
 
 func generate_grid():
-	clean_grid()
 	clean_grid()
 	var tile_size : float = Globals.EDGE_SIZE
 	var grid_size : int   = Globals.GRID_SIZE
@@ -33,6 +32,3 @@ func clean_grid():
 		for n in %GridContainer.get_children():
 			%GridContainer.remove_child(n)
 			n.queue_free() 
-
-func new_map():
-	generate_grid()
