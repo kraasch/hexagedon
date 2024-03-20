@@ -9,4 +9,4 @@ const EDGE_SIZE          : float = 1.0
 var MAX_STACK_HEIGHT   : int = 0
 var MAX_NUM_OF_PARTIES : int = 6
 var MAX_GRID_SIZE      : int = 10
-var CUBE_SIZE          : float = 0.15
+var CUBE_SIZE          : float = 0.3
