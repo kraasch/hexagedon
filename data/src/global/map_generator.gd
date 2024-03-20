@@ -1,10 +1,10 @@
 @tool
 extends Node
 
-var party_grid : Array = []
-var group_grid : Array = []
-var party_num : int = 0
-var group_num : int = 0
+var party_grid  : Array = []
+var group_grid  : Array = []
+var parties_num : int = 0
+var groups_num  : int = 0
 
 func create_new_map_simple():
 	# provide default map.
@@ -14,14 +14,14 @@ func create_new_map_simple():
 		[2, 2, 0, 3],
 		[2, 2, 3, 0],
 	]
-	party_num = 3
+	parties_num = 3
 	group_grid = [
 		[1, 1, 3, 0],
 		[1, 0, 3, 3],
 		[2, 2, 0, 4],
 		[2, 2, 4, 0],
 	]
-	group_num = 4
+	groups_num = 4
 
 func create_new_map(width : int = 0, height : int = 0):
 	# create full grid.

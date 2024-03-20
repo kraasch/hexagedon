@@ -6,9 +6,11 @@ const CUBE = preload("res://data/src/scenes/cube.tscn")
 var rng = RandomNumberGenerator.new()
 var is_debug : bool = false # NOTE: remove later. only for debugging colors.
 var type_index : int = -1
+var field_group_id : int = -1
 
-func set_data(type_index_tmp : int):
-	type_index = type_index_tmp
+func set_data(_type_index : int, _field_group_id : int):
+	type_index = _type_index
+	field_group_id = _field_group_id
 
 func _ready():
 	generate_hex_tile(type_index)
