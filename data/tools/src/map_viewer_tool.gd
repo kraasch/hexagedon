@@ -8,7 +8,6 @@ func _ready():
 	%StackHeightSliderDisplay.set_data('Stack height', 1, 30, Globals.MAX_STACK_HEIGHT)
 
 func _button_pressed():
-	print('grid size new: ' + str(%GridSizeSliderDisplay.val))
 	Globals.MAX_NUM_OF_PARTIES = %PartySliderDisplay.val
 	Globals.MAX_GRID_SIZE      = %GridSizeSliderDisplay.val
 	Globals.MAX_STACK_HEIGHT   = %StackHeightSliderDisplay.val

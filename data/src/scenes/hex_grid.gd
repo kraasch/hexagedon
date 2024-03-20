@@ -12,8 +12,6 @@ func generate_grid():
 	clean_grid()
 	var   tile_size    : float       = Globals.EDGE_SIZE
 	var   grid_size    : int         = Globals.MAX_GRID_SIZE
-	print('tile size: ' + str(tile_size))
-	print('grid size: ' + str(grid_size))
 	for x in range(grid_size):
 		var coords := Vector2.ZERO
 		coords.x = x * tile_size * OFFSET_RATIO
@@ -28,13 +26,10 @@ func generate_grid():
 
 func clean_grid():
 	if %GridContainer.get_child_count() > 0:
-		print('there is things to DELETE')
 		# kill all children.
 		for n in %GridContainer.get_children():
 			%GridContainer.remove_child(n)
 			n.queue_free() 
-	else:
-		print('all is FINE')
 
 func new_map():
 	generate_grid()
