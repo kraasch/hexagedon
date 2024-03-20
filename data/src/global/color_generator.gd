@@ -12,7 +12,7 @@ func get_shader(type_index : int) -> ShaderMaterial:
 		sm.set_shader_parameter("type", type_index)
 		sm.set_shader_parameter("random", rng.randf())
 	else:
-		# for debug purposes.
+		# for debug purposes. # TODO: remove later.
 		sm.set_shader_parameter("type", max_types + 1)
 		sm.set_shader_parameter("random", rng.randf())
 	return sm

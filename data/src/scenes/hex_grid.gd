@@ -18,7 +18,7 @@ func generate_grid():
 		coords.y = 0 if (x % 2 == 0) else (tile_size / 2)
 		for y in range(grid_size):
 			var tile = HEX_TILE.instantiate()
-			if x == 0 and y == 0:
+			if x == 0 and y == 0: # TODO: remove later.
 				tile.set_debug()
 			%GridContainer.add_child(tile)
 			tile.translate(Vector3(coords.x, 0, coords.y))

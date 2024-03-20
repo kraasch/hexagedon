@@ -10,11 +10,11 @@ var is_debug : bool = false # NOTE: remove later. only for debugging colors.
 func _ready():
 	var type_index : int = ColorGenerator.rand_num()
 	generate_hex_tile(type_index)
-	generate_cube_stack(type_index) # TODO: render in center of field.
+	generate_cube_stack(type_index) # TODO: render in center of FIELD GROUP.
 
 func generate_hex_tile(type_index : int):
 	var tile = HEX_TILE.instantiate()
-	if not is_debug:
+	if not is_debug: # TODO: remove later.
 		tile.mymaterial = ColorGenerator.get_shader(type_index)
 	else:
 		tile.mymaterial = ColorGenerator.get_shader(-1)
@@ -29,5 +29,5 @@ func generate_cube_stack(type_index : int):
 		add_child(cube)
 		cube.translate(Vector3(0.0, CUBE_HEIGHT * i, 0.0))
 
-func set_debug():
+func set_debug(): # TODO: remove later.
 	is_debug = true
