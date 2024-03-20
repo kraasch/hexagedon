@@ -3,8 +3,10 @@
 
 ## Tasks
 
- - [ ] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
+ - [ ] set UV map for hexagon meshes.
+ - [ ] extract map generation and use a 2D array as the interface.
  - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
+ - [ ] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
 
 ## Resources
 
