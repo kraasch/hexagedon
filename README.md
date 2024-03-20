@@ -12,7 +12,7 @@ Basic:
    - [ ] draw borders around field groups.
    - [ ] every field is in exactly one field group.
    - [ ] a field group has several fields.
-   - [ ] extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
+   - [ ] implement basic map generation.
  - [ ] write basic game
    - [ ] implement predefined camera perspectives.
    - [ ] implement free camera movement.
@@ -31,10 +31,15 @@ Basic:
 
 Extra tasks:
 
+ - [ ] implement good map generation.
  - [ ] implement good splash screen shader (eg tron themed).
  - [ ] implement good in-game shaders (eg. tron themed).
  - [ ] implement multi-player.
  - [ ] implement more AI behavior.
+
+Done:
+
+ - [X] extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
 
 ## Resources
 
