@@ -24,7 +24,7 @@ func generate_hex_tile(type_index : int):
 	add_child(tile)
 
 func generate_cube_stack(type_index : int):
-	var stack_height : int = rng.randf_range(0, max_stack_height)
+	var stack_height : int = rng.randf_range(0, max_stack_height + 1)
 	for i in range(0, stack_height):
 		var cube = CUBE.instantiate()
 		cube.mymaterial = ColorGenerator.get_shader(type_index)

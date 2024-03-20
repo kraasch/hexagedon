@@ -5,7 +5,7 @@ func _ready():
 	%UpdateButton.pressed.connect(self._button_pressed)
 	%PartySliderDisplay.set_data('Number of parties', 1, 6, Globals.MAX_NUM_OF_PARTIES)
 	%GridSizeSliderDisplay.set_data('Grid size', 1, 30, Globals.MAX_GRID_SIZE)
-	%StackHeightSliderDisplay.set_data('Stack height', 1, 30, Globals.MAX_STACK_HEIGHT)
+	%StackHeightSliderDisplay.set_data('Stack height', 0, 12, Globals.MAX_STACK_HEIGHT)
 
 func _button_pressed():
 	Globals.MAX_NUM_OF_PARTIES = %PartySliderDisplay.val
