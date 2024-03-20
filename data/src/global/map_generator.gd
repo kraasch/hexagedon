@@ -1,23 +1,27 @@
 @tool
 extends Node
 
-var party_map : Array = []
-var group_map : Array = []
+var party_grid : Array = []
+var group_grid : Array = []
+var party_num : int = 0
+var group_num : int = 0
 
 func create_new_map_simple():
 	# provide default map.
-	party_map = [
-		[1, 1, 3, 0],
-		[1, 0, 3, 3],
-		[2, 2, 0, 1],
-		[0, 2, 1, 0],
+	party_grid = [
+		[1, 1, 2, 0],
+		[1, 0, 2, 2],
+		[2, 2, 0, 3],
+		[2, 2, 3, 0],
 	]
-	group_map = [
+	party_num = 3
+	group_grid = [
 		[1, 1, 3, 0],
 		[1, 0, 3, 3],
 		[2, 2, 0, 4],
-		[0, 2, 4, 0],
+		[2, 2, 4, 0],
 	]
+	group_num = 4
 
 func create_new_map(width : int = 0, height : int = 0):
 	# create full grid.
@@ -28,10 +32,10 @@ func create_new_map(width : int = 0, height : int = 0):
 			var type_index : int = ColorGenerator.rand_num()
 			map_line.push_back(type_index)
 		new_map.push_back(map_line)
-	party_map = new_map
+	party_grid = new_map
 
 func get_party_grid():
-	return party_map
+	return party_grid
 
 func get_group_grid():
-	return group_map
+	return group_grid
