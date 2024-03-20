@@ -3,12 +3,9 @@ extends Node3D
 
 func _ready():
 	%UpdateButton.pressed.connect(self._button_pressed)
-	%PartySlider.value_changed.connect(self._party_slider_updated)
-	_party_slider_updated(null)
+	%PartySliderDisplay.set_data('Number of parties', 1, 6, 6)
+	%GridSizeSliderDisplay.set_data('Grid size', 1, 30, 10)
 
 func _button_pressed():
-	Globals.MAX_NUM_OF_PARTIES = %PartySlider.value
+	Globals.MAX_NUM_OF_PARTIES = %PartySliderDisplay.val
 	%HexGrid.new_map()
-
-func _party_slider_updated(value):
-	%PartyNum.text = str(%PartySlider.value)
