@@ -12,7 +12,8 @@ func slider_updated(dummy):
 	val = value
 	%Num.text = str(value)
 
-func set_data(new_title : String, min_val : int, max_val : int, default : int):
+func set_data(new_title : String, min_val : float, max_val : float, default : float, step : float = 1.0):
+	%Slider.step = step
 	%Slider.min_value = min_val
 	%Slider.max_value = max_val
 	%Slider.value = default

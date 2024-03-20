@@ -15,9 +15,9 @@ layout_mode = 2
 
 [node name="Num" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "00"
+text = "0000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -28,4 +28,5 @@ layout_mode = 2
 size_flags_vertical = 4
 min_value = 1.0
 max_value = 2.0
+step = 0.1
 value = 2.0
