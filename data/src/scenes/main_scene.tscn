@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://jctoum2s83s5"]
+[gd_scene load_steps=5 format=3 uid="uid://jctoum2s83s5"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_24fly"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5scc"]
+
+[sub_resource type="Sky" id="Sky_asbit"]
+sky_material = SubResource("ProceduralSkyMaterial_u5scc")
+
+[sub_resource type="Environment" id="Environment_0sc42"]
+background_mode = 2
+sky = SubResource("Sky_asbit")
+volumetric_fog_albedo = Color(0.317647, 0.32549, 0.858824, 1)
 
 [node name="MainScene" type="Node3D"]
 
@@ -20,3 +30,6 @@ light_energy = 11.858
 shadow_enabled = true
 shadow_opacity = 0.88
 omni_range = 20.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0sc42")
