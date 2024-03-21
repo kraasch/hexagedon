@@ -6,13 +6,10 @@
 Basic:
 
  - [ ] essential tasks.
+   - [ ] implement click behavior (click on field activates respective field group).
    - [ ] implement highlighting of active field group.
    - [ ] click on second field group executes attack.
-   - [ ] implement click behavior (click on field activates respective field group).
-   - [ ] draw borders around field groups.
-   - [ ] every field is in exactly one field group.
    - [ ] a field group has several fields.
-   - [ ] implement basic map generation.
  - [ ] write basic game
    - [ ] implement predefined camera perspectives.
    - [ ] implement free camera movement.
@@ -31,15 +28,21 @@ Basic:
 
 Extra tasks:
 
+ - [ ] implement basic map generation.
+ - [ ] draw borders around field groups (ie. good looking field group borders).
  - [ ] implement good map generation.
  - [ ] implement good splash screen shader (eg tron themed).
  - [ ] implement good in-game shaders (eg. tron themed).
+
+Future tasks:
+
  - [ ] implement multi-player offline.
  - [ ] implement multi-player online.
  - [ ] implement more AI behavior.
 
 Done:
 
+ - [X] every field is in exactly one field group.
  - [X] extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
 
 ## Resources
