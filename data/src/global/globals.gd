@@ -5,6 +5,7 @@ extends Node
 const HEX_RATIO        : float = cos(deg_to_rad(30))
 const EDGE_SIZE        : float = 1.0
 const STACK_SPLIT_GAP  : float = 0.01
+const HEX_TILE_GAP     : float = 0.005
 
 # Change these values to alter the graphics.
 var MAX_STACK_HEIGHT   : int = 8
