@@ -7,17 +7,27 @@ var rng = RandomNumberGenerator.new()
 var is_debug : bool = false # NOTE: remove later. only for debugging colors.
 var type_index : int = -1
 var field_group_id : int = -1
+var tile = null
 
 func set_data(_type_index : int, _field_group_id : int):
 	type_index = _type_index
 	field_group_id = _field_group_id
+	register_click_behavior(_field_group_id)
+
+func register_click_behavior(clicked_group_index : int):
+	pass
+	#TODO: add click listener.
+	#Globals.group_was_clicked(clicked_group_index)
+
+func change_group_color():
+	tile.mymaterial = ColorGenerator.get_shader(-1)
 
 func _ready():
 	generate_hex_tile(type_index)
 	generate_cube_stack(type_index) # TODO: render in center of FIELD GROUP.
 
 func generate_hex_tile(type_index : int):
-	var tile = HEX_TILE.instantiate()
+	tile = HEX_TILE.instantiate()
 	if is_debug: # TODO: remove later.
 		tile.mymaterial = ColorGenerator.get_shader(-1)
 	else:

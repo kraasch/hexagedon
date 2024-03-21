@@ -20,6 +20,7 @@ func generate_grid():
 	var map_parties = MapGenerator.get_party_grid()
 	var map_groups  = MapGenerator.get_group_grid()
 	var groups_num  = MapGenerator.groups_num
+	Globals.create_new_field_groups(groups_num)
 
 	# build grid.
 	for x in range(len(map_parties)):
@@ -32,7 +33,9 @@ func generate_grid():
 				# NOTE: this highlights the grid's origin in white for orientation.
 				if x == 0 and y == 0: # TODO: remove later.
 					tile.set_debug() # TODO: remove later.
-				tile.set_data(map_parties[x][y], map_groups[x][y])
+				var group_id : int = map_groups[x][y]
+				tile.set_data(map_parties[x][y], group_id)
+				Globals.FIELD_GROUPS[group_id].push_back(tile)
 				%GridContainer.add_child(tile)
 				tile.translate(Vector3(x_coord, 0, y_coord))
 			y_coord += tile_size
