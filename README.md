@@ -5,16 +5,11 @@
 
 Basic:
 
- - [ ] essential tasks.
-   - [ ] implement click behavior (click on field activates respective field group).
-   - [ ] implement highlighting of active field group.
-   - [ ] click on second field group executes attack.
-   - [ ] a field group has several fields.
- - [ ] write basic game
-   - [ ] implement predefined camera perspectives.
-   - [ ] implement free camera movement.
-   - [ ] set UV map for hexagon meshes.
-   - [ ] implement basic AI behavior.
+ - [ ] click on second field group executes attack.
+ - [ ] implement predefined camera perspectives.
+ - [ ] implement free camera movement.
+ - [ ] set UV map for hexagon meshes.
+ - [ ] implement basic AI behavior.
  - [ ] implement user interface.
    - [ ] implement end-of-game screen.
    - [ ] implement splash screen.
@@ -22,9 +17,7 @@ Basic:
    - [ ] implement in-game menu.
    - [ ] implement map generator menu.
    - [ ] implement basic HUD.
- - [ ] make some fixes.
-   - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
-   - [ ] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
+ - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
 
 Extra tasks:
 
@@ -42,6 +35,10 @@ Future tasks:
 
 Done:
 
+ - [X] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
+ - [X] implement click behavior (click on field activates respective field group).
+ - [X] implement highlighting of active field group.
+ - [X] a field group has several fields.
  - [X] every field is in exactly one field group.
  - [X] extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
 
