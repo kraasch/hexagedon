@@ -32,8 +32,6 @@ func generate_grid():
 				# create new field.
 				var tile = HEX_TILE.instantiate()
 				# NOTE: this highlights the grid's origin in white for orientation.
-				if x == 0 and y == 0: # TODO: remove later.
-					tile.set_debug() # TODO: remove later.
 				var group_id : int = map_groups[x][y]
 				tile.set_data(map_parties[x][y], group_id, center_grid[x][y] > 0)
 				GroupManager.FIELD_GROUPS[group_id].push_back(tile)

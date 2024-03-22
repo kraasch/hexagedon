@@ -1,8 +1,11 @@
 @tool
 extends Node3D
 
-var mymaterial : Material = Material.new()
-var callback = null
+@export var mymaterial : Material = Material.new()
+
+var activate = null
+var select = null
+var deselect = null
 
 func _ready():
 	
@@ -61,11 +64,21 @@ func _ready():
 	m.material_override = mymaterial
 	add_child(m)
 
-func set_callback(_callback):
-	callback = _callback
+func set_callback(_activate, _select, _deselect):
+	activate = _activate
+	select = _select
+	deselect = _deselect
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if callback != null:
-				callback.call()
+			if activate != null:
+				activate.call()
+
+func _on_area_3d_mouse_entered():
+	if select != null:
+		select.call()
+
+func _on_area_3d_mouse_exited():
+	if deselect != null:
+		deselect.call()

@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf43jsckwuxyl"]
+[gd_scene load_steps=5 format=3 uid="uid://bf43jsckwuxyl"]
 
 [ext_resource type="Script" path="res://data/src/scenes/cube.gd" id="1_304fu"]
 [ext_resource type="PackedScene" uid="uid://d17mrgvfw7dtf" path="res://data/src/scenes/hex_tile.tscn" id="2_7hkb4"]
 
+[sub_resource type="Material" id="Material_qxd1q"]
+resource_local_to_scene = false
+resource_name = ""
+
+[sub_resource type="Material" id="Material_7qfyl"]
+resource_local_to_scene = false
+resource_name = ""
+
 [node name="Cube" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021609, 0.00283802, -0.00104654)
 script = ExtResource("1_304fu")
+mymaterial = SubResource("Material_qxd1q")
 
 [node name="HexTile" parent="." instance=ExtResource("2_7hkb4")]
 visible = false
+mymaterial = SubResource("Material_7qfyl")

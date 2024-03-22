@@ -22,18 +22,21 @@ func _ready():
 
 func generate_hex_tile(type_index : int):
 	tile = HEX_TILE.instantiate()
-	tile.set_callback(was_clicked)
-	if is_debug: # TODO: remove later.
-		tile.mymaterial = ColorGenerator.get_shader(-1)
-	else:
-		tile.mymaterial = ColorGenerator.get_shader(type_index)
+	tile.set_callback(was_clicked, was_selected, was_deselected)
+	tile.mymaterial = ColorGenerator.get_shader(type_index)
 	add_child(tile)
 	
 func was_clicked():
 	GroupManager.group_was_clicked(field_group_id)
+	
+func was_selected():
+	GroupManager.group_was_selected(field_group_id)
+	
+func was_deselected():
+	GroupManager.group_was_deselected(field_group_id)
 
-func highlight_group_color():
-	tile.mymaterial.set_shader_parameter("type", -1)
+func highlight_group_color(color_index : int):
+	tile.mymaterial.set_shader_parameter("type", color_index)
 
 func unhighlight_group_color():
 	tile.mymaterial.set_shader_parameter("type", type_index)
@@ -60,6 +63,3 @@ func generate_cube_stack(type_index : int):
 		sideways_offset = sideways_offset * left_or_right_offset
 		# move cube to right place.
 		cube.translate(Vector3(0.0, height_offset, sideways_offset))
-
-func set_debug(): # TODO: remove later.
-	is_debug = true

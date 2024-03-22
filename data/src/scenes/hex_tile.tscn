@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://d17mrgvfw7dtf"]
+[gd_scene load_steps=4 format=3 uid="uid://d17mrgvfw7dtf"]
 
 [ext_resource type="PackedScene" uid="uid://ch08aaedtsb03" path="res://data/assets/main/hex.glb" id="1_qgc7a"]
 [ext_resource type="Script" path="res://data/src/scenes/hex_tile.gd" id="1_uvljd"]
 
+[sub_resource type="Material" id="Material_sr2s0"]
+resource_local_to_scene = false
+resource_name = ""
+
 [node name="HexTile" type="Node3D"]
 script = ExtResource("1_uvljd")
+mymaterial = SubResource("Material_sr2s0")
 
 [node name="hex" parent="." instance=ExtResource("1_qgc7a")]
 visible = false
@@ -17,3 +22,5 @@ depth = 0.1
 polygon = PackedVector2Array(0.3, -0.5, 0.6, 0, 0.3, 0.5, -0.3, 0.5, -0.6, 0, -0.3, -0.5)
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

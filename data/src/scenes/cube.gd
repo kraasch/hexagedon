@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-var mymaterial : Material = Material.new()
+@export var mymaterial : Material = ShaderMaterial.new()
 
 func _ready():
 	const ELEVATION : float = 0.3               # elevation i.e. distance above the ground (y coordinate).

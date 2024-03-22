@@ -8,7 +8,10 @@ void fragment() {
 	float pendulum = abs(mod(TIME + random, 2.0) - 1.0);
 	float main = UV.x * (pendulum + 0.2);
 
-	if (type == 1) { // red.
+	if (type == 0) { // black (on focus).
+		color = vec3(0.0);
+
+	} else if (type == 1) { // red.
 		color = vec3(main, 0.4, 0.4);
 
 	} else if (type == 2) { // green.
@@ -38,7 +41,7 @@ void fragment() {
 	} else if (type == 10) { // TODO: write name of color here.
 		color = vec3(0.5, 0.7, 0.4);
 
-	} else { // error.
+	} else { // white (any other number)
 		color = vec3(1.0);
 	}
 
