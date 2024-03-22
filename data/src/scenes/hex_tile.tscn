@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d17mrgvfw7dtf"]
+[gd_scene load_steps=3 format=3 uid="uid://d17mrgvfw7dtf"]
 
 [ext_resource type="PackedScene" uid="uid://ch08aaedtsb03" path="res://data/assets/main/hex.glb" id="1_qgc7a"]
 [ext_resource type="Script" path="res://data/src/scenes/hex_tile.gd" id="1_uvljd"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_m8v1o"]
-height = 0.1
 
 [node name="HexTile" type="Node3D"]
 script = ExtResource("1_uvljd")
@@ -14,8 +11,9 @@ visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-shape = SubResource("CylinderShape3D_m8v1o")
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00412184, 0.344606, 0.000937581)
+depth = 0.1
+polygon = PackedVector2Array(0.3, -0.5, 0.6, 0, 0.3, 0.5, -0.3, 0.5, -0.6, 0, -0.3, -0.5)
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
