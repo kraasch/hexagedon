@@ -12,6 +12,7 @@ func create_new_field_groups(length_val : int):
 		FIELD_GROUPS.push_back([])
 
 func set_field_group_highlight(index : int, turn_on : bool, color_index : int = -1):
+	# TODO: FIXBUG: sometimes the menu tries to access index 2 or 4 but index doesn't exist.
 	var group : Array = FIELD_GROUPS[index]
 	for i in range(len(group)):
 		var field = group[i] # TODO: add type of field.
