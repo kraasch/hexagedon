@@ -9,11 +9,15 @@ var   is_debug       : bool  = false # NOTE: remove later. only for debugging co
 var   type_index     : int   = -1
 var   field_group_id : int   = -1
 var   is_center      : bool  = false
+var   callback_clicked = null
 
 func set_data(_type_index : int, _field_group_id : int, _is_center : bool):
 	type_index = _type_index
 	field_group_id = _field_group_id
 	is_center = _is_center
+
+func set_callback(_callback_clicked):
+	callback_clicked = _callback_clicked
 
 func _ready():
 	generate_hex_tile(type_index)
@@ -25,10 +29,12 @@ func generate_hex_tile(type_index : int):
 	tile.set_callback(was_clicked, was_selected, was_deselected)
 	tile.mymaterial = ColorGenerator.get_shader(type_index)
 	add_child(tile)
-	
+
 func was_clicked():
 	GroupManager.group_was_clicked(field_group_id)
-	
+	if callback_clicked != null:
+		callback_clicked.call()
+
 func was_selected():
 	GroupManager.group_was_selected(field_group_id)
 	

@@ -1,14 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpq45jjb82k6"]
+[gd_scene load_steps=2 format=3 uid="uid://dpq45jjb82k6"]
 
 [ext_resource type="Script" path="res://data/src/scenes/main.gd" id="1_0q1wt"]
-[ext_resource type="PackedScene" uid="uid://c7823nmgigl4v" path="res://data/src/ui/main_menu.tscn" id="3_8fdto"]
-[ext_resource type="PackedScene" uid="uid://dqmqf6ho4mxp5" path="res://data/src/ui/splash_screen.tscn" id="3_l0oq2"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0q1wt")
 
-[node name="UserInterface" type="Node" parent="."]
-
-[node name="SplashScreen" parent="UserInterface" instance=ExtResource("3_l0oq2")]
-
-[node name="MainMenu" parent="UserInterface" instance=ExtResource("3_8fdto")]
+[node name="ActiveSceneContainer" type="Node" parent="."]
+unique_name_in_owner = true

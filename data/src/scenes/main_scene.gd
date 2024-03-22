@@ -1,6 +1,14 @@
 @tool
 extends Node3D
 
+func _process(delta):
+	if Input.is_action_just_pressed("my_cycle_next"):
+		%MainScene.apply_perspective(1)
+	if Input.is_action_just_pressed("my_cycle_prev"):
+		%MainScene.apply_perspective(-1)
+	if Input.is_action_just_pressed("my_cycle_center"):
+		pass
+
 const PERSPECTIVES : Array = [
 	[ Vector3(4, 4, 11), Vector3(-44.8,   0, 0) ],
 	[ Vector3(4, 4, -2), Vector3(-44.8, 210.5, 0) ],

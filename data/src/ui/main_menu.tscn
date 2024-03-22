@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7823nmgigl4v"]
+[gd_scene load_steps=16 format=3 uid="uid://c7823nmgigl4v"]
 
 [ext_resource type="Shader" path="res://data/src/shaders/main_menu_background.gdshader" id="1_631xv"]
+[ext_resource type="Script" path="res://data/src/ui/main_menu.gd" id="1_n2rmn"]
 [ext_resource type="PackedScene" uid="uid://bf43jsckwuxyl" path="res://data/src/scenes/cube.tscn" id="2_2qk6l"]
+[ext_resource type="PackedScene" uid="uid://d17mrgvfw7dtf" path="res://data/src/scenes/hex_tile.tscn" id="2_w4c0n"]
+[ext_resource type="PackedScene" uid="uid://nswg084k6da7" path="res://data/src/scenes/field.tscn" id="4_ovghv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8svgu"]
 render_priority = 0
@@ -237,6 +240,7 @@ shader_parameter/type = 4
 shader_parameter/random = 0.0
 
 [node name="MainMenu" type="Node3D"]
+script = ExtResource("1_n2rmn")
 
 [node name="Misc" type="Node" parent="."]
 
@@ -253,22 +257,35 @@ skeleton = NodePath("../..")
 
 [node name="Scene" type="Node" parent="."]
 
+[node name="Hexagons" type="Node" parent="Scene"]
+
+[node name="AnotherHex" parent="Scene/Hexagons" instance=ExtResource("2_w4c0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0989604, 0, -1.96206)
+
+[node name="SP" parent="Scene/Hexagons" instance=ExtResource("4_ovghv")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.968477, 0, -1.45563)
+
+[node name="MP" parent="Scene/Hexagons" instance=ExtResource("4_ovghv")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.776392, 0, -1.45563)
+
 [node name="SingleBigCube" type="Node" parent="Scene"]
 
 [node name="Cube" parent="Scene/SingleBigCube" instance=ExtResource("2_2qk6l")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.30206, 0, -2.28224)
+transform = Transform3D(0.583555, 0, 0.812073, 0, 1, 0, -0.812073, 0, 0.583555, -1.98472, 0, -2.28224)
 mymaterial = SubResource("ShaderMaterial_d55v4")
 
 [node name="BunchOfCubes" type="Node" parent="Scene"]
 
 [node name="Cube2" parent="Scene/BunchOfCubes" instance=ExtResource("2_2qk6l")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.06542, 0, -2.28224)
+transform = Transform3D(0.609537, 0, -0.792758, 0, 1, 0, 0.792758, 0, 0.609537, 1.40889, 0, -2.49954)
 mymaterial = SubResource("ShaderMaterial_fawc1")
 
 [node name="Cube3" parent="Scene/BunchOfCubes" instance=ExtResource("2_2qk6l")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.06542, 0, -2.28224)
+transform = Transform3D(0.609537, 0, -0.792758, 0, 1, 0, 0.792758, 0, 0.609537, 2.01843, 0, -1.70678)
 mymaterial = SubResource("ShaderMaterial_raiqi")
 
 [node name="Cube4" parent="Scene/BunchOfCubes" instance=ExtResource("2_2qk6l")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.48086, 0.918112, -2.28224)
+transform = Transform3D(0.609537, 0, -0.792758, 0, 1, 0, 0.792758, 0, 0.609537, 1.66212, 0.918112, -2.17019)
 mymaterial = SubResource("ShaderMaterial_0h1q4")

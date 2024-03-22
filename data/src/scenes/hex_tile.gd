@@ -66,7 +66,7 @@ func _ready():
 
 func set_callback(_activate, _select, _deselect):
 	activate = _activate
-	select = _select
+	select   = _select
 	deselect = _deselect
 
 func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
