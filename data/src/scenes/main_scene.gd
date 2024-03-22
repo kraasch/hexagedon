@@ -1,6 +1,12 @@
 @tool
 extends Node3D
 
+func _ready():
+	%EndButton.pressed.connect(self.exit_button_pressed)
+
+func exit_button_pressed():
+	SceneManager.set_scene(preload("res://data/src/ui/end_screen.tscn"))
+
 func _process(delta):
 	if Input.is_action_just_pressed("my_cycle_next"):
 		apply_perspective(1)

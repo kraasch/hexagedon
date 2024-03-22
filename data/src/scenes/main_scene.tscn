@@ -16,16 +16,33 @@ volumetric_fog_albedo = Color(0.317647, 0.32549, 0.858824, 1)
 [node name="MainScene" type="Node3D"]
 script = ExtResource("1_r0ji7")
 
-[node name="HexGrid" parent="." instance=ExtResource("1_24fly")]
+[node name="UserInterface" type="Node" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="UserInterface"]
+
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="EndButton" type="Button" parent="UserInterface/CanvasLayer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Exit"
+
+[node name="World" type="Node" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="World"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 4, 4, 10.862)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(-0.170249, 0.545927, -0.820353, 0.0558857, 0.836516, 0.545085, 0.983815, 0.0469542, -0.172926, -3, 4, 3.29633)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="World"]
 transform = Transform3D(-0.099339, 0.995026, 0.00737536, -0.995049, -0.0993138, -0.00370782, -0.0029569, -0.00770718, 0.999966, 4.14932, 0.709092, -1.07771)
 light_color = Color(0.301961, 1, 0.372549, 1)
 light_energy = 11.858
@@ -33,5 +50,9 @@ shadow_enabled = true
 shadow_opacity = 0.88
 omni_range = 20.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_0sc42")
+
+[node name="Scene" type="Node" parent="."]
+
+[node name="HexGrid" parent="Scene" instance=ExtResource("1_24fly")]
