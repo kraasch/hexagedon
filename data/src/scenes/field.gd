@@ -27,7 +27,7 @@ func generate_hex_tile(type_index : int):
 	add_child(tile)
 	
 func was_clicked():
-	Globals.group_was_clicked(field_group_id)
+	GroupManager.group_was_clicked(field_group_id)
 
 func highlight_group_color():
 	tile.mymaterial.set_shader_parameter("type", -1)
