@@ -1,9 +1,6 @@
 extends Node3D
 
-var parent = null
-
 func _ready():
-	parent = $"../.."
 	GroupManager.create_new_field_groups(2)
 	%SP.set_data(1, 1, false)
 	%SP.set_callback(sp_clicked)
