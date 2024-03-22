@@ -43,7 +43,7 @@ func generate_cube_stack(type_index : int):
 	var cube_height : float = Globals.CUBE_SIZE
 	var split_index : int = max_stack_height / 2
 	var half_stack_height : float = cube_height * split_index
-	var stack_height : int = rng.randi_range(0, max_stack_height)
+	var stack_height : int = rng.randi_range(1, max_stack_height) # at least one cube.
 	for i in range(0, stack_height):
 		# basic cube setup.
 		var cube = CUBE.instantiate()
