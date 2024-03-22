@@ -17,8 +17,9 @@ func generate_grid():
 	MapGenerator.create_new_map_simple() # TODO: remove later.
 #	MapGenerator.create_new_map(grid_size, grid_size) # TODO: comment back in.
 
-	var map_parties = MapGenerator.get_party_grid()
-	var map_groups  = MapGenerator.get_group_grid()
+	var map_parties = MapGenerator.party_grid
+	var map_groups  = MapGenerator.group_grid
+	var center_grid = MapGenerator.center_grid
 	var groups_num  = MapGenerator.groups_num
 	GroupManager.create_new_field_groups(groups_num)
 
@@ -34,7 +35,7 @@ func generate_grid():
 				if x == 0 and y == 0: # TODO: remove later.
 					tile.set_debug() # TODO: remove later.
 				var group_id : int = map_groups[x][y]
-				tile.set_data(map_parties[x][y], group_id)
+				tile.set_data(map_parties[x][y], group_id, center_grid[x][y] > 0)
 				GroupManager.FIELD_GROUPS[group_id].push_back(tile)
 				%GridContainer.add_child(tile)
 				tile.translate(Vector3(x_coord, 0, y_coord))
@@ -50,13 +51,6 @@ func generate_grid():
 #			#   - [ ] IF neighbor is different group OR outside of bounds OR empty field
 #			#     - [ ] THEN create border object from mesh.
 #			#     - [ ] AND THEN add border object id to bucket of both groups (if bucket doesn't contain border yet).
-
-#	# find centers of field groups.
-#	# - [ ] create a array of coordinates (x and y) for every group using `groups_num`.
-#	for x in range(len(map_groups)):
-#		for y in range(len(map_groups[x])):
-#			pass
-#			# - [ ] find field most at center of group and add field's coordinates to array of coordinates.
 
 func clean_grid():
 	if %GridContainer.get_child_count() > 0:

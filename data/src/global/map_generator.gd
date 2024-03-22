@@ -3,6 +3,7 @@ extends Node
 
 var party_grid  : Array = []
 var group_grid  : Array = []
+var center_grid  : Array = []
 var parties_num : int = 0
 var groups_num  : int = 0
 
@@ -22,6 +23,12 @@ func create_new_map_simple():
 		[2, 2, 4, 0],
 	]
 	groups_num = 4
+	center_grid = [
+		[1, 0, 0, 0],
+		[0, 0, 3, 0],
+		[0, 0, 0, 0],
+		[2, 0, 4, 0],
+	]
 
 func create_new_map(width : int = 0, height : int = 0):
 	# create full grid.
@@ -33,9 +40,3 @@ func create_new_map(width : int = 0, height : int = 0):
 			map_line.push_back(type_index)
 		new_map.push_back(map_line)
 	party_grid = new_map
-
-func get_party_grid():
-	return party_grid
-
-func get_group_grid():
-	return group_grid

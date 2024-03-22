@@ -4,8 +4,7 @@ extends Node3D
 var mymaterial : Material = Material.new()
 
 func _ready():
-
-	const ELEVATION : float = 0.3                 # elevation i.e. distance above the ground (y coordinate).
+	const ELEVATION : float = 0.3               # elevation i.e. distance above the ground (y coordinate).
 	var CUBE_HEIGHT : float = Globals.CUBE_SIZE # choose size (eg. half the tile distance).
 	var F : float = CUBE_HEIGHT / 2.0           # half of N.
 	var ELEVATION_TOP : float = ELEVATION + CUBE_HEIGHT

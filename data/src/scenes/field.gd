@@ -1,21 +1,24 @@
 @tool
 extends Node3D
 
-const HEX_TILE = preload("res://data/src/scenes/hex_tile.tscn")
-const CUBE = preload("res://data/src/scenes/cube.tscn")
-var rng = RandomNumberGenerator.new()
-var is_debug : bool = false # NOTE: remove later. only for debugging colors.
-var type_index : int = -1
-var field_group_id : int = -1
-var tile = null
+const HEX_TILE : PackedScene = preload("res://data/src/scenes/hex_tile.tscn")
+const CUBE     : PackedScene = preload("res://data/src/scenes/cube.tscn")
+var   rng                    = RandomNumberGenerator.new()
+var   tile                   = null
+var   is_debug       : bool  = false # NOTE: remove later. only for debugging colors.
+var   type_index     : int   = -1
+var   field_group_id : int   = -1
+var   is_center      : bool  = false
 
-func set_data(_type_index : int, _field_group_id : int):
+func set_data(_type_index : int, _field_group_id : int, _is_center : bool):
 	type_index = _type_index
 	field_group_id = _field_group_id
+	is_center = _is_center
 
 func _ready():
 	generate_hex_tile(type_index)
-	generate_cube_stack(type_index) # TODO: render in center of FIELD GROUP.
+	if is_center:
+		generate_cube_stack(type_index)
 
 func generate_hex_tile(type_index : int):
 	tile = HEX_TILE.instantiate()

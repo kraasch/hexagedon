@@ -8,7 +8,7 @@ const STACK_SPLIT_GAP  : float = 0.01
 const HEX_TILE_GAP     : float = 0.005
 
 # Change these values to alter the graphics.
-var MAX_STACK_HEIGHT   : int = 8
-var NUM_OF_PARTIES     : int = 6
-var GRID_SIZE          : int = 4
-var CUBE_SIZE          : float = 0.3
+var MAX_STACK_HEIGHT   : int   = 8
+var NUM_OF_PARTIES     : int   = 6
+var GRID_SIZE          : int   = 4
+var CUBE_SIZE          : float = 0.45
