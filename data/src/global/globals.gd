@@ -17,6 +17,7 @@ var CUBE_SIZE          : float = 0.3
 # MAP MANAGEMER (Maybe make it its own class later)
 ###############################################################
 var FIELD_GROUPS       : Array = []
+var group_index_before : int = -1
 
 func create_new_field_groups(length_val : int):
 	length_val = length_val + 1 # NOTE: create extra group at index 0.
@@ -25,8 +26,19 @@ func create_new_field_groups(length_val : int):
 		FIELD_GROUPS.push_back([])
 
 func group_was_clicked(group_index : int):
+	# remove old focus.
+	if group_index_before != -1:
+		var field_group_before : Array = FIELD_GROUPS[group_index_before]
+		for i in range(len(field_group_before)):
+			var field = field_group_before[i] # TODO: add type of field.
+			field.unhighlight_group_color()
+
+	# set new focus.
 	# TODO: implement to inform all fields in group to change color.
 	var field_group : Array = FIELD_GROUPS[group_index]
 	for i in range(len(field_group)):
 		var field = field_group[i] # TODO: add type of field.
-		field.change_group_color()
+		field.highlight_group_color()
+
+	# make new focus the old focus for next time.
+	group_index_before = group_index

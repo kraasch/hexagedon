@@ -12,15 +12,6 @@ var tile = null
 func set_data(_type_index : int, _field_group_id : int):
 	type_index = _type_index
 	field_group_id = _field_group_id
-	register_click_behavior(_field_group_id)
-
-func register_click_behavior(clicked_group_index : int):
-	pass
-	#TODO: add click listener.
-	#Globals.group_was_clicked(clicked_group_index)
-
-func change_group_color():
-	tile.mymaterial = ColorGenerator.get_shader(-1)
 
 func _ready():
 	generate_hex_tile(type_index)
@@ -28,11 +19,21 @@ func _ready():
 
 func generate_hex_tile(type_index : int):
 	tile = HEX_TILE.instantiate()
+	tile.set_callback(was_clicked)
 	if is_debug: # TODO: remove later.
 		tile.mymaterial = ColorGenerator.get_shader(-1)
 	else:
 		tile.mymaterial = ColorGenerator.get_shader(type_index)
 	add_child(tile)
+	
+func was_clicked():
+	Globals.group_was_clicked(field_group_id)
+
+func highlight_group_color():
+	tile.mymaterial.set_shader_parameter("type", -1)
+
+func unhighlight_group_color():
+	tile.mymaterial.set_shader_parameter("type", type_index)
 
 func generate_cube_stack(type_index : int):
 	var max_stack_height : int = Globals.MAX_STACK_HEIGHT

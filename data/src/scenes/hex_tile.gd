@@ -2,6 +2,7 @@
 extends Node3D
 
 var mymaterial : Material = Material.new()
+var callback = null
 
 func _ready():
 	
@@ -59,3 +60,12 @@ func _ready():
 	m.mesh = arr_mesh
 	m.material_override = mymaterial
 	add_child(m)
+
+func set_callback(_callback):
+	callback = _callback
+
+func _on_area_3d_input_event(camera, event, position, normal, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if callback != null:
+				callback.call()
