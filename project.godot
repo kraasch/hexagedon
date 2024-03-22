@@ -22,6 +22,7 @@ ColorGenerator="*res://data/src/global/color_generator.gd"
 MapGenerator="*res://data/src/global/map_generator.gd"
 GroupManager="*res://data/src/global/group_manager.gd"
 SceneManager="*res://data/src/global/scene_manager.gd"
+GameManager="*res://data/src/global/game_manager.gd"
 
 [input]
 
