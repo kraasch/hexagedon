@@ -1,6 +1,5 @@
 extends Node3D
 
-
 const PERSPECTIVES : Array = [
 	[ Vector3(4, 4, 11), Vector3(-44.8,   0, 0) ],
 	[ Vector3(4, 4, -2), Vector3(-44.8, 210.5, 0) ],

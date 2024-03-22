@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqmqf6ho4mxp5"]
+
+[ext_resource type="Script" path="res://data/src/ui/splash_screen.gd" id="1_xg37n"]
+[ext_resource type="Shader" path="res://data/src/shaders/splash_screen.gdshader" id="2_2gdqd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afywu"]
+shader = ExtResource("2_2gdqd")
+shader_parameter/battery = 1.0
+shader_parameter/anchor = -0.5
+shader_parameter/speed_scale = 1.0
+shader_parameter/fov = 0.2
+shader_parameter/background_color = Vector4(0, 0.1, 0.2, 1)
+shader_parameter/grid_color = Vector4(1, 0.5, 1, 1)
+
+[sub_resource type="Animation" id="Animation_3nthf"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_s271u"]
+resource_name = "splash_label_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Label:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.5, 4.4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0349066, 0.0, -0.0349066, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Label:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.5, 4.4, 5),
+"transitions": PackedFloat32Array(1, 1.03526, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbub2"]
+_data = {
+"RESET": SubResource("Animation_3nthf"),
+"splash_label_animation": SubResource("Animation_s271u")
+}
+
+[node name="SplashScreen" type="CanvasLayer"]
+script = ExtResource("1_xg37n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_afywu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer"]
+autoplay = "splash_label_animation"
+libraries = {
+"": SubResource("AnimationLibrary_rbub2")
+}
+
+[node name="Label" type="Label" parent="CenterContainer/AnimationPlayer"]
+custom_minimum_size = Vector2(800, 200)
+offset_left = 194.0
+offset_top = 468.0
+offset_right = 994.0
+offset_bottom = 668.0
+rotation = 0.010276
+scale = Vector2(1.02944, 1.02944)
+pivot_offset = Vector2(400, 60)
+theme_override_colors/font_color = Color(0.235294, 0.666667, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "Click to Skip"
+horizontal_alignment = 1
+vertical_alignment = 1
