@@ -14,6 +14,9 @@ Basic:
 
 Extra tasks:
 
+ - [ ] do basic sound design.
+ - [ ] create basic soundtrack.
+ - [ ] do basic UI design.
  - [ ] implement basic map generation.
  - [ ] draw borders around field groups (ie. good looking field group borders).
  - [ ] implement good map generation.
