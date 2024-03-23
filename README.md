@@ -1,6 +1,8 @@
 
 # Hexagedon Game
 
+Play [hexagedon](https://kraasch.itch.io/hexagedon) on itch.io.
+
 ## Tasks
 
 Basic:
