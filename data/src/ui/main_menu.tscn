@@ -257,18 +257,46 @@ skeleton = NodePath("../..")
 
 [node name="Scene" type="Node" parent="."]
 
+[node name="UI" type="Node" parent="Scene"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Scene/UI"]
+
+[node name="CenterContainer" type="CenterContainer" parent="Scene/UI/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scene/UI/CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="SPLabel" type="Label" parent="Scene/UI/CanvasLayer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "Singleplayer"
+
+[node name="Spacer" type="Control" parent="Scene/UI/CanvasLayer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="MPLabel" type="Label" parent="Scene/UI/CanvasLayer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "Multiplayer"
+
 [node name="Hexagons" type="Node" parent="Scene"]
 
 [node name="AnotherHex" parent="Scene/Hexagons" instance=ExtResource("2_w4c0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0989604, 0, -1.96206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0360864, 0, -1.96206)
 
 [node name="SP" parent="Scene/Hexagons" instance=ExtResource("4_ovghv")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.968477, 0, -1.45563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.905603, 0, -1.45563)
 
 [node name="MP" parent="Scene/Hexagons" instance=ExtResource("4_ovghv")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.776392, 0, -1.45563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.839266, 0, -1.45563)
 
 [node name="SingleBigCube" type="Node" parent="Scene"]
 
