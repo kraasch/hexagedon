@@ -1,5 +1,7 @@
 extends Node3D
 
+#TODO: add labels to hexagons that serve as buttons.
+
 func _ready():
 	GroupManager.create_new_field_groups(2)
 	%SP.set_data(1, 1, false)
