@@ -10,14 +10,7 @@ Basic:
  - [ ] implement free camera movement.
  - [ ] set UV map for hexagon meshes.
  - [ ] implement basic AI behavior.
- - [ ] implement user interface.
-   - [ ] implement end-of-game screen.
-   - [ ] implement splash screen.
-   - [ ] implement start menu.
-   - [ ] implement in-game menu.
-   - [ ] implement map generator menu.
-   - [ ] implement basic HUD.
- - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
+ - [ ] implement in-game menu.
 
 Extra tasks:
 
@@ -26,6 +19,7 @@ Extra tasks:
  - [ ] implement good map generation.
  - [ ] implement good splash screen shader (eg tron themed).
  - [ ] implement good in-game shaders (eg. tron themed).
+ - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
 
 Future tasks:
 
@@ -35,6 +29,11 @@ Future tasks:
 
 Done:
 
+ - [X] implement end-of-game screen.
+ - [X] implement splash screen.
+ - [X] implement start menu.
+ - [X] implement map generator menu.
+ - [X] implement basic HUD.
  - [X] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
  - [X] implement click behavior (click on field activates respective field group).
  - [X] implement highlighting of active field group.
