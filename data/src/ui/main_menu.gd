@@ -6,7 +6,7 @@ func _ready():
 
 # TODO: prevent double-clicks.
 func sp_clicked():
-	SceneManager.set_scene(preload("res://data/tools/src/map_viewer_tool.tscn"))
+	SceneManager.set_scene(preload("res://data/src/tools/map_viewer_tool.tscn"))
 
 func mp_clicked():
 	print('multi player')
