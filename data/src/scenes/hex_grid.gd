@@ -6,9 +6,9 @@ const OFFSET_RATIO : float       = Globals.HEX_RATIO
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	generate_grid()
+	build_grid()
 
-func generate_grid():
+func build_grid():
 	clean_grid()
 	var tile_size : float = Globals.EDGE_SIZE
 	var grid_size : int   = Globals.GRID_SIZE

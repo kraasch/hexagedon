@@ -43,11 +43,11 @@ func apply_perspective(step : int):
 	var location = new_perspective[0]
 	var orientation = new_perspective[1]
 	# set values.
-	%Camera3D.position.x = location.x
-	%Camera3D.position.y = location.y
-	%Camera3D.position.z = location.z
-	%Camera3D.rotation.x = orientation.x
-	%Camera3D.rotation.y = orientation.y
-	%Camera3D.rotation.z = orientation.z
+	%FreeCam.position.x = location.x
+	%FreeCam.position.y = location.y
+	%FreeCam.position.z = location.z
+	%FreeCam.rotation.x = orientation.x
+	%FreeCam.rotation.y = orientation.y
+	%FreeCam.rotation.z = orientation.z
 	# increment index.
 	current_perspctive_index = new_index
