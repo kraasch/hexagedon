@@ -58,6 +58,7 @@ func _input(event):
 		is_boost = false
 	if event.is_action_pressed('my_confirm'):
 		if is_locked:
+			# TODO: properly unlock the mouse in the web version too.
 			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 			is_locked = false
 			# TODO: reset mouse to neutral position.
