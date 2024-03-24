@@ -1,5 +1,7 @@
 extends Camera3D
 
+# TODO: free mouse when scene is unloaded.
+
 var acceleration : float = 30
 var move_speed : float = 8
 var mouse_speed : float = 300
