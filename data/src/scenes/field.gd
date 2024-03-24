@@ -47,6 +47,7 @@ func highlight_group_color(color_index : int):
 func unhighlight_group_color():
 	tile.mymaterial.set_shader_parameter("type", type_index)
 
+@warning_ignore("integer_division")
 func generate_cube_stack():
 	var max_stack_height : int = Globals.MAX_STACK_HEIGHT
 	var cube_height : float = Globals.CUBE_SIZE
