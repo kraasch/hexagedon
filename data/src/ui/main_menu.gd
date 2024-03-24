@@ -1,15 +1,8 @@
-extends Node3D
-
-#TODO: add labels to hexagons that serve as buttons.
+extends Control
 
 func _ready():
-	GroupManager.create_new_field_groups(2)
-	%SP.set_data(1, 1, false)
-	%SP.set_callback(sp_clicked)
-	%MP.set_data(2, 2, false)
-	%MP.set_callback(mp_clicked)
-	GroupManager.FIELD_GROUPS[1].push_back(%SP)
-	GroupManager.FIELD_GROUPS[2].push_back(%MP)
+	%MP.pressed.connect(mp_clicked)
+	%SP.pressed.connect(sp_clicked)
 
 # TODO: prevent double-clicks.
 func sp_clicked():

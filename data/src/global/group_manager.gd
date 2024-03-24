@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 var FIELD_GROUPS       : Array = []

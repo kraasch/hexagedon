@@ -1,319 +1,37 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7823nmgigl4v"]
+[gd_scene load_steps=2 format=3 uid="uid://bhcq47rteccx5"]
 
-[ext_resource type="Shader" path="res://data/src/shaders/main_menu_background.gdshader" id="1_631xv"]
-[ext_resource type="Script" path="res://data/src/ui/main_menu.gd" id="1_n2rmn"]
-[ext_resource type="PackedScene" uid="uid://bf43jsckwuxyl" path="res://data/src/scenes/cube.tscn" id="2_2qk6l"]
-[ext_resource type="PackedScene" uid="uid://d17mrgvfw7dtf" path="res://data/src/scenes/hex_tile.tscn" id="2_w4c0n"]
-[ext_resource type="PackedScene" uid="uid://nswg084k6da7" path="res://data/src/scenes/field.tscn" id="4_ovghv"]
+[ext_resource type="Script" path="res://data/src/ui/main_menu.gd" id="1_h83so"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8svgu"]
-render_priority = 0
-shader = ExtResource("1_631xv")
-shader_parameter/battery = 1.0
-shader_parameter/anchor = -0.5
-shader_parameter/speed_scale = 1.0
-shader_parameter/fov = 0.2
-shader_parameter/background_color = Vector4(0, 0.1, 0.2, 1)
-shader_parameter/grid_color = Vector4(1, 0.5, 1, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_0qos0"]
-material = SubResource("ShaderMaterial_8svgu")
-
-[sub_resource type="Shader" id="Shader_h3ywj"]
-code = "shader_type spatial;
-
-uniform int type = -1;
-uniform float random = 0.0;
-
-void fragment() {
-	vec3 color = vec3(0.0);
-	float pendulum = abs(mod(TIME + random, 2.0) - 1.0);
-	float main = UV.x * (pendulum + 0.2);
-
-	if (type == 1) { // red.
-		color = vec3(main, 0.4, 0.4);
-
-	} else if (type == 2) { // green.
-		color = vec3(0.5, main, 0.4);
-
-	} else if (type == 3) { // blue.
-		color = vec3(0.1, 0.1, main);
-
-	} else if (type == 4) { // pink?
-		color = vec3(main, main, 0.1);
-
-	} else if (type == 5) { // magenta?
-		color = vec3(0.1, main, main);
-
-	} else if (type == 6) { // cyan?
-		color = vec3(main, 0.1, main);
-
-	} else if (type == 7) { // TODO: write name of color here.
-		color = vec3(0.5, 0.1, 0.4);
-
-	} else if (type == 8) { // TODO: write name of color here.
-		color = vec3(0.1, 0.4, 0.7);
-
-	} else if (type == 9) { // TODO: write name of color here.
-		color = vec3(0.6, 0.3, 0.5);
-
-	} else if (type == 10) { // TODO: write name of color here.
-		color = vec3(0.5, 0.7, 0.4);
-
-	} else { // error.
-		color = vec3(1.0);
-	}
-
-	ALBEDO = color;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d55v4"]
-render_priority = 0
-shader = SubResource("Shader_h3ywj")
-shader_parameter/type = 1
-shader_parameter/random = 0.0
-
-[sub_resource type="Shader" id="Shader_8qi4a"]
-code = "shader_type spatial;
-
-uniform int type = -1;
-uniform float random = 0.0;
-
-void fragment() {
-	vec3 color = vec3(0.0);
-	float pendulum = abs(mod(TIME + random, 2.0) - 1.0);
-	float main = UV.x * (pendulum + 0.2);
-
-	if (type == 1) { // red.
-		color = vec3(main, 0.4, 0.4);
-
-	} else if (type == 2) { // green.
-		color = vec3(0.5, main, 0.4);
-
-	} else if (type == 3) { // blue.
-		color = vec3(0.1, 0.1, main);
-
-	} else if (type == 4) { // pink?
-		color = vec3(main, main, 0.1);
-
-	} else if (type == 5) { // magenta?
-		color = vec3(0.1, main, main);
-
-	} else if (type == 6) { // cyan?
-		color = vec3(main, 0.1, main);
-
-	} else if (type == 7) { // TODO: write name of color here.
-		color = vec3(0.5, 0.1, 0.4);
-
-	} else if (type == 8) { // TODO: write name of color here.
-		color = vec3(0.1, 0.4, 0.7);
-
-	} else if (type == 9) { // TODO: write name of color here.
-		color = vec3(0.6, 0.3, 0.5);
-
-	} else if (type == 10) { // TODO: write name of color here.
-		color = vec3(0.5, 0.7, 0.4);
-
-	} else { // error.
-		color = vec3(1.0);
-	}
-
-	ALBEDO = color;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fawc1"]
-render_priority = 0
-shader = SubResource("Shader_8qi4a")
-shader_parameter/type = 2
-shader_parameter/random = 0.0
-
-[sub_resource type="Shader" id="Shader_ym87f"]
-code = "shader_type spatial;
-
-uniform int type = -1;
-uniform float random = 0.0;
-
-void fragment() {
-	vec3 color = vec3(0.0);
-	float pendulum = abs(mod(TIME + random, 2.0) - 1.0);
-	float main = UV.x * (pendulum + 0.2);
-
-	if (type == 1) { // red.
-		color = vec3(main, 0.4, 0.4);
-
-	} else if (type == 2) { // green.
-		color = vec3(0.5, main, 0.4);
-
-	} else if (type == 3) { // blue.
-		color = vec3(0.1, 0.1, main);
-
-	} else if (type == 4) { // pink?
-		color = vec3(main, main, 0.1);
-
-	} else if (type == 5) { // magenta?
-		color = vec3(0.1, main, main);
-
-	} else if (type == 6) { // cyan?
-		color = vec3(main, 0.1, main);
-
-	} else if (type == 7) { // TODO: write name of color here.
-		color = vec3(0.5, 0.1, 0.4);
-
-	} else if (type == 8) { // TODO: write name of color here.
-		color = vec3(0.1, 0.4, 0.7);
-
-	} else if (type == 9) { // TODO: write name of color here.
-		color = vec3(0.6, 0.3, 0.5);
-
-	} else if (type == 10) { // TODO: write name of color here.
-		color = vec3(0.5, 0.7, 0.4);
-
-	} else { // error.
-		color = vec3(1.0);
-	}
-
-	ALBEDO = color;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_raiqi"]
-render_priority = 0
-shader = SubResource("Shader_ym87f")
-shader_parameter/type = 3
-shader_parameter/random = 0.0
-
-[sub_resource type="Shader" id="Shader_7qq2b"]
-code = "shader_type spatial;
-
-uniform int type = -1;
-uniform float random = 0.0;
-
-void fragment() {
-	vec3 color = vec3(0.0);
-	float pendulum = abs(mod(TIME + random, 2.0) - 1.0);
-	float main = UV.x * (pendulum + 0.2);
-
-	if (type == 1) { // red.
-		color = vec3(main, 0.4, 0.4);
-
-	} else if (type == 2) { // green.
-		color = vec3(0.5, main, 0.4);
-
-	} else if (type == 3) { // blue.
-		color = vec3(0.1, 0.1, main);
-
-	} else if (type == 4) { // pink?
-		color = vec3(main, main, 0.1);
-
-	} else if (type == 5) { // magenta?
-		color = vec3(0.1, main, main);
-
-	} else if (type == 6) { // cyan?
-		color = vec3(main, 0.1, main);
-
-	} else if (type == 7) { // TODO: write name of color here.
-		color = vec3(0.5, 0.1, 0.4);
-
-	} else if (type == 8) { // TODO: write name of color here.
-		color = vec3(0.1, 0.4, 0.7);
-
-	} else if (type == 9) { // TODO: write name of color here.
-		color = vec3(0.6, 0.3, 0.5);
-
-	} else if (type == 10) { // TODO: write name of color here.
-		color = vec3(0.5, 0.7, 0.4);
-
-	} else { // error.
-		color = vec3(1.0);
-	}
-
-	ALBEDO = color;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0h1q4"]
-render_priority = 0
-shader = SubResource("Shader_7qq2b")
-shader_parameter/type = 4
-shader_parameter/random = 0.0
-
-[node name="MainMenu" type="Node3D"]
-script = ExtResource("1_n2rmn")
-
-[node name="Misc" type="Node" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Misc"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 3, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Misc"]
-transform = Transform3D(-0.200736, -0.809938, 0.551095, 0, 0.562545, 0.826766, -0.979645, 0.165962, -0.112923, -23.0532, 13.776, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Misc"]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
-mesh = SubResource("PlaneMesh_0qos0")
-skeleton = NodePath("../..")
-
-[node name="Scene" type="Node" parent="."]
-
-[node name="UI" type="Node" parent="Scene"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Scene/UI"]
-
-[node name="CenterContainer" type="CenterContainer" parent="Scene/UI/CanvasLayer"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 200.0
-offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h83so")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Scene/UI/CanvasLayer/CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
 layout_mode = 2
 
-[node name="SPLabel" type="Label" parent="Scene/UI/CanvasLayer/CenterContainer/HBoxContainer"]
+[node name="SP" type="Button" parent="CanvasLayer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Singleplayer"
 
-[node name="Spacer" type="Control" parent="Scene/UI/CanvasLayer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-
-[node name="MPLabel" type="Label" parent="Scene/UI/CanvasLayer/CenterContainer/HBoxContainer"]
+[node name="MP" type="Button" parent="CanvasLayer/CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Multiplayer"
-
-[node name="Hexagons" type="Node" parent="Scene"]
-
-[node name="AnotherHex" parent="Scene/Hexagons" instance=ExtResource("2_w4c0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0360864, 0, -1.96206)
-
-[node name="SP" parent="Scene/Hexagons" instance=ExtResource("4_ovghv")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.905603, 0, -1.45563)
-
-[node name="MP" parent="Scene/Hexagons" instance=ExtResource("4_ovghv")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.839266, 0, -1.45563)
-
-[node name="SingleBigCube" type="Node" parent="Scene"]
-
-[node name="Cube" parent="Scene/SingleBigCube" instance=ExtResource("2_2qk6l")]
-transform = Transform3D(0.583555, 0, 0.812073, 0, 1, 0, -0.812073, 0, 0.583555, -1.98472, 0, -2.28224)
-mymaterial = SubResource("ShaderMaterial_d55v4")
-
-[node name="BunchOfCubes" type="Node" parent="Scene"]
-
-[node name="Cube2" parent="Scene/BunchOfCubes" instance=ExtResource("2_2qk6l")]
-transform = Transform3D(0.609537, 0, -0.792758, 0, 1, 0, 0.792758, 0, 0.609537, 1.40889, 0, -2.49954)
-mymaterial = SubResource("ShaderMaterial_fawc1")
-
-[node name="Cube3" parent="Scene/BunchOfCubes" instance=ExtResource("2_2qk6l")]
-transform = Transform3D(0.609537, 0, -0.792758, 0, 1, 0, 0.792758, 0, 0.609537, 2.01843, 0, -1.70678)
-mymaterial = SubResource("ShaderMaterial_raiqi")
-
-[node name="Cube4" parent="Scene/BunchOfCubes" instance=ExtResource("2_2qk6l")]
-transform = Transform3D(0.609537, 0, -0.792758, 0, 1, 0, 0.792758, 0, 0.609537, 1.66212, 0.918112, -2.17019)
-mymaterial = SubResource("ShaderMaterial_0h1q4")
