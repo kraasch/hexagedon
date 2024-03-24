@@ -24,6 +24,10 @@ GroupManager="*res://data/src/global/group_manager.gd"
 SceneManager="*res://data/src/global/scene_manager.gd"
 GameManager="*res://data/src/global/game_manager.gd"
 
+[display]
+
+window/size/mode=3
+
 [input]
 
 my_cycle_next={
