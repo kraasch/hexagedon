@@ -27,7 +27,7 @@ func generate_grid():
 	for x in range(len(map_parties)):
 		var x_coord : float = x * tile_size * OFFSET_RATIO
 		var y_coord : float = 0
-		if x % 2 == 0:
+		if x % 2 == 1:
 			y_coord = tile_size / 2
 		for y in range(len(map_parties[x])):
 			if map_parties[x][y] != 0:
