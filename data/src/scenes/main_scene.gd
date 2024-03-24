@@ -6,12 +6,12 @@ func _ready():
 	%NextView.pressed.connect(self.next_perspective)
 	%ResetView.pressed.connect(self.reset_perspective)
 
-func _process(delta):
-	if Input.is_action_just_pressed("my_cycle_next"):
+func _input(event):
+	if event.is_action_just_pressed("my_cycle_next"):
 		next_perspective()
-	if Input.is_action_just_pressed("my_cycle_prev"):
+	if event.is_action_just_pressed("my_cycle_prev"):
 		previous_perspective()
-	if Input.is_action_just_pressed("my_cycle_center"):
+	if event.is_action_just_pressed("my_cycle_center"):
 		reset_perspective()
 
 func exit_button_pressed():
