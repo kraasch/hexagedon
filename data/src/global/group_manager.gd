@@ -7,17 +7,19 @@ var CLICK_COLOR                : int = 0
 var SELECTION_COLOR            : int = 10
 
 func create_new_field_groups(length_val : int):
-	length_val = length_val + 1 # NOTE: create extra group at index 0.
 	FIELD_GROUPS = []
 	for x in range(length_val):
 		FIELD_GROUPS.push_back([])
 
-func add_tile_to_group(tile, group_id : int):
-	FIELD_GROUPS[group_id].push_back(tile)
+func get_field_group(index : int):
+	return FIELD_GROUPS[index - 1]
+
+func add_tile_to_group(tile, index : int):
+	FIELD_GROUPS[index - 1].push_back(tile)
 
 func set_field_group_highlight(index : int, turn_on : bool, color_index : int = -1):
 	# TODO: FIXBUG: sometimes the menu tries to access index 3 or 4 but index doesn't exist.
-	var group : Array = FIELD_GROUPS[index]
+	var group : Array = get_field_group(index)
 	for i in range(len(group)):
 		var field = group[i] # TODO: add type of field.
 		if turn_on:
