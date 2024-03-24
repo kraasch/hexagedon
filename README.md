@@ -7,12 +7,11 @@ Play [hexagedon](https://kraasch.itch.io/hexagedon) on itch.io.
 
 Basic:
 
- - [ ] click on second field group executes attack.
  - [ ] implement predefined camera perspectives.
  - [ ] implement free camera movement.
- - [ ] set UV map for hexagon meshes.
- - [ ] implement basic AI behavior.
- - [ ] implement in-game menu.
+ - [ ] add game object.
+  - [ ] click on second field group executes attack.
+  - [ ] implement basic AI behavior.
 
 Extra tasks:
 
@@ -20,17 +19,19 @@ Extra tasks:
  - [ ] create basic soundtrack.
  - [ ] do basic UI design.
  - [ ] implement basic map generation.
- - [ ] draw borders around field groups (ie. good looking field group borders).
+ - [ ] draw borders around field groups (ie good looking field group borders).
  - [ ] implement good map generation.
  - [ ] implement good splash screen shader (eg tron themed).
- - [ ] implement good in-game shaders (eg. tron themed).
+ - [ ] implement good in-game shaders (eg tron themed).
  - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
+ - [ ] set UV map for hexagon meshes.
 
 Future tasks:
 
  - [ ] implement multi-player offline.
  - [ ] implement multi-player online.
  - [ ] implement more AI behavior.
+ - [ ] implement in-game menu.
 
 Done:
 
