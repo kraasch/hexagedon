@@ -12,34 +12,33 @@ func generate_grid():
 	clean_grid()
 	var tile_size : float = Globals.EDGE_SIZE
 	var grid_size : int   = Globals.GRID_SIZE
-
-	# generate new map.
-	MapGenerator.create_new_map_simple(grid_size) # TODO: remove later.
-#	MapGenerator.create_new_map(grid_size, grid_size) # TODO: comment back in.
-
-	var map_parties = MapGenerator.party_grid
-	var map_groups  = MapGenerator.group_grid
-	var center_grid = MapGenerator.center_grid
-	var groups_num  = MapGenerator.groups_num
-	GroupManager.create_new_field_groups(groups_num)
+	MapGenerator.create_new_map(grid_size)
+	GroupManager.create_new_field_groups(MapGenerator.groups_num)
+	var group_data  = MapGenerator.group_data
+	var group_grid  = MapGenerator.group_grid
 
 	# build grid.
-	for x in range(len(map_parties)):
-		var x_coord : float = x * tile_size * OFFSET_RATIO
-		var y_coord : float = 0
-		if x % 2 == 1:
-			y_coord = tile_size / 2
-		for y in range(len(map_parties[x])):
-			if map_parties[x][y] != 0:
-				# create new field.
-				var tile = HEX_TILE.instantiate()
-				# NOTE: this highlights the grid's origin in white for orientation.
-				var group_id : int = map_groups[x][y]
-				tile.set_data(map_parties[x][y], group_id, center_grid[x][y] > 0)
-				GroupManager.FIELD_GROUPS[group_id].push_back(tile)
-				%GridContainer.add_child(tile)
-				tile.translate(Vector3(x_coord, 0, y_coord))
-			y_coord += tile_size
+	var size : int = len(group_grid)
+	for index in range(size * size):
+		var x : int = index % size
+		var y : int = index / size
+		var group_index : int = group_grid[y][x]
+		if group_index != 0:
+			# new field's data.
+			var party_index   : int   = group_data[group_index][0]
+			var power_value   : int   = group_data[group_index][1]
+			var center_coords : Array = group_data[group_index][2]
+			var is_at_center  : bool  = x == center_coords[0] and y == center_coords[1]
+			var group_id      : int   = group_grid[x][y]
+			# create new field.
+			var tile = HEX_TILE.instantiate()
+			tile.set_data(party_index, power_value, group_id, is_at_center)
+			GroupManager.FIELD_GROUPS[group_id].push_back(tile)
+			%GridContainer.add_child(tile)
+			var x_offset : float = 0.0 if x % 2 == 0 else tile_size / 2.0
+			var x_coord  : float = x * tile_size * OFFSET_RATIO
+			var y_coord  : float = y * tile_size - x_offset
+			tile.translate(Vector3(x_coord, 0, y_coord))
 
 #	# build borders of field groups.
 #	# - [ ] create a bucket for every group using `groups_num`.

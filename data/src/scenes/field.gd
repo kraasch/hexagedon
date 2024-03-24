@@ -3,18 +3,19 @@ extends Node3D
 
 const HEX_TILE : PackedScene = preload("res://data/src/scenes/hex_tile.tscn")
 const CUBE     : PackedScene = preload("res://data/src/scenes/cube.tscn")
-var   rng                    = RandomNumberGenerator.new()
 var   tile                   = null
 var   is_debug       : bool  = false # NOTE: remove later. only for debugging colors.
 var   type_index     : int   = -1
 var   field_group_id : int   = -1
+var   power_value    : int   = 0
 var   is_center      : bool  = false
 var   callback_clicked = null
 
-func set_data(_type_index : int, _field_group_id : int, _is_center : bool):
-	type_index = _type_index
+func set_data(_type_index : int, _power_value : int, _field_group_id : int, _is_center : bool):
+	type_index     = _type_index
+	power_value    = _power_value
 	field_group_id = _field_group_id
-	is_center = _is_center
+	is_center      = _is_center
 
 func set_callback(_callback_clicked):
 	callback_clicked = _callback_clicked
@@ -53,8 +54,7 @@ func generate_cube_stack():
 	var cube_height : float = Globals.CUBE_SIZE
 	var split_index : int = max_stack_height / 2
 	var half_stack_height : float = cube_height * split_index
-	var stack_height : int = rng.randi_range(1, max_stack_height) # at least one cube.
-	for i in range(0, stack_height):
+	for i in range(0, power_value):
 		# basic cube setup.
 		var cube = CUBE.instantiate()
 		cube.mymaterial = ColorGenerator.get_shader(type_index)

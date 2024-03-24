@@ -1,10 +1,10 @@
 @tool
 extends Node
 
-var FIELD_GROUPS       : Array = []
+var FIELD_GROUPS               : Array = []
 var group_index_clicked_before : int = -1
-var CLICK_COLOR : int = 0
-var SELECTION_COLOR : int = 10
+var CLICK_COLOR                : int = 0
+var SELECTION_COLOR            : int = 10
 
 func create_new_field_groups(length_val : int):
 	length_val = length_val + 1 # NOTE: create extra group at index 0.
