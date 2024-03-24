@@ -7,11 +7,11 @@ func _ready():
 	%ResetView.pressed.connect(self.reset_perspective)
 
 func _input(event):
-	if event.is_action_just_pressed("my_cycle_next"):
+	if event.is_action_pressed("my_cycle_next"):
 		next_perspective()
-	if event.is_action_just_pressed("my_cycle_prev"):
+	if event.is_action_pressed("my_cycle_prev"):
 		previous_perspective()
-	if event.is_action_just_pressed("my_cycle_center"):
+	if event.is_action_pressed("my_cycle_center"):
 		reset_perspective()
 
 func exit_button_pressed():
