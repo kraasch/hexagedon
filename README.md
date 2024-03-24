@@ -5,55 +5,62 @@ Play [hexagedon](https://kraasch.itch.io/hexagedon) on itch.io.
 
 ## Tasks
 
-Basic:
+Current:
 
- - [ ] implement predefined camera perspectives.
- - [ ] implement free camera movement.
- - [ ] add game object.
-  - [ ] click on second field group executes attack.
-  - [ ] implement basic AI behavior.
+ - [ ] basic: add game object.
+ - [ ] basic: click on second field group executes attack.
+ - [ ] basic: implement basic AI behavior.
 
-Extra tasks:
+Next:
 
- - [ ] do basic sound design.
- - [ ] create basic soundtrack.
- - [ ] do basic UI design.
- - [ ] implement basic map generation.
- - [ ] draw borders around field groups (ie good looking field group borders).
- - [ ] implement good map generation.
- - [ ] implement good splash screen shader (eg tron themed).
- - [ ] implement good in-game shaders (eg tron themed).
- - [ ] ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
- - [ ] set UV map for hexagon meshes.
+ - [ ] basic: do basic sound design.
+ - [ ] basic: create basic soundtrack.
+ - [ ] advanced: do basic UI design.
+ - [ ] advanced: implement basic map generation.
+ - [ ] advanced: draw borders around field groups (ie good looking field group borders).
+ - [ ] advanced: implement good map generation.
+ - [ ] advanced: implement good splash screen shader (eg tron themed).
+ - [ ] advanced: implement good in-game shaders (eg tron themed).
+ - [ ] advanced: ERROR: Condition "!m" is true. Returning: 0 at: mesh_get_surface_count (servers/rendering/dummy/storage/mesh_storage.h:110)
+ - [ ] advanced: set UV map for hexagon meshes.
+ - [ ] advanced: finalize predefined camera perspectives.
 
-Future tasks:
+Later:
 
- - [ ] implement multi-player offline.
- - [ ] implement multi-player online.
- - [ ] implement more AI behavior.
- - [ ] implement in-game menu.
+ - [ ] polish: UI design.
+ - [ ] polish: all in-game shaders.
+ - [ ] polish: intro and outro shaders.
+ - [ ] polish: soundtrack.
+ - [ ] polish: sound design.
+ - [ ] polish: game AI.
+ - [ ] polish: map generation.
+ - [ ] future: implement multi-player offline.
+ - [ ] future: implement multi-player online.
+ - [ ] future: implement more AI behavior.
+ - [ ] future: implement in-game menu.
 
 Done:
 
- - [X] implement end-of-game screen.
- - [X] implement splash screen.
- - [X] implement start menu.
- - [X] implement map generator menu.
- - [X] implement basic HUD.
- - [X] ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
- - [X] implement click behavior (click on field activates respective field group).
- - [X] implement highlighting of active field group.
- - [X] a field group has several fields.
- - [X] every field is in exactly one field group.
- - [X] extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
+ - [X] basic: implement free camera movement.
+ - [X] basic: implement end-of-game screen.
+ - [X] basic: implement splash screen.
+ - [X] basic: implement start menu.
+ - [X] basic: implement map generator menu.
+ - [X] basic: implement basic HUD.
+ - [X] basic: ERROR: Error opening file 'res://icon.svg'. at: load_image (core/io/image_loader.cpp:90)
+ - [X] basic: implement click behavior (click on field activates respective field group).
+ - [X] basic: implement highlighting of active field group.
+ - [X] basic: a field group has several fields.
+ - [X] basic: every field is in exactly one field group.
+ - [X] basic: extract map generation and use a 2D array as the interface (filed with a number of the field group it belongs to).
 
 ## Resources
 
 To do:
 
- - [ ] [My 1st Video + Quick way to make a Custom Hexagon Grid in Godot 3.x - Tutorial by Aarimous](https://www.youtube.com/watch?v=hmDavGzy1Hw)
+ - [X] None.
 
-Remarkable resources:
+Other remarkable resources:
 
  - [X] A great interactive page on hexagons, more than I would ever want to read about hexagons, [Hexagonal Grids by Red Blob Games](https://www.redblobgames.com/grids/hexagons/).
 
