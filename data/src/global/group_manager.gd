@@ -12,6 +12,9 @@ func create_new_field_groups(length_val : int):
 	for x in range(length_val):
 		FIELD_GROUPS.push_back([])
 
+func add_tile_to_group(tile, group_id : int):
+	FIELD_GROUPS[group_id].push_back(tile)
+
 func set_field_group_highlight(index : int, turn_on : bool, color_index : int = -1):
 	# TODO: FIXBUG: sometimes the menu tries to access index 3 or 4 but index doesn't exist.
 	var group : Array = FIELD_GROUPS[index]

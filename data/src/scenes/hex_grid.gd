@@ -29,11 +29,10 @@ func build_grid():
 			var power_value   : int   = group_data[group_index][1]
 			var center_coords : Array = group_data[group_index][2]
 			var is_at_center  : bool  = x == center_coords[0] and y == center_coords[1]
-			var group_id      : int   = group_grid[x][y]
 			# create new field.
 			var tile = HEX_TILE.instantiate()
-			tile.set_data(party_index, power_value, group_id, is_at_center)
-			GroupManager.FIELD_GROUPS[group_id].push_back(tile)
+			tile.set_data(party_index, power_value, group_index, is_at_center)
+			GroupManager.add_tile_to_group(tile, group_index)
 			%GridContainer.add_child(tile)
 			var x_offset : float = 0.0 if x % 2 == 0 else tile_size / 2.0
 			var x_coord  : float = x * tile_size * OFFSET_RATIO
