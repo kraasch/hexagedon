@@ -14,7 +14,7 @@ func generate_grid():
 	var grid_size : int   = Globals.GRID_SIZE
 
 	# generate new map.
-	MapGenerator.create_new_map_simple() # TODO: remove later.
+	MapGenerator.create_new_map_simple(grid_size) # TODO: remove later.
 #	MapGenerator.create_new_map(grid_size, grid_size) # TODO: comment back in.
 
 	var map_parties = MapGenerator.party_grid
@@ -26,7 +26,9 @@ func generate_grid():
 	# build grid.
 	for x in range(len(map_parties)):
 		var x_coord : float = x * tile_size * OFFSET_RATIO
-		var y_coord : float = 0 if x % 2 == 0 else tile_size / 2
+		var y_coord : float = 0
+		if x % 2 == 0:
+			y_coord = tile_size / 2
 		for y in range(len(map_parties[x])):
 			if map_parties[x][y] != 0:
 				# create new field.

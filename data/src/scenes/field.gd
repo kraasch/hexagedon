@@ -20,11 +20,11 @@ func set_callback(_callback_clicked):
 	callback_clicked = _callback_clicked
 
 func _ready():
-	generate_hex_tile(type_index)
+	generate_hex_tile()
 	if is_center:
-		generate_cube_stack(type_index)
+		generate_cube_stack()
 
-func generate_hex_tile(type_index : int):
+func generate_hex_tile():
 	tile = HEX_TILE.instantiate()
 	tile.set_callback(was_clicked, was_selected, was_deselected)
 	tile.mymaterial = ColorGenerator.get_shader(type_index)
@@ -47,7 +47,7 @@ func highlight_group_color(color_index : int):
 func unhighlight_group_color():
 	tile.mymaterial.set_shader_parameter("type", type_index)
 
-func generate_cube_stack(type_index : int):
+func generate_cube_stack():
 	var max_stack_height : int = Globals.MAX_STACK_HEIGHT
 	var cube_height : float = Globals.CUBE_SIZE
 	var split_index : int = max_stack_height / 2

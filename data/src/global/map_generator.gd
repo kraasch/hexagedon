@@ -7,7 +7,8 @@ var center_grid  : Array = []
 var parties_num : int = 0
 var groups_num  : int = 0
 
-func create_new_map_simple():
+@warning_ignore("unused_parameter")
+func create_new_map_simple(grid_size):
 	# provide default map.
 	party_grid = [
 		[1, 1, 2, 0],
