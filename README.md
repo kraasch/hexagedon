@@ -34,10 +34,11 @@ Later:
  - [ ] polish: sound design.
  - [ ] polish: game AI.
  - [ ] polish: map generation.
- - [ ] future: implement multi-player offline.
- - [ ] future: implement multi-player online.
- - [ ] future: implement more AI behavior.
- - [ ] future: implement in-game menu.
+ - [ ] polish: remove all in-code TODOs, tasks and notes.
+ - [ ] maybe: implement multi-player offline.
+ - [ ] maybe: implement multi-player online.
+ - [ ] maybe: implement more AI behavior.
+ - [ ] maybe: implement in-game menu.
 
 Done:
 
