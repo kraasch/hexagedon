@@ -23,6 +23,7 @@ MapGenerator="*res://data/src/global/map_generator.gd"
 GroupManager="*res://data/src/global/group_manager.gd"
 SceneManager="*res://data/src/global/scene_manager.gd"
 GameManager="*res://data/src/global/game_manager.gd"
+NeighborManager="*res://data/src/global/neihgbor_manager.gd"
 
 [display]
 
