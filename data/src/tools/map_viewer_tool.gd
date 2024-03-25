@@ -12,7 +12,8 @@ func _ready():
 var rng = RandomNumberGenerator.new()
 
 func play_button_pressed():
-	SceneManager.set_scene(preload("res://data/src/scenes/game_scene.tscn"))
+	pass
+	#SceneManager.set_scene(preload("res://data/src/scenes/game_scene.tscn"))
 
 func update_button_pressed():
 	Globals.NUM_OF_PARTIES     = %PartySliderDisplay.val

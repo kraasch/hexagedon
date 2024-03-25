@@ -14,7 +14,7 @@ background_mode = 2
 sky = SubResource("Sky_asbit")
 volumetric_fog_albedo = Color(0.317647, 0.32549, 0.858824, 1)
 
-[node name="MainScene" type="Node3D"]
+[node name="GameScene" type="Node3D"]
 script = ExtResource("1_pk3lm")
 
 [node name="UserInterface" type="Node" parent="."]
