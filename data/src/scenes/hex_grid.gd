@@ -20,6 +20,9 @@ func build_grid():
 	# create neighbor lists for each field group.
 	NeighborManager.create_new_field_neighbors(MapGenerator.groups_num)
 	NeighborManager.add_neighbor_data(group_grid)
+	
+	# create a new game.
+	MatchOrchestrator.start_new_match()
 
 	# build grid.
 	var size : int = len(group_grid)
