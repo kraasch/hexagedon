@@ -17,6 +17,10 @@ volumetric_fog_albedo = Color(0.317647, 0.32549, 0.858824, 1)
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_pk3lm")
 
+[node name="Scene" type="Node" parent="."]
+
+[node name="HexGrid" parent="Scene" instance=ExtResource("1_24fly")]
+
 [node name="UserInterface" type="Node" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UserInterface"]
@@ -69,7 +73,3 @@ omni_range = 20.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_0sc42")
-
-[node name="Scene" type="Node" parent="."]
-
-[node name="HexGrid" parent="Scene" instance=ExtResource("1_24fly")]
