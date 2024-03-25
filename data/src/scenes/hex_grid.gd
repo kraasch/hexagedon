@@ -22,6 +22,7 @@ func build_grid():
 	NeighborManager.add_neighbor_data(group_grid)
 	
 	# create a new game.
+	# TODO: pull out MatchOrchestrator and let HEX_GRID only manage displaying the data.
 	MatchOrchestrator.start_new_match()
 
 	# build grid.

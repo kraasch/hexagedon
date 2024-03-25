@@ -1,6 +1,10 @@
 @tool
 extends Node3D
 
+# NOTE: The FIELD is a HEX TILE with the potential of having a CUBE stack on top.
+# The field has a cube stack in case the hexagon tile is picked to be the center 
+# of the FIELD GROUP.
+
 const HEX_TILE : PackedScene = preload("res://data/src/scenes/hex_tile.tscn")
 const CUBE     : PackedScene = preload("res://data/src/scenes/cube.tscn")
 var   tile                   = null

@@ -6,8 +6,8 @@ var group_index_clicked_before : int = -1
 var CLICK_COLOR                : int = 0
 var SELECTION_COLOR            : int = 10
 
-# TODO: make the MatchOrchestrator the single source of truth for which group 
-# was selected. Make the MatchOrchestrator call the GroupManager in order to set
+# TODO: make the MatchOrchestrator/AttackManager the single source of truth for which group 
+# was selected. Make the MatchOrchestrator/AttackManager call the GroupManager in order to set
 # which group to highlight.
 
 # TODO: hover highlighting can still be managed by the GroupManager itself.
@@ -37,15 +37,15 @@ func set_field_group_highlight(index : int, turn_on : bool, color_index : int = 
 func group_was_clicked(group_index : int):
 	# selected group was clicked.
 	if group_index_clicked_before == group_index:
-		MatchOrchestrator.deselect_group(group_index)
+		AttackManager.deselect_group(group_index)
 		set_field_group_highlight(group_index_clicked_before, false)
 		group_index_clicked_before = -1
 		return
 	# another group was clicked.
 	set_field_group_highlight(group_index, true, CLICK_COLOR) # set new focus.
-	MatchOrchestrator.select_group(group_index)
+	AttackManager.select_group(group_index)
 	if group_index_clicked_before != -1: # remove old focus, if already exists.
-		MatchOrchestrator.deselect_group(group_index_clicked_before)
+		AttackManager.deselect_group(group_index_clicked_before)
 		set_field_group_highlight(group_index_clicked_before, false)
 	group_index_clicked_before = group_index # make new focus the old focus for next time.
 

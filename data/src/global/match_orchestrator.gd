@@ -1,60 +1,61 @@
 extends Node
 
+# TODO: make the display (HEX_GRID etc) ask the MatchOrchestrator if user can 
+# click/hover on tiles (ie block highlight if player is not active).
+
+# TODO: make AttackManager ask MatchOrchestrator is player is active, before
+# allowing to execute the attack.
+
 var group_grid : Array = []
 var group_data : Dictionary = {}
 var group_num  : int = -1
 
-var last_selected_group = -1
+# player id 1-N (one-indexed) of player who is currently active.
+var active_player = -1
 
-# TODO: implements, look up in NeighborManager.
-func is_neighbor(center_tile : int, neighbor_candidate_tile : int):
-	return NeighborManager.is_neighbor(center_tile, neighbor_candidate_tile)
+# player id 1-N (one indexed) of player who is human.
+var human_player_id = -1
+# TODO: in future have an Array of players and if they are HUMAN/COMPUTER.
+#  - or maybe even NETWORKED, for network players.
+#  - for COMPUTER players, hold a value here representing the DIFFICULTY category, used in the ComputerPlayer class.
 
-# TODO: implement, look up in group_data.
-func have_different_owner(tile_a : int, tile_b : int):
-	return group_data[tile_a] != group_data[tile_b]
-
-# TODO: implement; look up if field_group has a POWER >= 2.
-func is_attacker_has_enough_power(tile : int):
+# TODO: implement.
+func match_continues():
 	return true
 
-func can_attack(from_tile : int, to_tile : int):
-	var is_neighbor   : bool = is_neighbor(from_tile, to_tile)
-	var are_different : bool = have_different_owner(from_tile, to_tile) 
-	var attacker_has_enough_power : bool = is_attacker_has_enough_power(from_tile)
-	return is_neighbor and are_different and attacker_has_enough_power
+# TODO: implement; ask ComputerPlayer.
+func active_player_has_attack():
+	return true
 
-func execute_attack(from_tile : int, to_tile : int):
-	return Vector2(0.0, 1.0)
-
-func is_attacker_wins(attack_result : Vector2):
-	return attack_result[0] > attack_result[1]
-
-func attack_if_possible(from_tile : int, to_tile : int):
-	if can_attack(from_tile, to_tile):
-		var attack_result : Vector2 = execute_attack(from_tile, to_tile)
-		print('Tile ' + str(from_tile) + ' attacks tile ' + str(to_tile))
-		if is_attacker_wins(attack_result):
-			print('attacker wins')
-			# TODO: set attacking field power to 1.
-			# TODO: set attacked field power to attacking field power - 1.
-			# TODO: set attacked field owner to attacker.
-		else:
-			print('defender wins')
-			# TODO: set attacking field power to 1.
+# TODO: implement.
+func let_active_player_attack():
+	if active_player != human_player_id:
+		pass # TODO: ask computer for turn.
 	else:
-		# TODO: call GroupManager actively here and manage highlighting on map.
-		pass
+		pass # TODO: wait for human input.
+
+func next_active_player():
+	# increment active player
+	var actual_id = active_player - 1 # make zero-indexed.
+	var new_id = actual_id + 1 % group_num
+	active_player = new_id + 1 # make one-indexed.
+
+func main_game_loop():
+	while match_continues():
+		while active_player_has_attack():
+			let_active_player_attack()
+		next_active_player()
 
 func start_new_match():
 	group_grid = MapGenerator.group_grid
 	group_data = MapGenerator.group_data
 	group_num  = MapGenerator.groups_num
 
-func select_group(group_index : int):
-	if last_selected_group != -1 and last_selected_group != group_index:
-		attack_if_possible(last_selected_group, group_index)
-	last_selected_group = group_index
+	# TODO: pick active player with random value.
+	active_player = 1
+	human_player_id = 1
 
-func deselect_group(group_index : int):
-	last_selected_group = -1
+	AttackManager.start_new_match() # TODO: make this AttackManager single source of truth instead.
+
+	# TODO: start main_game_loop.
+	# main_game_loop()
