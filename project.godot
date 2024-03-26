@@ -27,6 +27,7 @@ AttackManager="*res://data/src/global/attack_manager.gd"
 MatchOrchestrator="*res://data/src/global/match_orchestrator.gd"
 ComputerPlayer="*res://data/src/global/computer_player.gd"
 NeighborManager="*res://data/src/global/neighbor_manager.gd"
+BackgroundMusicManager="*res://data/src/global/background_music_manager.gd"
 
 [display]
 

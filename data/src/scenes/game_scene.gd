@@ -15,6 +15,7 @@ func _input(event):
 		reset_perspective()
 
 func exit_button_pressed():
+	BackgroundMusicManager.transition_to_menu_music()
 	SceneManager.set_scene(preload("res://data/src/ui/end_screen.tscn"))
 
 func next_perspective():

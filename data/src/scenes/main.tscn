@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpq45jjb82k6"]
+[gd_scene load_steps=2 format=3 uid="uid://dpq45jjb82k6"]
 
 [ext_resource type="Script" path="res://data/src/scenes/main.gd" id="1_0q1wt"]
-[ext_resource type="AudioStream" uid="uid://cqqqd8rgketm0" path="res://data/assets/soundtrack/00_main.mp3" id="2_apewa"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0q1wt")
@@ -9,5 +8,5 @@ script = ExtResource("1_0q1wt")
 [node name="ActiveSceneContainer" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_apewa")
+[node name="GlobalRoot" type="Node" parent="."]
+unique_name_in_owner = true

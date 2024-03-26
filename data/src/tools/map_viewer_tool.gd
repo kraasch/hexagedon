@@ -12,6 +12,7 @@ func _ready():
 var rng = RandomNumberGenerator.new()
 
 func play_button_pressed():
+	BackgroundMusicManager.transition_to_game_music()
 	SceneManager.set_scene(preload("res://data/src/scenes/game_scene.tscn"))
 
 func update_button_pressed():
