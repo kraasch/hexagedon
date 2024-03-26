@@ -13,7 +13,7 @@ config_version=5
 config/name="Hexagedon"
 run/main_scene="res://data/src/scenes/main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://data/assets/base/icon.svg"
+config/icon="res://data/assets/icons/dice.png"
 
 [autoload]
 
