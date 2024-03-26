@@ -11,6 +11,11 @@ var EFFECT_NAMES : Array = [
 	'abc',
 ]
 
+func update_mute_state():
+	if Globals.IS_AUDIO_MUTE:
+		sfx_player.stop()
+	# TODO: resume audio.
+
 func init_manager(_root : Node) -> void:
 	root = _root
 

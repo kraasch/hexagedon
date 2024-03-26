@@ -16,6 +16,12 @@ var menu_player : AudioStreamPlayer = AudioStreamPlayer.new()
 var game_player : AudioStreamPlayer = AudioStreamPlayer.new()
 var is_setup : bool = false
 
+func update_mute_state():
+	if Globals.IS_AUDIO_MUTE:
+		menu_player.stop()
+		game_player.stop()
+	# TODO: resume audio.
+
 func init_manager(_root : Node):
 	root = _root
 

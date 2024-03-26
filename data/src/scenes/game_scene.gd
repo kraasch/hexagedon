@@ -1,6 +1,7 @@
 extends Node3D
 
 func _ready():
+	%SoundButton.pressed.connect(self.sound_button_pressed)
 	%SettingsButton.pressed.connect(self.settings_button_pressed)
 	%PreviousView.pressed.connect(self.previous_perspective)
 	%ResetView.pressed.connect(self.reset_perspective)
@@ -14,6 +15,16 @@ func _input(event):
 		previous_perspective()
 	if event.is_action_pressed("my_cycle_center"):
 		reset_perspective()
+
+func sound_button_pressed():
+	Globals.toggle_mute()
+	BackgroundMusicManager.update_mute_state()
+	SfxQueueManager.update_mute_state()
+	# update icon.
+	if Globals.IS_AUDIO_MUTE:
+		%SoundButton.icon = preload("res://data/assets/icons/muted.png")
+	else:
+		%SoundButton.icon = preload("res://data/assets/icons/speaker.png")
 
 func settings_button_pressed():
 	pass # TODO: implement; overlay menu.

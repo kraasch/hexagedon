@@ -12,3 +12,8 @@ var MAX_STACK_HEIGHT   : int   = 8
 var NUM_OF_PARTIES     : int   = 6
 var GRID_SIZE          : int   = 4
 var CUBE_SIZE          : float = 0.45
+
+var IS_AUDIO_MUTE         : bool = false
+
+func toggle_mute():
+	IS_AUDIO_MUTE = not IS_AUDIO_MUTE
