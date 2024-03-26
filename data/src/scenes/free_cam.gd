@@ -6,13 +6,14 @@ var acceleration : float = 30
 var move_speed : float = 8
 var mouse_speed : float = 300
 var move_boost_factor : float = 2.0
-var velocity = Vector3.ZERO
-var look_angles = Vector2.ZERO
+var velocity : Vector3 = Vector3.ZERO
+var look_angles : Vector2 = Vector2.ZERO
 var is_locked : bool = false
 var is_boost : bool = false
+var last_look_angles : Vector2 = Vector2.ZERO
 
 func _process(delta):
-	if is_locked:
+	if not is_locked:
 		look_angles.y = clamp(look_angles.y, PI / -2, PI / 2)
 		set_rotation(Vector3(look_angles.y, look_angles.x, 0))
 		var direction = update_cam_direction()
@@ -53,21 +54,25 @@ func toggle_cam():
 	else:
 		lock_cam()
 
+func reset_mouse_position():
+	look_angles = last_look_angles
+
+func capture_mouse_position():
+	last_look_angles = look_angles
+
 func lock_cam():
+	capture_mouse_position()
 	is_locked = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+
+# TODO: in the web version, get the mouse JavaScript mouse pointer back.
+func free_cam():
+	reset_mouse_position()
+	is_locked = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func free_cam():
-	# TODO: in the web version, get the mouse JavaScript mouse pointer back.
-	is_locked = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	# TODO: reset mouse to neutral position.
-#	var center : Vector2 = get_viewport().get_visible_rect().size / 2.0
-#	var center : Vector2 = get_viewport().size
-#	get_viewport().warp_mouse(center)
-
 func _ready():
-	free_cam()
+	lock_cam()
 
 func _input(event):
 	if event.is_action_pressed('my_boost'):
