@@ -48,12 +48,18 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PlayButton" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_1eu0p")]
+[node name="Card5" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
+layout_mode = 2
+
+[node name="PlayButton" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card5" instance=ExtResource("3_1eu0p")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("4_g5lo0")
 
-[node name="UpdateButton" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_1eu0p")]
+[node name="Card6" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
+layout_mode = 2
+
+[node name="UpdateButton" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card6" instance=ExtResource("3_1eu0p")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("5_30b5g")
