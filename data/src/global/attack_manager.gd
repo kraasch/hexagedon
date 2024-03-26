@@ -12,7 +12,7 @@ func is_neighbor(center_tile : int, neighbor_candidate_tile : int):
 	return NeighborManager.is_neighbor(center_tile, neighbor_candidate_tile)
 
 # TODO: implement, look up in group_data.
-func have_different_owner(tile_a : int, tile_b : int):
+func is_have_different_owner(tile_a : int, tile_b : int):
 	return group_data[tile_a] != group_data[tile_b]
 
 # TODO: implement; look up if field_group has a POWER >= 2.
@@ -20,10 +20,10 @@ func is_attacker_has_enough_power(tile : int):
 	return true
 
 func can_attack(from_tile : int, to_tile : int):
-	var is_neighbor   : bool = is_neighbor(from_tile, to_tile)
-	var are_different : bool = have_different_owner(from_tile, to_tile) 
-	var attacker_has_enough_power : bool = is_attacker_has_enough_power(from_tile)
-	return is_neighbor and are_different and attacker_has_enough_power
+	var are_neighbors : bool = is_neighbor(from_tile, to_tile)
+	var are_different : bool = is_have_different_owner(from_tile, to_tile)
+	var has_power     : bool = is_attacker_has_enough_power(from_tile)
+	return are_neighbors and are_different and has_power
 
 func execute_attack(from_tile : int, to_tile : int):
 	return Vector2(0.0, 1.0)
