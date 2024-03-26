@@ -2,15 +2,15 @@ extends Camera3D
 
 # TODO: free mouse when scene is unloaded.
 
-var acceleration : float = 30
-var move_speed : float = 8
-var mouse_speed : float = 300
-var move_boost_factor : float = 2.0
-var velocity : Vector3 = Vector3.ZERO
-var look_angles : Vector2 = Vector2.ZERO
-var is_locked : bool = false
-var is_boost : bool = false
-var last_look_angles : Vector2 = Vector2.ZERO
+var is_locked         : bool    = false
+var is_boost          : bool    = false
+var acceleration      : float   = 30
+var move_speed        : float   = 8
+var mouse_speed       : float   = 300
+var move_boost_factor : float   = 2.0
+var look_angles       : Vector2 = Vector2.ZERO
+var last_look_angles  : Vector2 = Vector2.ZERO
+var velocity          : Vector3 = Vector3.ZERO
 
 func _process(delta):
 	if not is_locked:
