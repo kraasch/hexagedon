@@ -18,6 +18,7 @@ config/icon="res://data/assets/icons/dice.png"
 [autoload]
 
 Globals="*res://data/src/global/globals.gd"
+Helpers="*res://data/src/global/helpers.gd"
 ColorGenerator="*res://data/src/global/color_generator.gd"
 MapGenerator="*res://data/src/global/map_generator.gd"
 GroupManager="*res://data/src/global/group_manager.gd"
@@ -28,6 +29,7 @@ MatchOrchestrator="*res://data/src/global/match_orchestrator.gd"
 ComputerPlayer="*res://data/src/global/computer_player.gd"
 NeighborManager="*res://data/src/global/neighbor_manager.gd"
 BackgroundMusicManager="*res://data/src/global/background_music_manager.gd"
+SfxQueueManager="*res://data/src/global/sfx_queue_manager.gd"
 
 [display]
 

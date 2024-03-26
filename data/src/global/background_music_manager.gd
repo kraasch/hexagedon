@@ -14,42 +14,36 @@ const soundtrack_paths : Array = [
 ]
 var menu_player : AudioStreamPlayer = AudioStreamPlayer.new()
 var game_player : AudioStreamPlayer = AudioStreamPlayer.new()
-var is_started : bool = false
-
-func load_mp3(path : String) -> AudioStreamMP3:
-	var file : FileAccess = FileAccess.open(path, FileAccess.READ)
-	var sound : AudioStreamMP3 = AudioStreamMP3.new()
-	sound.data = file.get_buffer(file.get_length())
-	return sound
+var is_setup : bool = false
 
 func init_manager(_root : Node):
 	root = _root
 
-func start():
-	if not is_started:
+func setup():
+	if not is_setup:
 		# setup players.
 		menu_player.autoplay = false
 		game_player.autoplay = false
 		root.add_child(menu_player)
 		root.add_child(game_player)
 		# add main menu track.
-		var mp3 : AudioStreamMP3 = load_mp3(main_track_path)
+		var mp3 : AudioStreamMP3 = Helpers.load_mp3(main_track_path)
 		menu_player.set_stream(mp3)
 		# add game music tracks.
 		var streamRandomizer : AudioStreamRandomizer = AudioStreamRandomizer.new()
 		const APPEND : int = -1
 		for i in range(len(soundtrack_paths)):
-			streamRandomizer.add_stream(APPEND, load_mp3(soundtrack_paths[i]))
+			streamRandomizer.add_stream(APPEND, Helpers.load_mp3(soundtrack_paths[i]))
 		game_player.set_stream(streamRandomizer)
 		# mark as started.
-		is_started = true
+		is_setup = true
 
 func transition_to_game_music():
-	start()
+	setup()
 	menu_player.stop()
 	game_player.play()
 
 func transition_to_menu_music():
-	start()
+	setup()
 	game_player.stop()
 	menu_player.play()
