@@ -20,7 +20,7 @@ func init_manager(_root : Node):
 	root = _root
 
 func setup():
-	if not is_setup:
+	if not is_setup and root != null:
 		# setup players.
 		menu_player.autoplay = false
 		game_player.autoplay = false
