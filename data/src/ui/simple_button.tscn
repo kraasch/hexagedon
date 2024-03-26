@@ -1,44 +1,50 @@
-[gd_scene load_steps=8 format=3 uid="uid://br2e5np03liyc"]
+[gd_scene load_steps=7 format=3 uid="uid://br2e5np03liyc"]
 
 [ext_resource type="Texture2D" uid="uid://clu673687p2oq" path="res://data/assets/icons/next.png" id="1_owthh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnr7o"]
-bg_color = Color(0.439216, 0.439216, 0.439216, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1v38o"]
+bg_color = Color(0.160784, 0.156863, 0.152941, 0.87451)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.8)
+shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yulrf"]
-bg_color = Color(0.337255, 0.45098, 0.811765, 1)
+bg_color = Color(0.486275, 0.588235, 0.862745, 1)
 border_width_bottom = 4
 border_color = Color(0.0862745, 0.156863, 0.545098, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.8)
+shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vl3ds"]
-bg_color = Color(0.47451, 0.223529, 0.827451, 1)
+bg_color = Color(0.47451, 0.223529, 0.827451, 0.729412)
 border_width_bottom = 4
 border_color = Color(0.4, 0.00784314, 0.4, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.8)
+shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_das3c"]
-bg_color = Color(0.466667, 0.223529, 0.827451, 1)
-border_width_bottom = 1
-border_color = Color(0.490196, 0.0117647, 0.490196, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color(0, 0, 0, 0.843137)
-shadow_size = 5
+bg_color = Color(0.47451, 0.223529, 0.827451, 0.729412)
+border_color = Color(0.490196, 0.0117647, 0.490196, 0.545098)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(0, 0, 0, 0.8)
+shadow_size = 2
 
 [sub_resource type="Theme" id="Theme_yui2x"]
 Button/styles/disabled = SubResource("StyleBoxFlat_cnr7o")
-Button/styles/focus = SubResource("StyleBoxFlat_1v38o")
 Button/styles/hover = SubResource("StyleBoxFlat_yulrf")
 Button/styles/normal = SubResource("StyleBoxFlat_vl3ds")
 Button/styles/pressed = SubResource("StyleBoxFlat_das3c")

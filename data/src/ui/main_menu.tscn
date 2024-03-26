@@ -37,4 +37,5 @@ icon = ExtResource("3_8ivd7")
 [node name="MP" parent="CanvasLayer/CenterContainer/HBoxContainer" instance=ExtResource("2_ye68v")]
 unique_name_in_owner = true
 layout_mode = 2
+disabled = true
 icon = ExtResource("4_vlqop")
