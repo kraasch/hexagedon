@@ -14,13 +14,16 @@ const soundtrack_paths : Array = [
 ]
 var menu_player : AudioStreamPlayer = AudioStreamPlayer.new()
 var game_player : AudioStreamPlayer = AudioStreamPlayer.new()
+var active_player : AudioStreamPlayer = null
 var is_setup : bool = false
 
 func update_mute_state():
 	if Globals.IS_AUDIO_MUTE:
 		menu_player.stop()
 		game_player.stop()
-	# TODO: resume audio.
+	else:
+		if active_player != null:
+			active_player.play()
 
 func init_manager(_root : Node):
 	root = _root
@@ -46,10 +49,14 @@ func setup():
 
 func transition_to_game_music():
 	setup()
-	menu_player.stop()
-	game_player.play()
+	active_player = game_player
+	if not Globals.IS_AUDIO_MUTE:
+		menu_player.stop()
+		game_player.play()
 
 func transition_to_menu_music():
 	setup()
-	game_player.stop()
-	menu_player.play()
+	active_player = menu_player
+	if not Globals.IS_AUDIO_MUTE:
+		game_player.stop()
+		menu_player.play()

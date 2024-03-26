@@ -61,7 +61,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -69,13 +70,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/CenterContainer"]
 autoplay = "splash_label_animation"
 libraries = {
 "": SubResource("AnimationLibrary_rbub2")
 }
 
-[node name="Label" type="Label" parent="CenterContainer/AnimationPlayer"]
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/AnimationPlayer"]
 custom_minimum_size = Vector2(800, 200)
 offset_left = 194.0
 offset_top = 468.0
@@ -89,3 +90,5 @@ theme_override_font_sizes/font_size = 60
 text = "Click to Skip"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]

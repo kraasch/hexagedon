@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://jctoum2s83s5"]
+[gd_scene load_steps=14 format=3 uid="uid://jctoum2s83s5"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_24fly"]
 [ext_resource type="Script" path="res://data/src/scenes/game_scene.gd" id="1_pk3lm"]
 [ext_resource type="Script" path="res://data/src/scenes/free_cam.gd" id="2_7q25c"]
 [ext_resource type="Texture2D" uid="uid://dl0gqpeyeuqsw" path="res://data/assets/icons/gear.png" id="3_tnlje"]
 [ext_resource type="Texture2D" uid="uid://d33jr4gun0svs" path="res://data/assets/icons/exit.png" id="3_tywfw"]
-[ext_resource type="Texture2D" uid="uid://dnhepff4jqtqj" path="res://data/assets/icons/speaker.png" id="4_gfq0w"]
 [ext_resource type="Texture2D" uid="uid://pxhspqp20odh" path="res://data/assets/icons/arrow_left.png" id="4_mjwxb"]
 [ext_resource type="PackedScene" uid="uid://br2e5np03liyc" path="res://data/src/ui/simple_button.tscn" id="5_0144l"]
 [ext_resource type="Texture2D" uid="uid://cx87e7se22o8o" path="res://data/assets/icons/arrow_top.png" id="5_muh1k"]
@@ -41,11 +40,6 @@ grow_horizontal = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/CanvasLayer/TopBar"]
 layout_mode = 2
 theme_override_constants/separation = 20
-
-[node name="SoundButton" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
-unique_name_in_owner = true
-layout_mode = 2
-icon = ExtResource("4_gfq0w")
 
 [node name="SettingsButton" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
