@@ -20,6 +20,6 @@ func update_button_pressed():
 	Globals.GRID_SIZE          = %GridSizeSliderDisplay.val
 	Globals.MAX_STACK_HEIGHT   = %StackHeightSliderDisplay.val
 	Globals.CUBE_SIZE          = %CubeSizeSliderDisplay.val
-	%HexGrid.generate_grid()
+	%HexGrid.build_grid()
 	# TODO: make an animated translate from old to new cam position here.
 	%Cam.global_position.z = %GridSizeSliderDisplay.val / 2

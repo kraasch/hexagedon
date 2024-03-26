@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://jctoum2s83s5"]
+[gd_scene load_steps=13 format=3 uid="uid://jctoum2s83s5"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_24fly"]
 [ext_resource type="Script" path="res://data/src/scenes/game_scene.gd" id="1_pk3lm"]
 [ext_resource type="Script" path="res://data/src/scenes/free_cam.gd" id="2_7q25c"]
+[ext_resource type="Texture2D" uid="uid://dl0gqpeyeuqsw" path="res://data/assets/icons/gear.png" id="3_tnlje"]
 [ext_resource type="Texture2D" uid="uid://d33jr4gun0svs" path="res://data/assets/icons/exit.png" id="3_tywfw"]
 [ext_resource type="Texture2D" uid="uid://pxhspqp20odh" path="res://data/assets/icons/arrow_left.png" id="4_mjwxb"]
+[ext_resource type="PackedScene" uid="uid://br2e5np03liyc" path="res://data/src/ui/simple_button.tscn" id="5_0144l"]
 [ext_resource type="Texture2D" uid="uid://cx87e7se22o8o" path="res://data/assets/icons/arrow_top.png" id="5_muh1k"]
 [ext_resource type="Texture2D" uid="uid://csdkjvnp0edem" path="res://data/assets/icons/arrow_right.png" id="6_pbh67"]
 
@@ -37,41 +39,30 @@ grow_horizontal = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/CanvasLayer/TopBar"]
 layout_mode = 2
 
-[node name="EndButton" type="Button" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer"]
+[node name="SettingsButton" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
-theme_override_constants/icon_max_width = 50
-icon = ExtResource("3_tywfw")
-flat = true
-icon_alignment = 1
+icon = ExtResource("3_tnlje")
 
-[node name="PreviousView" type="Button" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer"]
+[node name="PreviousView" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
-theme_override_constants/icon_max_width = 50
 icon = ExtResource("4_mjwxb")
-flat = true
-icon_alignment = 1
 
-[node name="ResetView" type="Button" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer"]
+[node name="ResetView" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
-theme_override_constants/icon_max_width = 50
 icon = ExtResource("5_muh1k")
-flat = true
-icon_alignment = 1
 
-[node name="NextView" type="Button" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer"]
+[node name="NextView" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_mode = 0
-theme_override_constants/icon_max_width = 50
 icon = ExtResource("6_pbh67")
-flat = true
-icon_alignment = 1
+
+[node name="EndButton" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_tywfw")
 
 [node name="World" type="Node" parent="."]
 

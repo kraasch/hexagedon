@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://we64qri3wg6a"]
+[gd_scene load_steps=9 format=3 uid="uid://we64qri3wg6a"]
 
 [ext_resource type="Script" path="res://data/src/tools/map_viewer_tool.gd" id="1_s36mu"]
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="2_ljosc"]
+[ext_resource type="PackedScene" uid="uid://br2e5np03liyc" path="res://data/src/ui/simple_button.tscn" id="3_1eu0p"]
 [ext_resource type="PackedScene" uid="uid://cse8yjnhn0f4x" path="res://data/src/hud/card_container.tscn" id="3_umrmj"]
+[ext_resource type="Texture2D" uid="uid://2f15un4uj2k3" path="res://data/assets/icons/start.png" id="4_g5lo0"]
 [ext_resource type="PackedScene" uid="uid://d4cumauu46f1m" path="res://data/src/hud/slider_display.tscn" id="4_jbbfi"]
+[ext_resource type="Texture2D" uid="uid://c4pdyudxq706r" path="res://data/assets/icons/update.png" id="5_30b5g"]
 
 [sub_resource type="Environment" id="Environment_kghhm"]
 
@@ -30,7 +33,7 @@ sky_mode = 1
 
 [node name="Cam" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 3.88401, 14.3893, 8.3984)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 3.88401, 14.3893, 16.1337)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -45,21 +48,15 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Card5" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
-layout_mode = 2
-
-[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card5"]
+[node name="PlayButton" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_1eu0p")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Play"
+icon = ExtResource("4_g5lo0")
 
-[node name="Card0" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
-layout_mode = 2
-
-[node name="UpdateButton" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card0"]
+[node name="UpdateButton" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_1eu0p")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Update"
+icon = ExtResource("5_30b5g")
 
 [node name="Card1" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
 layout_mode = 2

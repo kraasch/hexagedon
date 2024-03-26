@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://br2e5np03liyc"]
+
+[node name="SimpleButton" type="Button"]
+focus_mode = 0
+theme_override_constants/icon_max_width = 50
+flat = true
+icon_alignment = 1

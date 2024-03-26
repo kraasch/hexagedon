@@ -1,10 +1,11 @@
 extends Node3D
 
 func _ready():
-	%EndButton.pressed.connect(self.exit_button_pressed)
+	%SettingsButton.pressed.connect(self.settings_button_pressed)
 	%PreviousView.pressed.connect(self.previous_perspective)
-	%NextView.pressed.connect(self.next_perspective)
 	%ResetView.pressed.connect(self.reset_perspective)
+	%NextView.pressed.connect(self.next_perspective)
+	%EndButton.pressed.connect(self.exit_button_pressed)
 
 func _input(event):
 	if event.is_action_pressed("my_cycle_next"):
@@ -13,6 +14,9 @@ func _input(event):
 		previous_perspective()
 	if event.is_action_pressed("my_cycle_center"):
 		reset_perspective()
+
+func settings_button_pressed():
+	pass # TODO: implement; overlay menu.
 
 func exit_button_pressed():
 	BackgroundMusicManager.transition_to_menu_music()
