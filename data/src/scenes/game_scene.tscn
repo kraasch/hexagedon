@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jctoum2s83s5"]
+[gd_scene load_steps=15 format=3 uid="uid://jctoum2s83s5"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_24fly"]
 [ext_resource type="Script" path="res://data/src/scenes/game_scene.gd" id="1_pk3lm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://br2e5np03liyc" path="res://data/src/ui/simple_button.tscn" id="5_0144l"]
 [ext_resource type="Texture2D" uid="uid://cx87e7se22o8o" path="res://data/assets/icons/arrow_top.png" id="5_muh1k"]
 [ext_resource type="Texture2D" uid="uid://csdkjvnp0edem" path="res://data/assets/icons/arrow_right.png" id="6_pbh67"]
+[ext_resource type="Texture2D" uid="uid://cj2w4t4ja5r5p" path="res://data/assets/icons/freelook.png" id="9_x6pr2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5scc"]
 
@@ -65,6 +66,11 @@ icon = ExtResource("5_muh1k")
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("6_pbh67")
+
+[node name="FreelookView" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("9_x6pr2")
 
 [node name="EndButton" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true

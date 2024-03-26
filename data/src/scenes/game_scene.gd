@@ -6,6 +6,7 @@ func _ready():
 	%PreviousView.pressed.connect(self.previous_perspective)
 	%ResetView.pressed.connect(self.reset_perspective)
 	%NextView.pressed.connect(self.next_perspective)
+	%FreelookView.pressed.connect(%FreeCam.lock_cam)
 	%EndButton.pressed.connect(self.exit_button_pressed)
 
 func _input(event):
