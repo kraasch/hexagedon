@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://br2e5np03liyc"]
+[gd_scene load_steps=8 format=3 uid="uid://br2e5np03liyc"]
 
 [ext_resource type="Texture2D" uid="uid://clu673687p2oq" path="res://data/assets/icons/next.png" id="1_owthh"]
+[ext_resource type="Script" path="res://data/src/ui/simple_button.gd" id="2_t7srb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cnr7o"]
 bg_color = Color(0.160784, 0.156863, 0.152941, 0.87451)
@@ -57,3 +58,6 @@ theme = SubResource("Theme_yui2x")
 theme_override_constants/icon_max_width = 50
 icon = ExtResource("1_owthh")
 icon_alignment = 1
+script = ExtResource("2_t7srb")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

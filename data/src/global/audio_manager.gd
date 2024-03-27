@@ -32,8 +32,13 @@ func toggle_mute(bus_name : String):
 	var current_state : bool = AudioServer.is_bus_mute(bus_index)
 	AudioServer.set_bus_mute(bus_index, not current_state)
 
+func mute_bus(bus_name : String):
+	var bus_index : int = AudioServer.get_bus_index(bus_name)
+	var current_state : bool = AudioServer.is_bus_mute(bus_index)
+	AudioServer.set_bus_mute(bus_index, false)
+
 func set_volume(bus_name : String, linear_volume : float):
 	var bus_index : int = AudioServer.get_bus_index(bus_name)
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(linear_volume))
 	if linear_volume < MIN_MUTE_VOLUME:
-		toggle_mute(bus_name)
+		mute_bus(bus_name)

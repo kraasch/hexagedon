@@ -25,6 +25,7 @@ const soundtrack_paths   : Array             = [
 
 func resume_playing():
 	if last_active_player != null:
+		pass
 		last_active_player.play()
 
 func init_manager(_root : Node):
