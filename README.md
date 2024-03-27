@@ -65,6 +65,8 @@ Other remarkable resources:
 
  * A great interactive page on hexagons, more than I would ever want to read about hexagons, [Hexagonal Grids by Red Blob Games](https://www.redblobgames.com/grids/hexagons/).
  * A sound effect tool: [Chiptone by SFBGames](https://sfbgames.itch.io/chiptone)
+ * Another SFXR web implementation in JavaScript: [JSFXR](https://sfxr.me/)
+ * Another SFXR web implementation in Godot: [Godot SFXR](https://github.com/tomeyro/godot-sfxr)
 
 Documentation:
 
