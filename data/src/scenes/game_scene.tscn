@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://jctoum2s83s5"]
+[gd_scene load_steps=23 format=3 uid="uid://jctoum2s83s5"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_24fly"]
 [ext_resource type="Script" path="res://data/src/scenes/game_scene.gd" id="1_pk3lm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cx87e7se22o8o" path="res://data/assets/icons/arrow_top.png" id="5_muh1k"]
 [ext_resource type="Texture2D" uid="uid://csdkjvnp0edem" path="res://data/assets/icons/arrow_right.png" id="6_pbh67"]
 [ext_resource type="Texture2D" uid="uid://cj2w4t4ja5r5p" path="res://data/assets/icons/freelook.png" id="9_x6pr2"]
+[ext_resource type="PackedScene" uid="uid://2xoja2np73kf" path="res://data/src/ui/volume_box.tscn" id="10_h47cl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5scc"]
 
@@ -48,52 +49,97 @@ material = SubResource("StandardMaterial3D_6mmue")
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_pk3lm")
 
-[node name="Scene" type="Node" parent="."]
+[node name="MainScene" type="Node" parent="."]
+unique_name_in_owner = true
 
-[node name="HexGrid" parent="Scene" instance=ExtResource("1_24fly")]
+[node name="HexGrid" parent="MainScene" instance=ExtResource("1_24fly")]
 
 [node name="UserInterface" type="Node" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UserInterface"]
+[node name="TopBar" type="CanvasLayer" parent="UserInterface"]
+unique_name_in_owner = true
 
-[node name="TopBar" type="CenterContainer" parent="UserInterface/CanvasLayer"]
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/TopBar"]
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/CanvasLayer/TopBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/TopBar/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="SettingsButton" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
+[node name="SettingsButton" parent="UserInterface/TopBar/CenterContainer/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("3_tnlje")
 
-[node name="PreviousView" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
+[node name="PreviousView" parent="UserInterface/TopBar/CenterContainer/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("4_mjwxb")
 
-[node name="ResetView" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
+[node name="ResetView" parent="UserInterface/TopBar/CenterContainer/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("5_muh1k")
 
-[node name="NextView" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
+[node name="NextView" parent="UserInterface/TopBar/CenterContainer/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("6_pbh67")
 
-[node name="FreelookView" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
+[node name="FreelookView" parent="UserInterface/TopBar/CenterContainer/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("9_x6pr2")
 
-[node name="EndButton" parent="UserInterface/CanvasLayer/TopBar/HBoxContainer" instance=ExtResource("5_0144l")]
+[node name="EndButton" parent="UserInterface/TopBar/CenterContainer/HBoxContainer" instance=ExtResource("5_0144l")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("3_tywfw")
+
+[node name="OverlayMenu" type="CanvasLayer" parent="UserInterface"]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface/OverlayMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0784314, 0.321569, 0.694118)
+
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/OverlayMenu/ColorRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="MasterBar" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("10_h47cl")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SfxBar" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("10_h47cl")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MusicBar" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("10_h47cl")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CloseOverlayButton" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer/VBoxContainer/CenterContainer" instance=ExtResource("5_0144l")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="World" type="Node" parent="."]
 

@@ -41,6 +41,11 @@ func _ready():
 	%NextView.pressed.connect(self.next_perspective)
 	%FreelookView.pressed.connect(%FreeCam.free_cam)
 	%EndButton.pressed.connect(self.exit_button_pressed)
+	%OverlayMenu.visible = false
+	%MasterBar.initialize(AudioManager.MASTER_BUS, 'Master Volume')
+	%SfxBar.initialize(AudioManager.SFX_BUS, 'SFX Volume')
+	%MusicBar.initialize(AudioManager.MUSIC_BUS, 'Music Volume')
+	%CloseOverlayButton.pressed.connect(self.close_overlay_button_pressed)
 	# initialize first perspective.
 	reset_perspective()
 
@@ -53,9 +58,15 @@ func _input(event):
 		reset_perspective()
 
 func settings_button_pressed():
-	pass # TODO: implement; overlay menu.
+	%OverlayMenu.visible = true
+
+func close_overlay_button_pressed():
+	%OverlayMenu.visible = false
 
 func exit_button_pressed():
+	# TODO: restrict interaction with other nodes and scenes while overlay menu is active.
+#	%MainScene.disabled = true
+#	%TopBar.disabled    = true
 	BackgroundMusicManager.transition_to_menu_music()
 	SceneManager.set_scene(preload("res://data/src/ui/end_screen.tscn"))
 

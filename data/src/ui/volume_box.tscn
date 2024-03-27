@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://2xoja2np73kf"]
+
+[ext_resource type="Script" path="res://data/src/ui/volume_box.gd" id="1_iefpw"]
+
+[node name="VolumeBox" type="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+script = ExtResource("1_iefpw")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Volume"
+
+[node name="Slider" type="HSlider" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
