@@ -116,27 +116,27 @@ omni_range = 20.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_0sc42")
 
-[node name="Debug" type="Node" parent="."]
+[node name="DEBUG_TODO" type="Node" parent="."]
 
-[node name="BallCenter" type="MeshInstance3D" parent="Debug"]
+[node name="BallCenter" type="MeshInstance3D" parent="DEBUG_TODO"]
 unique_name_in_owner = true
 visible = false
 mesh = SubResource("SphereMesh_q45y0")
 skeleton = NodePath("../..")
 
-[node name="BallZ" type="MeshInstance3D" parent="Debug"]
+[node name="BallZ" type="MeshInstance3D" parent="DEBUG_TODO"]
 unique_name_in_owner = true
 visible = false
 mesh = SubResource("SphereMesh_lrckt")
 skeleton = NodePath("../..")
 
-[node name="BallX" type="MeshInstance3D" parent="Debug"]
+[node name="BallX" type="MeshInstance3D" parent="DEBUG_TODO"]
 unique_name_in_owner = true
 visible = false
 mesh = SubResource("SphereMesh_kli1f")
 skeleton = NodePath("../..")
 
-[node name="Ball" type="MeshInstance3D" parent="Debug"]
+[node name="Ball" type="MeshInstance3D" parent="DEBUG_TODO"]
 unique_name_in_owner = true
 visible = false
 mesh = SubResource("SphereMesh_8h7f6")

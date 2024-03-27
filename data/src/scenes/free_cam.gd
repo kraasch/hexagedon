@@ -1,6 +1,6 @@
 extends Camera3D
 
-# TODO: free mouse when scene is unloaded.
+# TODO: free mouse when scene is unloaded. Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 var is_locked         : bool    = false
 var is_boost          : bool    = false
@@ -58,11 +58,8 @@ func update(location : Vector3, target : Vector3):
 	self.position = location
 	look_at(target)
 	# update last_look_angles to match the new orientation.
-	update_look_angles()
-
-# TODO: implement properly.
-func update_look_angles():
-	look_angles = Vector2(get_rotation().y, get_rotation().x)
+	look_angles = Vector2(self.rotation.y, self.rotation.x)
+	capture_look_angles()
 
 func reset_look_angles():
 	look_angles = last_look_angles

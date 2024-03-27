@@ -25,7 +25,7 @@ var   E   : Vector3 = Vector3(CP.x * 2.0,     HO, CP.z * 1.0)     # perspective 
 var   W   : Vector3 = Vector3(CP.x * 0.0,     HO, CP.z * 1.0)     # perspective from west.
 var   T   : Vector3 = Vector3(CP.x * 1.0 + D, HT, CP.z * 1.0 + D) # perspective from top.
 var   PERSPECTIVES       : Array = [ N, E, S, W ]
-var   PERSPECTIVES_NAMES : Array = [ 'N', 'E', 'S', 'W' ]
+var   PERSPECTIVES_NAMES : Array = [ 'N', 'E', 'S', 'W' ] # TODO: remove later.
 
 var current_perspctive_index : int = 0
 
