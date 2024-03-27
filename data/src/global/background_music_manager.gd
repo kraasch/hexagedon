@@ -44,6 +44,7 @@ func setup():
 		# setup players.
 		menu_player.autoplay = false
 		game_player.autoplay = false
+		# add to scene.
 		root.add_child(menu_player)
 		root.add_child(game_player)
 		# infinitely loop.
