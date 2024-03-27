@@ -16,13 +16,14 @@ var   CP  : Vector3 = Vector3(DIM, 0, DIM) # center point. TODO: change this dep
 #  |        S
 #  v
 #  z
-const D   : float   =  0.0001                                       # add a little delta for 3D perspective.
+const D   : float   =  0.01                                       # add a little delta for 3D perspective.
 const HO  : float   =  5.0                                        # height offset (over the ground).
+var   HT  : float   =  DIM * 4.0                                  # height for the top down view.
 var   N   : Vector3 = Vector3(CP.x * 1.0,     HO, CP.z * 0.0)     # perspective from north.
 var   S   : Vector3 = Vector3(CP.x * 1.0,     HO, CP.z * 2.0)     # perspective from south.
 var   E   : Vector3 = Vector3(CP.x * 2.0,     HO, CP.z * 1.0)     # perspective from east.
 var   W   : Vector3 = Vector3(CP.x * 0.0,     HO, CP.z * 1.0)     # perspective from west.
-var   T   : Vector3 = Vector3(CP.x * 1.0 + D, HO, CP.z * 1.0 + D) # perspective from top.
+var   T   : Vector3 = Vector3(CP.x * 1.0 + D, HT, CP.z * 1.0 + D) # perspective from top.
 var   PERSPECTIVES       : Array = [ N, E, S, W ]
 var   PERSPECTIVES_NAMES : Array = [ 'N', 'E', 'S', 'W' ]
 
