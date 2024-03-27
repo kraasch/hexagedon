@@ -9,15 +9,8 @@ var   game_player        : AudioStreamPlayer = AudioStreamPlayer.new()
 var   last_active_player : AudioStreamPlayer = null
 var   BUS_NAME           : String            = AudioManager.MUSIC_BUS
 
-# TODO: load all songs from dedicated directory.
-const main_track_path    : String            = "res://data/assets/soundtrack/00_main.mp3"
-
-# TODO: load all songs from dedicated directory.
-const soundtrack_paths   : Array             = [
-	"res://data/assets/soundtrack/01_anttis-instrumentals+happy-thingies.mp3",
-	"res://data/assets/soundtrack/02_anttis-instrumentals+hrdelli.mp3",
-	"res://data/assets/soundtrack/03_anttis-instrumentals+hysteria-in-the-jungle.mp3"
-]
+const GAME_MUSIC_DIR  : String = "res://data/assets/soundtrack/game"
+const MENU_MUSIC_DIR  : String = "res://data/assets/soundtrack/menu"
 
 func resume_playing():
 	if last_active_player != null:
@@ -26,17 +19,24 @@ func resume_playing():
 func init_manager(_root : Node):
 	root = _root
 
-func load_audio_dir():
-	pass
-#	var sounds = []
-#	var sound_directory = Directory.new()
-#	sound_directory .open("res://Sounds")
-#	sound_directory.list_dir_begin(true)
-#
-#	var sound = sound_directory.get_next()
-#	while sound != "":
-#	    sounds.append(load("res://Sounds/" + sound))
-#	    sound = sound_directory.get_next()
+func make_randomizer_from_path(path : String) -> AudioStreamRandomizer:
+	var streamRandomizer : AudioStreamRandomizer = AudioStreamRandomizer.new()
+	const MP3_FILE_ENDING : String = '.mp3'
+	const APPEND : int = -1
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir():
+				if file_name.to_lower().ends_with(MP3_FILE_ENDING):
+					var file_path : String = path + '/' + file_name
+					print(file_path)
+					streamRandomizer.add_stream(APPEND, Helpers.load_mp3(file_path))
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+	return streamRandomizer
 
 func setup():
 	if not is_setup and root != null:
@@ -50,15 +50,9 @@ func setup():
 		# infinitely loop.
 		menu_player.finished.connect(resume_playing)
 		game_player.finished.connect(resume_playing)
-		# add main menu track.
-		var mp3 : AudioStreamMP3 = Helpers.load_mp3(main_track_path)
-		menu_player.set_stream(mp3)
-		# add game music tracks.
-		var streamRandomizer : AudioStreamRandomizer = AudioStreamRandomizer.new()
-		const APPEND : int = -1
-		for i in range(len(soundtrack_paths)):
-			streamRandomizer.add_stream(APPEND, Helpers.load_mp3(soundtrack_paths[i]))
-		game_player.set_stream(streamRandomizer)
+		# add music tracks.
+		menu_player.set_stream(make_randomizer_from_path(MENU_MUSIC_DIR))
+		game_player.set_stream(make_randomizer_from_path(GAME_MUSIC_DIR))
 		# mark as started.
 		is_setup = true
 
