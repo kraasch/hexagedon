@@ -15,6 +15,7 @@ func _ready():
 	set_volume(MASTER_BUS, Globals.MASTER_VOLUME)
 	set_volume(MUSIC_BUS,  Globals.MASTER_VOLUME)
 	set_volume(SFX_BUS,    Globals.MASTER_VOLUME)
+	toggle_mute_master()
 
 func is_muted(bus_name : String):
 	var bus_index : int = AudioServer.get_bus_index(bus_name)
