@@ -1,5 +1,33 @@
 extends Node3D
 
+var   DIM : float   = 2.0
+var   CP  : Vector3 = Vector3(DIM, 0, DIM) # center point. TODO: change this depending on map dimensions.
+
+# Look at the grid from different perspectives, with O = origin of array at (0,0).
+#    .y
+#   /
+#  +-------------------> x
+#  |        N
+#  |   [O][ ][ ][ ]
+#  |    [ ][ ][ ]
+#  | W [ ][ CP ][ ] E
+#  |    [ ][ ][ ]
+#  |   [ ][ ][ ][ ]
+#  |        S
+#  v
+#  z
+const D   : float   =  0.0001                                       # add a little delta for 3D perspective.
+const HO  : float   =  5.0                                        # height offset (over the ground).
+var   N   : Vector3 = Vector3(CP.x * 1.0,     HO, CP.z * 0.0)     # perspective from north.
+var   S   : Vector3 = Vector3(CP.x * 1.0,     HO, CP.z * 2.0)     # perspective from south.
+var   E   : Vector3 = Vector3(CP.x * 2.0,     HO, CP.z * 1.0)     # perspective from east.
+var   W   : Vector3 = Vector3(CP.x * 0.0,     HO, CP.z * 1.0)     # perspective from west.
+var   T   : Vector3 = Vector3(CP.x * 1.0 + D, HO, CP.z * 1.0 + D) # perspective from top.
+var   PERSPECTIVES       : Array = [ N, E, S, W ]
+var   PERSPECTIVES_NAMES : Array = [ 'N', 'E', 'S', 'W' ]
+
+var current_perspctive_index : int = 0
+
 func _ready():
 	# for debugging. # TODO: remove later.
 	%BallCenter.position = CP
@@ -12,8 +40,8 @@ func _ready():
 	%NextView.pressed.connect(self.next_perspective)
 	%FreelookView.pressed.connect(%FreeCam.free_cam)
 	%EndButton.pressed.connect(self.exit_button_pressed)
-	# setup intial perspective
-	apply_perspective(0)
+	# initialize first perspective.
+	reset_perspective()
 
 func _input(event):
 	if event.is_action_pressed("my_cycle_next"):
@@ -38,34 +66,6 @@ func previous_perspective():
 
 func reset_perspective():
 	apply_perspective(0)
-
-# Look at the grid from different perspectives, with O = origin of array at (0,0).
-#    .y
-#   /
-#  +-------------------> x
-#  |        N
-#  |   [O][ ][ ][ ]
-#  |    [ ][ ][ ]
-#  | W [ ][ CP ][ ] E
-#  |    [ ][ ][ ]
-#  |   [ ][ ][ ][ ]
-#  |        S
-#  v
-#  z
-
-var   DIM : float   = 2.0
-var   CP  : Vector3 = Vector3(DIM, 0, DIM) # center point. TODO: change this depending on map dimensions.
-
-const HO  : float   =  10.0                                # height offset (over the ground).
-var   N   : Vector3 = Vector3(CP.x * 1.0, HO, CP.z * 0.0) # perspective from north.
-var   S   : Vector3 = Vector3(CP.x * 1.0, HO, CP.z * 2.0) # perspective from south.
-var   E   : Vector3 = Vector3(CP.x * 2.0, HO, CP.z * 1.0) # perspective from east.
-var   W   : Vector3 = Vector3(CP.x * 0.0, HO, CP.z * 1.0) # perspective from west.
-var   T   : Vector3 = Vector3(CP.x * 1.0, HO, CP.z * 1.0) # perspective from top.
-var   PERSPECTIVES       : Array = [ N, E, S, W ]
-var   PERSPECTIVES_NAMES : Array = [ 'N', 'E', 'S', 'W' ]
-
-var current_perspctive_index : int = 0
 
 # NOTE: if choosing top-down perspective then the current_perspctive_index is 
 #       out of sync with the PERSPECTIVES array.

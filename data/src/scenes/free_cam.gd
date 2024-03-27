@@ -60,9 +60,9 @@ func update(location : Vector3, target : Vector3):
 	# update last_look_angles to match the new orientation.
 	update_look_angles()
 
+# TODO: implement properly.
 func update_look_angles():
-	pass
-#	look_angles = Vector2(1.0, 1.0) # TODO: implement.
+	look_angles = Vector2(get_rotation().y, get_rotation().x)
 
 func reset_look_angles():
 	look_angles = last_look_angles
