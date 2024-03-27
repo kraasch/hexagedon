@@ -1,8 +1,5 @@
 extends Node
 
-# TODO: set default audio volume.
-# TODO: allow user to set audio volume.
-# TODO: allow user to mute songs.
 # TODO: manage fade in and fade out.
 
 var   is_setup           : bool              = false
