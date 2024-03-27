@@ -10,14 +10,15 @@ Current:
  - [ ] basic: add game object.
  - [ ] basic: click on second field group executes attack.
  - [ ] basic: implement basic AI behavior.
+ - [ ] basic: implement in-game settings menu.
+ - [ ] basic: implement session review screen.
+ - [ ] basic: implement about screen.
 
 Next:
 
- - [ ] basic: do basic sound design.
- - [ ] basic: create basic soundtrack.
- - [ ] advanced: do basic UI design.
  - [ ] advanced: implement basic map generation.
  - [ ] advanced: draw borders around field groups (ie good looking field group borders).
+ - [ ] advanced: implement good UI design.
  - [ ] advanced: implement good map generation.
  - [ ] advanced: implement good splash screen shader (eg tron themed).
  - [ ] advanced: implement good in-game shaders (eg tron themed).
@@ -27,6 +28,7 @@ Next:
 
 Later:
 
+ - [ ] basic: remove all in-code TODOs, tasks and notes.
  - [ ] polish: UI design.
  - [ ] polish: all in-game shaders.
  - [ ] polish: intro and outro shaders.
@@ -34,7 +36,7 @@ Later:
  - [ ] polish: sound design.
  - [ ] polish: game AI.
  - [ ] polish: map generation.
- - [ ] polish: remove all in-code TODOs, tasks and notes.
+ - [ ] polish: make settings persistent over multiple game starts.
  - [ ] maybe: implement multi-player offline.
  - [ ] maybe: implement multi-player online.
  - [ ] maybe: implement more AI behavior.
@@ -42,6 +44,8 @@ Later:
 
 Done:
 
+ - [X] basic: do basic sound design.
+ - [X] basic: create basic soundtrack.
  - [X] basic: implement free camera movement.
  - [X] basic: implement end-of-game screen.
  - [X] basic: implement splash screen.
