@@ -41,6 +41,7 @@ func setup():
 	if not is_setup and root != null:
 		# set the bus for each player.
 		menu_player.bus = BUS_NAME
+		game_player.bus = BUS_NAME
 		# setup players.
 		menu_player.autoplay = false
 		game_player.autoplay = false

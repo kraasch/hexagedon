@@ -14,4 +14,5 @@ var GRID_SIZE          : int   = 4
 var CUBE_SIZE          : float = 0.45
 
 # Other values.
-const INITIAL_VOLUME   : float = 0.1
+const MIN_MUTE_VOLUME  : float = 0.1
+const INITIAL_VOLUME   : float = 0.2
