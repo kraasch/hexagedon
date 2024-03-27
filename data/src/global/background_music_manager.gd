@@ -12,11 +12,10 @@ var   game_player        : AudioStreamPlayer = AudioStreamPlayer.new()
 var   last_active_player : AudioStreamPlayer = null
 var   BUS_NAME           : String            = AudioManager.MUSIC_BUS
 
-
-# load all songs from dedicated directory.
+# TODO: load all songs from dedicated directory.
 const main_track_path    : String            = "res://data/assets/soundtrack/00_main.mp3"
 
-# load all songs from dedicated directory.
+# TODO: load all songs from dedicated directory.
 const soundtrack_paths   : Array             = [
 	"res://data/assets/soundtrack/01_anttis-instrumentals+happy-thingies.mp3",
 	"res://data/assets/soundtrack/02_anttis-instrumentals+hrdelli.mp3",
@@ -25,7 +24,6 @@ const soundtrack_paths   : Array             = [
 
 func resume_playing():
 	if last_active_player != null:
-		pass
 		last_active_player.play()
 
 func init_manager(_root : Node):
@@ -40,6 +38,9 @@ func setup():
 		game_player.autoplay = false
 		root.add_child(menu_player)
 		root.add_child(game_player)
+		# infinitely loop.
+		menu_player.finished.connect(resume_playing)
+		game_player.finished.connect(resume_playing)
 		# add main menu track.
 		var mp3 : AudioStreamMP3 = Helpers.load_mp3(main_track_path)
 		menu_player.set_stream(mp3)
@@ -53,11 +54,13 @@ func setup():
 		is_setup = true
 
 func transition_to_game_music():
+	last_active_player = game_player
 	setup()
 	menu_player.stop()
 	game_player.play()
 
 func transition_to_menu_music():
+	last_active_player = menu_player
 	setup()
 	game_player.stop()
 	menu_player.play()
