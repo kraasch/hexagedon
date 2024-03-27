@@ -1,12 +1,19 @@
 extends Node3D
 
 func _ready():
+	# for debugging. # TODO: remove later.
+	%BallCenter.position = CP
+	%BallZ.position = Vector3(0,0,5)
+	%BallX.position = Vector3(5,0,0)
+	# setup ui.
 	%SettingsButton.pressed.connect(self.settings_button_pressed)
 	%PreviousView.pressed.connect(self.previous_perspective)
 	%ResetView.pressed.connect(self.reset_perspective)
 	%NextView.pressed.connect(self.next_perspective)
 	%FreelookView.pressed.connect(%FreeCam.free_cam)
 	%EndButton.pressed.connect(self.exit_button_pressed)
+	# setup intial perspective
+	apply_perspective(0)
 
 func _input(event):
 	if event.is_action_pressed("my_cycle_next"):
@@ -32,30 +39,45 @@ func previous_perspective():
 func reset_perspective():
 	apply_perspective(0)
 
-const PERSPECTIVES : Array = [
-	[ Vector3(4, 4, 11), Vector3(-44.8,   0, 0) ],
-	[ Vector3(4, 4, -2), Vector3(-44.8, 210.5, 0) ],
-	[ Vector3(4, 6, 4), Vector3(-90, 90, 180) ],
-]
+# Look at the grid from different perspectives, with O = origin of array at (0,0).
+#    .y
+#   /
+#  +-------------------> x
+#  |        N
+#  |   [O][ ][ ][ ]
+#  |    [ ][ ][ ]
+#  | W [ ][ CP ][ ] E
+#  |    [ ][ ][ ]
+#  |   [ ][ ][ ][ ]
+#  |        S
+#  v
+#  z
+
+var   DIM : float   = 2.0
+var   CP  : Vector3 = Vector3(DIM, 0, DIM) # center point. TODO: change this depending on map dimensions.
+
+const HO  : float   =  10.0                                # height offset (over the ground).
+var   N   : Vector3 = Vector3(CP.x * 1.0, HO, CP.z * 0.0) # perspective from north.
+var   S   : Vector3 = Vector3(CP.x * 1.0, HO, CP.z * 2.0) # perspective from south.
+var   E   : Vector3 = Vector3(CP.x * 2.0, HO, CP.z * 1.0) # perspective from east.
+var   W   : Vector3 = Vector3(CP.x * 0.0, HO, CP.z * 1.0) # perspective from west.
+var   T   : Vector3 = Vector3(CP.x * 1.0, HO, CP.z * 1.0) # perspective from top.
+var   PERSPECTIVES       : Array = [ N, E, S, W ]
+var   PERSPECTIVES_NAMES : Array = [ 'N', 'E', 'S', 'W' ]
 
 var current_perspctive_index : int = 0
-var perspctives_max : int = len(PERSPECTIVES)
 
+# NOTE: if choosing top-down perspective then the current_perspctive_index is 
+#       out of sync with the PERSPECTIVES array.
 func apply_perspective(step : int):
-	if step == 0:
-		current_perspctive_index = 0
-	var new_index : int = (current_perspctive_index + step) % perspctives_max
-	var new_perspective = PERSPECTIVES[new_index]
-	var location = new_perspective[0]
-	var orientation = new_perspective[1]
-	# set values.
-	%FreeCam.position.x = location.x
-	%FreeCam.position.y = location.y
-	%FreeCam.position.z = location.z
-	%FreeCam.rotation.x = orientation.x
-	%FreeCam.rotation.y = orientation.y
-	%FreeCam.rotation.z = orientation.z
+	var perspctives_max : int = len(PERSPECTIVES)
+  # default case (step == 0) means to switch to top down.
+	var new_index : int = 0
+	var location : Vector3 = T
+	if step != 0:
+		# if index is -1 or 1 switch to next perspective.
+		new_index = (current_perspctive_index + step) % perspctives_max
+		location = PERSPECTIVES[new_index]
+	%FreeCam.update(location, CP)
 	# increment index.
 	current_perspctive_index = new_index
-	# TODO: update %FreeCam.last_look_angles 
-	# to match the new orientation.

@@ -42,7 +42,8 @@ func setup() -> void:
 			var sfx_player : AudioStreamPlayer = AudioStreamPlayer.new()
 			sfx_player.bus = BUS_NAME
 			sfx_player.autoplay = false
-			root.add_child(sfx_player)
+			if root != null:
+				root.add_child(sfx_player)
 			var wav : AudioStreamWAV = load_wav(get_effect_path(effect_index))
 			sfx_player.set_stream(wav)
 			SFX_PLAYERS[effect_name] = sfx_player

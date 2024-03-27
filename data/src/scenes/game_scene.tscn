@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jctoum2s83s5"]
+[gd_scene load_steps=22 format=3 uid="uid://jctoum2s83s5"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_24fly"]
 [ext_resource type="Script" path="res://data/src/scenes/game_scene.gd" id="1_pk3lm"]
@@ -20,6 +20,30 @@ sky_material = SubResource("ProceduralSkyMaterial_u5scc")
 background_mode = 2
 sky = SubResource("Sky_asbit")
 volumetric_fog_albedo = Color(0.317647, 0.32549, 0.858824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mmk1d"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_q45y0"]
+material = SubResource("StandardMaterial3D_mmk1d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0buuq"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lrckt"]
+material = SubResource("StandardMaterial3D_0buuq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uciur"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kli1f"]
+material = SubResource("StandardMaterial3D_uciur")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6mmue"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8h7f6"]
+material = SubResource("StandardMaterial3D_6mmue")
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_pk3lm")
@@ -91,3 +115,29 @@ omni_range = 20.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_0sc42")
+
+[node name="Debug" type="Node" parent="."]
+
+[node name="BallCenter" type="MeshInstance3D" parent="Debug"]
+unique_name_in_owner = true
+visible = false
+mesh = SubResource("SphereMesh_q45y0")
+skeleton = NodePath("../..")
+
+[node name="BallZ" type="MeshInstance3D" parent="Debug"]
+unique_name_in_owner = true
+visible = false
+mesh = SubResource("SphereMesh_lrckt")
+skeleton = NodePath("../..")
+
+[node name="BallX" type="MeshInstance3D" parent="Debug"]
+unique_name_in_owner = true
+visible = false
+mesh = SubResource("SphereMesh_kli1f")
+skeleton = NodePath("../..")
+
+[node name="Ball" type="MeshInstance3D" parent="Debug"]
+unique_name_in_owner = true
+visible = false
+mesh = SubResource("SphereMesh_8h7f6")
+skeleton = NodePath("../..")

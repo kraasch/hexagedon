@@ -6,7 +6,7 @@ var is_locked         : bool    = false
 var is_boost          : bool    = false
 var acceleration      : float   = 30
 var move_speed        : float   = 8
-var mouse_speed       : float   = 300
+var mouse_speed       : float   = 300 # TODO: make this a global setting.
 var move_boost_factor : float   = 2.0
 var look_angles       : Vector2 = Vector2.ZERO
 var last_look_angles  : Vector2 = Vector2.ZERO
@@ -54,20 +54,30 @@ func toggle_cam():
 	else:
 		lock_cam()
 
-func reset_mouse_position():
+func update(location : Vector3, target : Vector3):
+	self.position = location
+	look_at(target)
+	# update last_look_angles to match the new orientation.
+	update_look_angles()
+
+func update_look_angles():
+	pass
+#	look_angles = Vector2(1.0, 1.0) # TODO: implement.
+
+func reset_look_angles():
 	look_angles = last_look_angles
 
-func capture_mouse_position():
+func capture_look_angles():
 	last_look_angles = look_angles
 
 func lock_cam():
-	capture_mouse_position()
+	capture_look_angles()
 	is_locked = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 # TODO: in the web version, get the mouse JavaScript mouse pointer back.
 func free_cam():
-	reset_mouse_position()
+	reset_look_angles()
 	is_locked = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
