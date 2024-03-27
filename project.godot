@@ -19,6 +19,7 @@ config/icon="res://data/assets/icons/dice.png"
 
 Globals="*res://data/src/global/globals.gd"
 Helpers="*res://data/src/global/helpers.gd"
+AudioManager="*res://data/src/global/audio_manager.gd"
 ColorGenerator="*res://data/src/global/color_generator.gd"
 MapGenerator="*res://data/src/global/map_generator.gd"
 GroupManager="*res://data/src/global/group_manager.gd"

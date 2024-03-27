@@ -5,31 +5,35 @@ extends Node
 # TODO: allow user to mute songs.
 # TODO: manage fade in and fade out.
 
-var root : Node = null
-const main_track_path : String = "res://data/assets/soundtrack/00_main.mp3"
-const soundtrack_paths : Array = [
+var   is_setup           : bool              = false
+var   root               : Node              = null
+var   menu_player        : AudioStreamPlayer = AudioStreamPlayer.new()
+var   game_player        : AudioStreamPlayer = AudioStreamPlayer.new()
+var   last_active_player : AudioStreamPlayer = null
+const BUS_NAME           : String            = AudioManager.MUSIC_BUS
+
+
+# load all songs from dedicated directory.
+const main_track_path    : String            = "res://data/assets/soundtrack/00_main.mp3"
+
+# load all songs from dedicated directory.
+const soundtrack_paths   : Array             = [
 	"res://data/assets/soundtrack/01_anttis-instrumentals+happy-thingies.mp3",
 	"res://data/assets/soundtrack/02_anttis-instrumentals+hrdelli.mp3",
 	"res://data/assets/soundtrack/03_anttis-instrumentals+hysteria-in-the-jungle.mp3"
 ]
-var menu_player : AudioStreamPlayer = AudioStreamPlayer.new()
-var game_player : AudioStreamPlayer = AudioStreamPlayer.new()
-var active_player : AudioStreamPlayer = null
-var is_setup : bool = false
 
-func update_mute_state():
-	if Globals.IS_AUDIO_MUTE:
-		menu_player.stop()
-		game_player.stop()
-	else:
-		if active_player != null:
-			active_player.play()
+func resume_playing():
+	if last_active_player != null:
+		last_active_player.play()
 
 func init_manager(_root : Node):
 	root = _root
 
 func setup():
 	if not is_setup and root != null:
+		# set the bus for each player.
+		menu_player.bus = BUS_NAME
 		# setup players.
 		menu_player.autoplay = false
 		game_player.autoplay = false
@@ -49,14 +53,10 @@ func setup():
 
 func transition_to_game_music():
 	setup()
-	active_player = game_player
-	if not Globals.IS_AUDIO_MUTE:
-		menu_player.stop()
-		game_player.play()
+	menu_player.stop()
+	game_player.play()
 
 func transition_to_menu_music():
 	setup()
-	active_player = menu_player
-	if not Globals.IS_AUDIO_MUTE:
-		game_player.stop()
-		menu_player.play()
+	game_player.stop()
+	menu_player.play()

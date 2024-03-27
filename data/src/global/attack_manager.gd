@@ -26,12 +26,14 @@ func can_attack(from_tile : int, to_tile : int):
 	return are_neighbors and are_different and has_power
 
 func execute_attack(from_tile : int, to_tile : int):
+	print('attack now!')
 	return Vector2(0.0, 1.0)
 
 func is_attacker_wins(attack_result : Vector2):
 	return attack_result[0] > attack_result[1]
 
 func attack_if_possible(from_tile : int, to_tile : int):
+	print('attack if possible')
 	if can_attack(from_tile, to_tile):
 		var attack_result : Vector2 = execute_attack(from_tile, to_tile)
 		print('Tile ' + str(from_tile) + ' attacks tile ' + str(to_tile))

@@ -13,11 +13,9 @@ func _ready():
 	SceneManager.set_scene(preload("res://data/src/ui/splash_screen.tscn"))
 
 func sound_button_pressed():
-	Globals.toggle_mute()
-	BackgroundMusicManager.update_mute_state()
-	SfxQueueManager.update_mute_state()
+	AudioManager.toggle_mute_master()
 	# update icon.
-	if Globals.IS_AUDIO_MUTE:
+	if AudioManager.is_muted_master():
 		%SoundButton.icon = preload("res://data/assets/icons/muted.png")
 	else:
 		%SoundButton.icon = preload("res://data/assets/icons/speaker.png")
