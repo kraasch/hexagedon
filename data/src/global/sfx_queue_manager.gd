@@ -5,7 +5,7 @@ extends Node
 var sfx_player : AudioStreamPlayer = AudioStreamPlayer.new()
 var root       : Node              = null
 var is_setup   : bool              = false
-const BUS_NAME : String            = AudioManager.SFX_BUS
+var BUS_NAME   : String            = AudioManager.SFX_BUS
 
 # TODO: implement.
 var EFFECT_NAMES : Array = [

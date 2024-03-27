@@ -14,4 +14,4 @@ var GRID_SIZE          : int   = 4
 var CUBE_SIZE          : float = 0.45
 
 # Other values.
-const AUDIO_VOLUME     : float = 0.20
+const MASTER_VOLUME     : float = 0.1

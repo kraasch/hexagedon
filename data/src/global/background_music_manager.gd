@@ -10,7 +10,7 @@ var   root               : Node              = null
 var   menu_player        : AudioStreamPlayer = AudioStreamPlayer.new()
 var   game_player        : AudioStreamPlayer = AudioStreamPlayer.new()
 var   last_active_player : AudioStreamPlayer = null
-const BUS_NAME           : String            = AudioManager.MUSIC_BUS
+var   BUS_NAME           : String            = AudioManager.MUSIC_BUS
 
 
 # load all songs from dedicated directory.
