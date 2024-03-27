@@ -41,6 +41,7 @@ Later:
  - [ ] maybe: implement multi-player online.
  - [ ] maybe: implement more AI behavior.
  - [ ] maybe: implement in-game menu.
+ - [ ] maybe: export game for mobile.
 
 Done:
 
