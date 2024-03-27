@@ -31,7 +31,6 @@ func make_randomizer_from_path(path : String) -> AudioStreamRandomizer:
 			if not dir.current_is_dir():
 				if file_name.to_lower().ends_with(MP3_FILE_ENDING):
 					var file_path : String = path + '/' + file_name
-					print(file_path)
 					streamRandomizer.add_stream(APPEND, Helpers.load_mp3(file_path))
 			file_name = dir.get_next()
 	else:
