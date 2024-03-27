@@ -29,6 +29,18 @@ func resume_playing():
 func init_manager(_root : Node):
 	root = _root
 
+func load_audio_dir():
+	pass
+#	var sounds = []
+#	var sound_directory = Directory.new()
+#	sound_directory .open("res://Sounds")
+#	sound_directory.list_dir_begin(true)
+#
+#	var sound = sound_directory.get_next()
+#	while sound != "":
+#	    sounds.append(load("res://Sounds/" + sound))
+#	    sound = sound_directory.get_next()
+
 func setup():
 	if not is_setup and root != null:
 		# set the bus for each player.
