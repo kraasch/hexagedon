@@ -90,4 +90,4 @@ text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="gui_input" from="CenterContainer/AnimationPlayer/Label" to="." method="_on_label_gui_input"]
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
