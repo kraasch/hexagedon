@@ -22,7 +22,6 @@ func is_muted(bus_name : String) -> bool:
 	return AudioServer.is_bus_mute(bus_index)
 
 func set_mute_bus(bus_name : String, do_mute : bool = true) -> void:
-	print('mute volume of ' + bus_name + ' to :' + str(do_mute))
 	var bus_index : int = AudioServer.get_bus_index(bus_name)
 	AudioServer.set_bus_mute(bus_index, do_mute)
 	# check if master was muted.
@@ -38,7 +37,6 @@ func get_volume(bus_name : String) -> float:
 	return volume
 
 func set_volume(bus_name : String, linear_volume : float) -> void:
-	print('set volume of ' + bus_name)
 	var bus_index : int = AudioServer.get_bus_index(bus_name)
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(linear_volume))
 	if linear_volume < Globals.MIN_MUTE_VOLUME:
