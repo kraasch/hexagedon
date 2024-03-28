@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://jctoum2s83s5"]
+[gd_scene load_steps=24 format=3 uid="uid://jctoum2s83s5"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_24fly"]
 [ext_resource type="Script" path="res://data/src/scenes/game_scene.gd" id="1_pk3lm"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://csdkjvnp0edem" path="res://data/assets/icons/arrow_right.png" id="6_pbh67"]
 [ext_resource type="Texture2D" uid="uid://cj2w4t4ja5r5p" path="res://data/assets/icons/freelook.png" id="9_x6pr2"]
 [ext_resource type="PackedScene" uid="uid://2xoja2np73kf" path="res://data/src/ui/volume_box.tscn" id="10_h47cl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kh8yj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u5scc"]
 
@@ -133,6 +135,11 @@ layout_mode = 2
 [node name="MusicBar" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer/VBoxContainer" instance=ExtResource("10_h47cl")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kh8yj")
 
 [node name="CenterContainer" type="CenterContainer" parent="UserInterface/OverlayMenu/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
