@@ -8,6 +8,7 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	build_grid()
 
+@warning_ignore("integer_division")
 func build_grid():
 	clean_grid()
 	var tile_size : float = Globals.EDGE_SIZE
