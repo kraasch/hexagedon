@@ -78,14 +78,16 @@ libraries = {
 [node name="Label" type="Label" parent="CenterContainer/AnimationPlayer"]
 custom_minimum_size = Vector2(800, 200)
 offset_left = 194.0
-offset_top = 468.0
+offset_top = 188.0
 offset_right = 994.0
-offset_bottom = 668.0
+offset_bottom = 388.0
 rotation = 0.010276
 scale = Vector2(1.02944, 1.02944)
 pivot_offset = Vector2(400, 60)
 theme_override_colors/font_color = Color(0.235294, 0.666667, 1, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 120
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="gui_input" from="CenterContainer/AnimationPlayer/Label" to="." method="_on_label_gui_input"]
