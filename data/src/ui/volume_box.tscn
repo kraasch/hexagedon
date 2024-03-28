@@ -1,21 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://2xoja2np73kf"]
+[gd_scene load_steps=8 format=3 uid="uid://2xoja2np73kf"]
 
 [ext_resource type="Script" path="res://data/src/ui/volume_box.gd" id="1_iefpw"]
 
+[sub_resource type="ImageTexture" id="ImageTexture_1p6gb"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_eqohf"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_n78y2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_3mkdd"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wgkuo"]
+color = Color(0, 0.215686, 0.25098, 1)
+thickness = 20
+
+[sub_resource type="Theme" id="Theme_jb0ll"]
+HSlider/icons/grabber = SubResource("ImageTexture_1p6gb")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_eqohf")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_n78y2")
+HSlider/icons/tick = SubResource("ImageTexture_3mkdd")
+HSlider/styles/slider = SubResource("StyleBoxLine_wgkuo")
+
 [node name="VolumeBox" type="HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(300, 0)
+scale = Vector2(1.01818, 1)
 script = ExtResource("1_iefpw")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Volume"
 
 [node name="Slider" type="HSlider" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_jb0ll")
 max_value = 1.0
 step = 0.05
+value = 0.5
