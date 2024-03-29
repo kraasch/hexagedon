@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://jctoum2s83s5"]
+[gd_scene load_steps=25 format=3 uid="uid://jctoum2s83s5"]
 
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="1_24fly"]
 [ext_resource type="Script" path="res://data/src/scenes/game_scene.gd" id="1_pk3lm"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://csdkjvnp0edem" path="res://data/assets/icons/arrow_right.png" id="6_pbh67"]
 [ext_resource type="Texture2D" uid="uid://cj2w4t4ja5r5p" path="res://data/assets/icons/freelook.png" id="9_x6pr2"]
 [ext_resource type="PackedScene" uid="uid://2xoja2np73kf" path="res://data/src/ui/volume_box.tscn" id="10_h47cl"]
+[ext_resource type="Script" path="res://data/src/scenes/player_list.gd" id="11_6dhu0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kh8yj"]
 
@@ -50,6 +51,9 @@ material = SubResource("StandardMaterial3D_6mmue")
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_pk3lm")
+
+[node name="SceneBuffer" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="MainScene" type="Node" parent="."]
 unique_name_in_owner = true
@@ -148,6 +152,37 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="PlayerList" type="CanvasLayer" parent="UserInterface"]
+unique_name_in_owner = true
+script = ExtResource("11_6dhu0")
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface/PlayerList"]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.529412, 0, 0.278431, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/PlayerList/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TempLabel" type="Label" parent="UserInterface/PlayerList/ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="World" type="Node" parent="."]
 
 [node name="FreeCam" type="Camera3D" parent="World"]
@@ -173,18 +208,21 @@ environment = SubResource("Environment_0sc42")
 
 [node name="BallCenter" type="MeshInstance3D" parent="DEBUG_TODO"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 visible = false
 mesh = SubResource("SphereMesh_q45y0")
 skeleton = NodePath("../..")
 
 [node name="BallZ" type="MeshInstance3D" parent="DEBUG_TODO"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 visible = false
 mesh = SubResource("SphereMesh_lrckt")
 skeleton = NodePath("../..")
 
 [node name="BallX" type="MeshInstance3D" parent="DEBUG_TODO"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 visible = false
 mesh = SubResource("SphereMesh_kli1f")
 skeleton = NodePath("../..")
