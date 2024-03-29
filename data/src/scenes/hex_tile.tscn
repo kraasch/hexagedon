@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://d17mrgvfw7dtf"]
+[gd_scene load_steps=3 format=3 uid="uid://d17mrgvfw7dtf"]
 
-[ext_resource type="PackedScene" uid="uid://ch08aaedtsb03" path="res://data/assets/main/hex.glb" id="1_qgc7a"]
 [ext_resource type="Script" path="res://data/src/scenes/hex_tile.gd" id="1_uvljd"]
 
 [sub_resource type="Material" id="Material_sr2s0"]
@@ -10,9 +9,6 @@ resource_name = ""
 [node name="HexTile" type="Node3D"]
 script = ExtResource("1_uvljd")
 mymaterial = SubResource("Material_sr2s0")
-
-[node name="hex" parent="." instance=ExtResource("1_qgc7a")]
-visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
 
