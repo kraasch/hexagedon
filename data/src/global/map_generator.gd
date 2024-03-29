@@ -31,7 +31,6 @@ var groups_num  : int = 0
 
 @warning_ignore("unused_parameter")
 func create_new_map(grid_size):
-	groups_num = 4
 	group_grid = [
 		[1, 0, 3, 3],
 		[1, 1, 0, 3],
@@ -44,3 +43,14 @@ func create_new_map(grid_size):
 		3 : [3, 3, [3, 0]],
 		4 : [4, 4, [3, 3]],
 	}
+	groups_num = len(group_data)
+
+func number_of_players() -> int:
+	var players : Dictionary = {}
+	var value : int = 0
+	for i in range(len(group_data)):
+		var region_data : Array = group_data[i + 1]
+		var owning_player : int = region_data[0]
+		players[owning_player] = true
+	return len(players)
+

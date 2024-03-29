@@ -15,7 +15,7 @@ func build_grid():
 	var grid_size : int   = Globals.GRID_SIZE
 	MapGenerator.create_new_map(grid_size)
 	GroupManager.create_new_field_groups(MapGenerator.groups_num)
-	var group_data = MapGenerator.group_data
+	var group_data = MapGenerator.group_data	
 	var group_grid = MapGenerator.group_grid
 
 	# create neighbor lists for each field group.
