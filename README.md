@@ -69,9 +69,10 @@ To do:
 Other remarkable resources:
 
  * A great interactive page on hexagons, more than I would ever want to read about hexagons, [Hexagonal Grids by Red Blob Games](https://www.redblobgames.com/grids/hexagons/).
- * A sound effect tool: [Chiptone by SFBGames](https://sfbgames.itch.io/chiptone)
- * Another SFXR web implementation in JavaScript: [JSFXR](https://sfxr.me/)
- * Another SFXR web implementation in Godot: [Godot SFXR](https://github.com/tomeyro/godot-sfxr)
+ * A sound effect tool: [Chiptone by SFBGames](https://sfbgames.itch.io/chiptone).
+ * Another SFXR web implementation in JavaScript: [JSFXR](https://sfxr.me/).
+ * Another SFXR web implementation in Godot: [Godot SFXR](https://github.com/tomeyro/godot-sfxr).
+ * How to wrap a sphere with hexagons: [short article by gamelogic.co.za](http://gamelogic.co.za/grids/features/examples-that-ship-with-grids/tiling-a-sphere-with-hexes/).
 
 Documentation:
 
@@ -81,9 +82,9 @@ Documentation:
 
 Other:
 
- - [X] [How to make 3D Hexagonal maps in Godot NAD LABS](https://www.youtube.com/watch?v=mTvaSnzGRyw)
+ - [X] [How to make 3D Hexagonal maps in Godot NAD LABS](https://www.youtube.com/watch?v=mTvaSnzGRyw).
  - [X] [How to Make a 3D Hexagon Grid in Godot (Tutorial) by jmbiv](https://www.youtube.com/watch?v=3Lt2TfP8WEw).
   - [X] https://github.com/josephmbustamante/Godot-3D-Hex-Grid-Tutorial/blob/master/HexGrid.gd
  - [X] [Basics of MESH GENERATION in Godot 4 0 by Chevifier](https://www.youtube.com/watch?v=8wy_dH9RLI4).
- - [X] [Free Camera Tutorial Godot by Apocalyptic Phospho](https://www.youtube.com/watch?v=QitqbSHEYas)
+ - [X] [Free Camera Tutorial Godot by Apocalyptic Phospho](https://www.youtube.com/watch?v=QitqbSHEYas).
 
