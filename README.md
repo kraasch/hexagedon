@@ -80,6 +80,7 @@ Documentation:
  - [X] https://docs.godotengine.org/en/stable/tutorials/3d/procedural_geometry/arraymesh.html
  - [X] https://docs.godotengine.org/en/stable/tutorials/shaders/your_first_shader/your_first_3d_shader.html#uniforms
  - [X] https://docs.godotengine.org/en/stable/tutorials/rendering/viewports.html
+ - [X] https://docs.godotengine.org/en/stable/classes/class_subviewport.html#class-subviewport
 
 Other:
 
