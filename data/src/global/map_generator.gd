@@ -47,10 +47,22 @@ func create_new_map(grid_size):
 
 func number_of_players() -> int:
 	var players : Dictionary = {}
-	var value : int = 0
 	for i in range(len(group_data)):
 		var region_data : Array = group_data[i + 1]
 		var owning_player : int = region_data[0]
 		players[owning_player] = true
 	return len(players)
+
+func player_power_list() -> Dictionary:
+	var powers : Dictionary = {}
+	var value : int = 0
+	for i in range(len(group_data)):
+		var region_data : Array = group_data[i + 1]
+		var owning_player : int = region_data[0]
+		var region_strength : int = region_data[1]
+		if powers.has(owning_player):
+			powers[owning_player] += region_strength
+		else:
+			powers[owning_player] = region_strength
+	return powers
 
