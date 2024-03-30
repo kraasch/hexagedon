@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjp4ghqbonhi8"]
+[gd_scene load_steps=7 format=3 uid="uid://cjp4ghqbonhi8"]
 
 [ext_resource type="Script" path="res://data/src/ui/player_list_icon.gd" id="1_nfe1i"]
 [ext_resource type="Shader" path="res://data/src/shaders/cube_shader.gdshader" id="3_ofjm6"]
@@ -11,6 +11,12 @@ shader_parameter/random = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_q5pjx"]
 material = SubResource("ShaderMaterial_myfmj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2osao"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ycp8"]
+material = SubResource("StandardMaterial3D_2osao")
 
 [node name="PlayerListIcon" type="Node3D"]
 script = ExtResource("1_nfe1i")
@@ -25,3 +31,9 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.862182, 0)
+
+[node name="Mark" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 1.5, -1)
+visible = false
+mesh = SubResource("BoxMesh_2ycp8")
