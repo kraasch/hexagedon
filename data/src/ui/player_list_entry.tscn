@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://qhr6vm2pq5ma"]
+
+[ext_resource type="PackedScene" uid="uid://cjp4ghqbonhi8" path="res://data/src/ui/player_list_icon.tscn" id="1_nv64o"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_skfld"]
+viewport_path = NodePath("UserInterface/PlayerList/SubViewport")
+
+[node name="PlayerListEntry" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_skfld")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(100, 100)
+
+[node name="PlayerListIcon" parent="SubViewport" instance=ExtResource("1_nv64o")]

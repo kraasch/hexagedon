@@ -1,6 +1,6 @@
-extends CanvasLayer
+extends Node
 
-const HEX_TILE     : PackedScene = preload("res://data/src/scenes/field.tscn")
+const ENTRY : PackedScene = preload("res://data/src/ui/player_entry.tscn")
 
 func _ready() -> void:
 	var group_data = MapGenerator.group_data
@@ -10,9 +10,7 @@ func _ready() -> void:
 	var msg : String = ''  
 	for i in range(players_num):
 		var player_num : int = i + 1
-		msg = msg + str(player_num) + ': ' + str(powers[player_num]) + ', '
-	%TempLabel.text = msg
-#	var tile = HEX_TILE.instantiate()
-#	tile.set_data(player_num, 1, 1, false)
-#	%SceneBuffer.add_child(tile)
-#	tile.translate(Vector3(0, 0, 0))
+		var player_power : int = powers[player_num]
+		var entry = ENTRY.instantiate()
+		entry.set_data(player_num, player_power)
+		%PlayerContainer.add_child(entry)
