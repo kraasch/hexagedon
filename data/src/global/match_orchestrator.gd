@@ -13,20 +13,50 @@ var group_data      : Dictionary = {}
 var num_of_players  : int        = -1
 
 const PLAYER_TYPE_LOCAL    : int = 0
-const PLAYER_TYPE_REMOTE   : int = 1
-const PLAYER_TYPE_COMPUTER : int = 2
+const PLAYER_TYPE_COMPUTER : int = 1
+const PLAYER_TYPE_REMOTE   : int = 2 # TODO: implement.
 
 # player id 1-N (one indexed) of active player.
 var active_player_index : int   = -1
 var player_types        : Array = []
 
+# TODO: implement later.
+func load_gameover_screen():
+	print('game is over') # TODO: remove later.
+	pass
+
+func player_has_type_one_of(index : int, types : Array) -> bool:
+	var has_type : bool = false
+	for i in range(len(types)):
+		var type : int = types[i]
+		if player_types[index] == type:
+			has_type = true
+			break
+	return has_type
+
+func handle_local_player() -> void:
+		if not active_player_has_attack():
+			next_active_player()
+		else:
+			pass # NOTE: let active player attack over GUI.
+			# TODO: in future multiplayer start a countdown here, which limits human player time.
+
+# TODO: implement later, use global class ComputerPlayer.
+func handle_computer_player() -> void:
+	pass
+
 # TODO: implement.
 func continue_main_game_loop() -> void:
 	if match_continues():
-		if active_player_has_attack():
+		if player_has_type_one_of(active_player_index, [PLAYER_TYPE_LOCAL]):
+			handle_local_player()
+		if player_has_type_one_of(active_player_index, [PLAYER_TYPE_COMPUTER]):
+			handle_computer_player()
+		else:
 			pass
-#			let_active_player_attack()
-#		next_active_player()
+		# TODO: else case to handle remote player.
+	else:
+		load_gameover_screen()
 
 func match_continues():
 	return num_of_players != 1
@@ -34,13 +64,6 @@ func match_continues():
 # TODO: implement; ask for ComputerPlayers.
 func active_player_has_attack():
 	return MapGenerator.player_has_draw(active_player_index)
-
-# TODO: implement.
-func let_active_player_attack():
-	if player_types[active_player_index] == PLAYER_TYPE_LOCAL:
-		pass # TODO: ask computer for turn.
-	else:
-		pass # TODO: wait for human input.
 
 func next_active_player():
 	# increment active player index.
