@@ -7,7 +7,8 @@ var SFX_PLAYERS : Dictionary        = {}
 
 const EFFECTS_DIR : String = 'res://data/assets/effects/'
 const EFFECTS_ENDING : String = '.wav'
-const EFFECT_NAMES : Array = [ # TODO: read every file into this array from dedicated directory.
+# TODO: read every file into this array from dedicated directory.
+const EFFECT_NAMES : Array = [
 	'button',
 	'draw_lost',
 	'draw_win',
@@ -15,13 +16,15 @@ const EFFECT_NAMES : Array = [ # TODO: read every file into this array from dedi
 	'game_win',
 ]
 const MIN_INDEX    : int = 0
-const MAX_INDEX    : int = 4
+const MAX_INDEX    : int = len(EFFECT_NAMES)
 
-const BUTTON_CLICK : int = MIN_INDEX + 0
-const MOVE_LOST    : int = MIN_INDEX + 1
-const MOVE_WIN     : int = MIN_INDEX + 2
-const GAME_LOST    : int = MIN_INDEX + 3
-const GAME_WIN     : int = MIN_INDEX + 4
+# NOTE: keep in sync with EFFECT_NAMES.
+# TODO: make EFFECT_NAMES into dictionary and single source of truth for indexes.
+const BUTTON_CLICK : int = 0
+const MOVE_LOST    : int = 1
+const MOVE_WIN     : int = 2
+const GAME_LOST    : int = 3
+const GAME_WIN     : int = 4
 
 func get_effect_path(effect_index : int) -> String:
 	return EFFECTS_DIR + EFFECT_NAMES[effect_index] + EFFECTS_ENDING
