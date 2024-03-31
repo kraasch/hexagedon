@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://d4cumauu46f1m"]
 
-[ext_resource type="Script" path="res://data/src/hud/slider_display.gd" id="1_ljx4n"]
+[ext_resource type="Script" path="res://data/src/ui/slider_display.gd" id="1_umxhc"]
 
 [node name="SliderDisplay" type="VBoxContainer"]
-script = ExtResource("1_ljx4n")
+script = ExtResource("1_umxhc")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true

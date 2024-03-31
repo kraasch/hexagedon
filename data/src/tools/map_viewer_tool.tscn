@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://we64qri3wg6a"]
+[gd_scene load_steps=8 format=3 uid="uid://we64qri3wg6a"]
 
 [ext_resource type="Script" path="res://data/src/tools/map_viewer_tool.gd" id="1_s36mu"]
 [ext_resource type="PackedScene" uid="uid://c738or0v7aejx" path="res://data/src/scenes/hex_grid.tscn" id="2_ljosc"]
 [ext_resource type="PackedScene" uid="uid://br2e5np03liyc" path="res://data/src/ui/simple_button.tscn" id="3_1eu0p"]
-[ext_resource type="PackedScene" uid="uid://cse8yjnhn0f4x" path="res://data/src/hud/card_container.tscn" id="3_umrmj"]
 [ext_resource type="Texture2D" uid="uid://2f15un4uj2k3" path="res://data/assets/icons/start.png" id="4_g5lo0"]
-[ext_resource type="PackedScene" uid="uid://d4cumauu46f1m" path="res://data/src/hud/slider_display.tscn" id="4_jbbfi"]
 [ext_resource type="Texture2D" uid="uid://c4pdyudxq706r" path="res://data/assets/icons/update.png" id="5_30b5g"]
+[ext_resource type="PackedScene" uid="uid://d4cumauu46f1m" path="res://data/src/ui/slider_display.tscn" id="6_f3rks"]
 
 [sub_resource type="Environment" id="Environment_kghhm"]
 
@@ -47,47 +46,31 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
 
-[node name="Card5" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
-layout_mode = 2
-
-[node name="PlayButton" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card5" instance=ExtResource("3_1eu0p")]
+[node name="PlayButton" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_1eu0p")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("4_g5lo0")
 
-[node name="Card6" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
-layout_mode = 2
-
-[node name="UpdateButton" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card6" instance=ExtResource("3_1eu0p")]
+[node name="UpdateButton" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_1eu0p")]
 unique_name_in_owner = true
 layout_mode = 2
 icon = ExtResource("5_30b5g")
 
-[node name="Card1" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
-layout_mode = 2
-
-[node name="PartySliderDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card1" instance=ExtResource("4_jbbfi")]
+[node name="PartySliderDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("6_f3rks")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Card2" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
-layout_mode = 2
-
-[node name="GridSizeSliderDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card2" instance=ExtResource("4_jbbfi")]
+[node name="GridSizeSliderDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("6_f3rks")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Card3" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
-layout_mode = 2
-
-[node name="StackHeightSliderDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card3" instance=ExtResource("4_jbbfi")]
+[node name="StackHeightSliderDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("6_f3rks")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Card4" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("3_umrmj")]
-layout_mode = 2
-
-[node name="CubeSizeSliderDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer/Card4" instance=ExtResource("4_jbbfi")]
+[node name="CubeSizeSliderDisplay" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource("6_f3rks")]
 unique_name_in_owner = true
 layout_mode = 2
