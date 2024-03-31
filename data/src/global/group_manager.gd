@@ -50,6 +50,8 @@ func group_was_clicked(group_index : int):
 	group_index_clicked_before = group_index # make new focus the old focus for next time.
 
 # hover.
+# TODO: before first selection only highlight active player (if he is of type LOCAL).
+# TODO: after first selection  only highlight enemy regions (if they are neighbors of a active player region).
 func group_was_selected(group_index : int):
 	if group_index != group_index_clicked_before:
 		set_field_group_highlight(group_index, true, SELECTION_COLOR)
