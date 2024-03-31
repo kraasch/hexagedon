@@ -13,18 +13,26 @@ func build_grid():
 	clean_grid()
 	var tile_size : float = Globals.EDGE_SIZE
 	var grid_size : int   = Globals.GRID_SIZE
-	MapGenerator.create_new_map(grid_size)
-	GroupManager.create_new_field_groups(MapGenerator.groups_num)
-	var group_data = MapGenerator.group_data	
-	var group_grid = MapGenerator.group_grid
 
+	##########################################################
+	# TODO: pull out the globals of the following section.
+	# TODO: pull out MatchOrchestrator.
+	# TODO: let HEX_GRID only manage displaying the data.
+	##########################################################
+	# make new map.
+	MapGenerator.create_new_map(grid_size)
+	# make groups.
+	GroupManager.create_new_field_groups(MapGenerator.groups_num)
+	var group_data = MapGenerator.group_data
+	var group_grid = MapGenerator.group_grid
 	# create neighbor lists for each field group.
 	NeighborManager.create_new_field_neighbors(MapGenerator.groups_num)
 	NeighborManager.add_neighbor_data(group_grid)
-
 	# create a new game.
-	# TODO: pull out MatchOrchestrator and let HEX_GRID only manage displaying the data.
 	MatchOrchestrator.start_new_match()
+	##########################################################
+	# END OF GLOBALS.
+	##########################################################
 
 	# build grid.
 	var size : int = len(group_grid)
