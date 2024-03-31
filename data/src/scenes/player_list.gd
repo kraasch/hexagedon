@@ -6,9 +6,9 @@ var entries : Array = []
 func _ready() -> void:
 
 	# variables.
-	var players_num       : int        = MapGenerator.number_of_players()
-	var powers            : Dictionary = MapGenerator.player_power_list()
-	var active_player_num : int        = MatchOrchestrator.active_player
+	var players_num  : int        = MapGenerator.number_of_players()
+	var powers       : Dictionary = MapGenerator.player_power_list()
+	var active_index : int        = MatchOrchestrator.active_player_index
 
 	# setup player list bar.
 	for i in range(players_num):
@@ -20,7 +20,7 @@ func _ready() -> void:
 		%PlayerContainer.add_child(entry)
 
 	# mark the active player.
-	set_mark(active_player_num)
+	set_mark(active_index)
 
 func set_mark(index : int):
 	if index >= 0 and index < len(entries):

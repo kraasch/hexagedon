@@ -13,17 +13,17 @@ extends Node
 #    - take turns when growing centers, such that all field groups grow almost equally.
 
 # map grid (assigns each hexagon to a group).
-var group_grid  : Array = []
+var group_grid : Array = []
 
 # TODO: give better names to these fields, ie by returning dictionary within dictionary.
 # assigns each hex group to a party.
 # - 0: owning party for hex group.
 # - 1: power of hex group.
 # - 2: array with the x and y coordinates of the hex group's center tile.
-var group_data  : Dictionary = {}
+var group_data : Dictionary = {}
 
 # the number of hex groups.
-var groups_num  : int = 0
+var groups_num : int = 0
 
 # TODO: use in map geneartor.
 #	var max_stack_height : int = Globals.MAX_STACK_HEIGHT
@@ -53,9 +53,9 @@ func number_of_players() -> int:
 		players[owning_player] = true
 	return len(players)
 
+# TODO: buffer this list between turns, and only update after changes to grid happened. (ie detect updates in AttackManager global class).
 func player_power_list() -> Dictionary:
 	var powers : Dictionary = {}
-	var value : int = 0
 	for i in range(len(group_data)):
 		var region_data : Array = group_data[i + 1]
 		var owning_player : int = region_data[0]
@@ -66,3 +66,26 @@ func player_power_list() -> Dictionary:
 			powers[owning_player] = region_strength
 	return powers
 
+# TODO: buffer this list between turns, and only update after changes to grid happened. (ie detect updates in AttackManager global class).
+func player_region_list() -> Dictionary:
+	var regions : Dictionary = {}
+	for i in range(len(group_data)):
+		var region_data : Array = group_data[i + 1]
+		var owning_player : int = region_data[0]
+		if regions.has(owning_player):
+			regions[owning_player] += 1
+		else:
+			regions[owning_player] = 1
+	return regions
+
+func regions_of_player(index : int) -> int:
+	var regions_list : Dictionary = player_region_list()
+	return regions_list[index + 1]
+
+func power_of_player(index : int) -> int:
+	var power_list : Dictionary = player_power_list()
+	return power_list[index + 1]
+
+# a player can make a draw exactly while the player has at least one region with power two.
+func player_has_draw(index : int) -> bool:
+	return power_of_player(index) > regions_of_player(index)
