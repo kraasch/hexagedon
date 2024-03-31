@@ -33,3 +33,6 @@ func add_neighbor_data(map : Array):
 #				var neighbor = neighbor_tiles[neighbor_index]
 #				# add the tile's group index to the neighboring index list.
 #				FIELD_NEIGHBORS[central_group_index].push_back(neighbor)
+
+func group_is_neighbor_of_player(group_index : int, player_index : int) -> bool:
+	return false

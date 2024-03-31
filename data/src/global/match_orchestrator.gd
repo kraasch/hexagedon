@@ -20,6 +20,9 @@ const PLAYER_TYPE_REMOTE   : int = 2 # TODO: implement.
 var active_player_index : int   = -1
 var player_types        : Array = []
 
+func current_player_is_local() -> bool:
+	return player_has_type_one_of(active_player_index, [PLAYER_TYPE_LOCAL])
+
 # TODO: implement later.
 func load_gameover_screen():
 	print('game is over') # TODO: remove later.
@@ -48,7 +51,7 @@ func handle_computer_player() -> void:
 # TODO: implement.
 func continue_main_game_loop() -> void:
 	if match_continues():
-		if player_has_type_one_of(active_player_index, [PLAYER_TYPE_LOCAL]):
+		if current_player_is_local():
 			handle_local_player()
 		if player_has_type_one_of(active_player_index, [PLAYER_TYPE_COMPUTER]):
 			handle_computer_player()

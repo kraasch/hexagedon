@@ -45,6 +45,9 @@ func create_new_map(grid_size):
 	}
 	groups_num = len(group_data)
 
+func group_belongs_to_player(group_index : int, player_index : int) -> bool:
+	return group_data[group_index][0] == player_index + 1
+
 func number_of_players() -> int:
 	var players : Dictionary = {}
 	for i in range(len(group_data)):
