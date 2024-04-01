@@ -63,6 +63,7 @@ func add_neighbor_data(map : Array):
 #  - there is 4 ways to layout a hexagon grid stored in a 2D array.
 #  - independent of the layout every hexagon cell has 6 neighbors, except at the borders.
 #  - the RELATIVE_NEIGHBOR_INDEXES depend on the relative layout style of the hex cells.
+#  - depending on if a cell is in an even or an odd column, the neighboring indexes are different.
 #
 #  Conversion of 2D array to one of four hexagon grid layouts.
 #  - relative layout style
