@@ -14,6 +14,22 @@ var   field_group_id : int   = -1
 var   power_value    : int   = 0
 var   is_center      : bool  = false
 var   callback_clicked = null
+var   stack_buffer   : Array = []
+
+# TODO: implement.
+func update_owner_and_stack():
+	print('UPDATE FIELD')
+	# TODO: redraw all tiles.
+	pass
+	# TODO: redraw cube stack.
+	if is_center:
+		for i in range(len(stack_buffer)):
+			print('.')
+			var cube = stack_buffer[i]
+#			cube.visible = false
+#			cube.queue_free()
+			cube.translate(Vector3(0,0,0))
+		generate_cube_stack()
 
 func set_data(_type_index : int, _power_value : int, _field_group_id : int, _is_center : bool):
 	type_index     = _type_index
@@ -42,7 +58,7 @@ func was_clicked():
 
 func was_selected():
 	GroupManager.group_was_selected(field_group_id)
-	
+
 func was_deselected():
 	GroupManager.group_was_deselected(field_group_id)
 
@@ -54,15 +70,17 @@ func unhighlight_group_color():
 
 @warning_ignore("integer_division")
 func generate_cube_stack():
+	stack_buffer = []
 	var max_stack_height : int = Globals.MAX_STACK_HEIGHT
 	var cube_height : float = Globals.CUBE_SIZE
 	var split_index : int = max_stack_height / 2
 	var half_stack_height : float = cube_height * split_index
 	for i in range(0, power_value):
 		# basic cube setup.
-		var cube = CUBE.instantiate()
+		var cube = CUBE.instantiate() # TODO: add type.
 		cube.mymaterial = ColorGenerator.get_shader(type_index)
 		add_child(cube)
+		stack_buffer.push_back(cube)
 		# calculate height offset.
 		var height_offset : float = cube_height * i
 		# subtract half the stack height for second part of stack.

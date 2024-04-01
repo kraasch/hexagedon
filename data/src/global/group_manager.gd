@@ -42,6 +42,14 @@ func add_tile_to_group(tile, index : int) -> void:
 func add_coordinates_to_group(x : int, y : int, index : int) -> void:
 	FIELD_GROUPS_COORDS[index - 1].push_back([x, y])
 
+# TODO: implement.
+func update_field_group_owner_and_stack(index : int) -> void:
+	print('update field group')
+	var group : Array = get_field_group(index)
+	for i in range(len(group)):
+		var field = group[i]
+		field.update_owner_and_stack()
+
 func set_field_group_highlight(index : int, turn_on : bool, color_index : int = -1) -> void:
 	# TODO: FIXBUG: sometimes the menu tries to access index 3 or 4 but index doesn't exist.
 	var group : Array = get_field_group(index)

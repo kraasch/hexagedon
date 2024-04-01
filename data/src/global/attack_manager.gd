@@ -65,11 +65,14 @@ func attack_if_possible(from_region : int, to_region : int):
 			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_LOST)
 			# set attacking field power to 1.
 			MapGenerator.set_power_of_region(from_region, 1)
-			# TODO: signal change of power to UI.
+
+		# TODO: signal change of power to UI.
 		# reset slection.
 		GroupManager.reset_selection()
-		# debug. TODO: remove later.
-#		MatchOrchestrator.next_active_player() # TODO: remove later.
+		# update fields.
+		GroupManager.update_field_group_owner_and_stack(from_region)
+		GroupManager.update_field_group_owner_and_stack(to_region)
+
 	else:
 		# TODO: call GroupManager actively here and manage highlighting on map: show visually that region cannot be attacked.
 		pass

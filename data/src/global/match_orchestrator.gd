@@ -56,6 +56,10 @@ func handle_local_player() -> void:
 func handle_computer_player() -> void:
 	pass
 
+# TODO: implement later.
+func handle_remote_player() -> void:
+	pass
+
 # TODO: implement.
 func continue_main_game_loop() -> void:
 	if match_continues():
@@ -63,9 +67,9 @@ func continue_main_game_loop() -> void:
 			handle_local_player()
 		if player_has_type_one_of(active_player_index, [PLAYER_TYPE_COMPUTER]):
 			handle_computer_player()
+#			MatchOrchestrator.next_active_player() # TODO: remove later.
 		else:
-			pass
-		# TODO: else case to handle remote player.
+			handle_remote_player()
 	else:
 		load_gameover_screen()
 
