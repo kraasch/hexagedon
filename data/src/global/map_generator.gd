@@ -54,6 +54,8 @@ func create_new_map(grid_size):
 	groups_num = len(group_data)
 
 func set_owner_of_region(group_num : int, new_owner : int) -> void:
+	print('   previous owner: ' + str(group_data[group_num][0]))
+	print('   new owner:      ' + str(new_owner))
 	group_data[group_num][0] = new_owner
 
 func set_power_of_region(group_num : int, new_power : int) -> void:
@@ -61,6 +63,9 @@ func set_power_of_region(group_num : int, new_power : int) -> void:
 
 func get_power_of_region(group_num : int) -> int:
 	return group_data[group_num][1]
+
+func get_owner_of_region(group_num : int) -> int:
+	return group_data[group_num][0]
 
 func region_index_of_tile(x : int, y : int) -> int:
 	return group_grid[y][x]

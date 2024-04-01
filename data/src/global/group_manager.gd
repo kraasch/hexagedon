@@ -4,11 +4,11 @@ extends Node
 # NOTE: these two terms are equal: region <==> field group.
 # TODO: rename everything to REGION.
 
-var FIELD_GROUPS               : Array = []
-var FIELD_GROUPS_COORDS        : Array = []
-var group_index_clicked_before : int = -1
-var CLICK_COLOR                : int = 0
-var SELECTION_COLOR            : int = 10
+const CLICK_COLOR                : int = 0
+const SELECTION_COLOR            : int = 10
+var   FIELD_GROUPS               : Array = []
+var   FIELD_GROUPS_COORDS        : Array = []
+var   group_index_clicked_before : int = -1
 
 # TODO: make the MatchOrchestrator/AttackManager the single source of truth for which group 
 # was selected. Make the MatchOrchestrator/AttackManager call the GroupManager in order to set
@@ -16,11 +16,13 @@ var SELECTION_COLOR            : int = 10
 
 func remove_old_focus() -> void:
 	if group_index_clicked_before != -1: # remove old focus, if already exists.
-		AttackManager.deselect_group(group_index_clicked_before)
+		AttackManager.deselect_group()
 		set_field_group_highlight(group_index_clicked_before, false)
 
 # TODO: implement.
-func reset_selection() -> void:
+func reset_selection(new_color : int) -> void:
+	group_index_clicked_before = -1
+	set_field_group_highlight(new_color, false)
 	print('RESET SELECTION')
 
 func create_new_field_groups(length_val : int) -> void:
@@ -83,11 +85,12 @@ func is_disregard_region(group_index : int) -> bool:
 
 # click.
 func group_was_clicked(group_index : int) -> void:
+	print('click with last: ' + str(group_index_clicked_before) + ' and new: ' + str(group_index))
 	if is_disregard_region(group_index):
 		return
 	# selected group was clicked.
 	if group_index_clicked_before == group_index:
-		AttackManager.deselect_group(group_index)
+		AttackManager.deselect_group()
 		set_field_group_highlight(group_index_clicked_before, false)
 		group_index_clicked_before = -1
 		return

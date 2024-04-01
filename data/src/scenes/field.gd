@@ -18,17 +18,16 @@ var   stack_buffer   : Array = []
 
 # TODO: implement.
 func update_owner_and_stack():
+	power_value = MapGenerator.get_power_of_region(field_group_id)
+	var owner : int = MapGenerator.get_owner_of_region(field_group_id)
 	print('UPDATE FIELD')
-	# TODO: redraw all tiles.
-	pass
-	# TODO: redraw cube stack.
+	# redraw tile.
+	highlight_group_color(owner)
+	# redraw cube stack.
 	if is_center:
 		for i in range(len(stack_buffer)):
-			print('.')
 			var cube = stack_buffer[i]
-#			cube.visible = false
-#			cube.queue_free()
-			cube.translate(Vector3(0,0,0))
+			cube.queue_free()
 		generate_cube_stack()
 
 func set_data(_type_index : int, _power_value : int, _field_group_id : int, _is_center : bool):

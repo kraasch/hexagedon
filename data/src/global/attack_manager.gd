@@ -42,6 +42,7 @@ func execute_attack(from_region : int, to_region : int):
 
 # TODO: implement.
 func attack_if_possible(from_region : int, to_region : int):
+	var attacker_number : int = MatchOrchestrator.active_player_index + 1
 	print('attack if possible')
 	if can_attack(from_region, to_region):
 		var attack_result : Vector2 = execute_attack(from_region, to_region)
@@ -50,15 +51,15 @@ func attack_if_possible(from_region : int, to_region : int):
 			print('  attacker wins') # TODO: remove later.
 			# play sound.
 			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_WIN)
-			# set attacking field power to 1.
-			# TODO: signal change of power to UI.
-			MapGenerator.set_power_of_region(from_region, 1)
 			# set attacked field power to attacking field power - 1.
 			# TODO: signal change of power to UI.
 			MapGenerator.set_power_of_region(to_region, MapGenerator.get_power_of_region(from_region) - 1)
+			# set attacking field power to 1.
+			# TODO: signal change of power to UI.
+			MapGenerator.set_power_of_region(from_region, 1)
 			# set attacked field owner to attacker.
 			# TODO: signal change of owner to UI.
-			MapGenerator.set_owner_of_region(to_region, MatchOrchestrator.active_player_index)
+			MapGenerator.set_owner_of_region(to_region, attacker_number)
 		else:
 			print('  defender wins') # TODO: remove later.
 			# play sound.
@@ -68,7 +69,8 @@ func attack_if_possible(from_region : int, to_region : int):
 
 		# TODO: signal change of power to UI.
 		# reset slection.
-		GroupManager.reset_selection()
+		AttackManager.deselect_group()
+		GroupManager.reset_selection(attacker_number)
 		# update fields.
 		GroupManager.update_field_group_owner_and_stack(from_region)
 		GroupManager.update_field_group_owner_and_stack(to_region)
@@ -87,5 +89,5 @@ func select_group(group_index : int):
 		attack_if_possible(last_selected_group, group_index)
 	last_selected_group = group_index
 
-func deselect_group(group_index : int):
+func deselect_group():
 	last_selected_group = -1
