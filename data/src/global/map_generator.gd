@@ -53,6 +53,12 @@ func create_new_map(grid_size):
 #	}
 	groups_num = len(group_data)
 
+func set_owner_of_region(group_num : int, new_owner : int) -> void:
+	group_data[group_num][0] = new_owner
+
+func set_power_of_region(group_num : int, new_power : int) -> void:
+	group_data[group_num][1] = new_power
+
 func get_power_of_region(group_num : int) -> int:
 	return group_data[group_num][1]
 

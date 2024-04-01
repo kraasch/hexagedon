@@ -47,18 +47,24 @@ func attack_if_possible(from_region : int, to_region : int):
 		var attack_result : Vector2 = execute_attack(from_region, to_region)
 		print('Tile ' + str(from_region) + ' attacks tile ' + str(to_region))
 		if is_attacker_wins(attack_result):
+			print('attacker wins') # TODO: remove later.
+			# play sound.
 			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_WIN)
-			print('attacker wins')
-			# TODO: set attacking field power to 1.
-			# TODO: set attacked field power to attacking field power - 1.
-			# TODO: set attacked field owner to attacker.
+			# set attacking field power to 1.
+			MapGenerator.set_power_of_region(from_region, 1)
+			# set attacked field power to attacking field power - 1.
+			MapGenerator.set_power_of_region(to_region, MapGenerator.get_power_of_region(from_region) - 1)
+			# set attacked field owner to attacker.
+			MapGenerator.set_owner_of_region(to_region, MatchOrchestrator.active_player_index)
 		else:
+			print('defender wins') # TODO: remove later.
+			# play sound.
 			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_LOST)
-			print('defender wins')
-			# TODO: set attacking field power to 1.
+			# set attacking field power to 1.
+			MapGenerator.set_power_of_region(from_region, 1)
 		MatchOrchestrator.next_active_player()
 	else:
-		# TODO: call GroupManager actively here and manage highlighting on map.
+		# TODO: call GroupManager actively here and manage highlighting on map: show visually that region cannot be attacked.
 		pass
 
 func start_new_match():

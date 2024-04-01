@@ -19,7 +19,7 @@ const PLAYER_TYPE_COMPUTER : int = 1
 const PLAYER_TYPE_REMOTE   : int = 2 # TODO: implement.
 
 # player id 1-N (one indexed) of active player.
-var active_player_index : int   = -1
+var active_player_index : int   = -1 # TODO: rename to NUM instead of INDEX.
 var player_types        : Array = []
 
 func current_player_is_local() -> bool:
@@ -86,7 +86,7 @@ func start_new_match():
 	for i in range(num_of_players):
 		player_types.push_back(PLAYER_TYPE_LOCAL)
 	active_player_index = rng.randi_range(0, num_of_players - 1)
-	active_player_index = 1 # TODO: remove later.
+#	active_player_index = 1 # TODO: remove later.
 	print('random start: ' + str(active_player_index))
 
 	# start the initial setup of the AttackManager.
