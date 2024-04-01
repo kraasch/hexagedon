@@ -55,10 +55,11 @@ func is_disregard_region(group_index : int) -> bool:
 		if player_is_local and group_belongs_to_active:
 			is_disregard = false
 	else:
+		var last_clicked_belongs_to_active : bool = MapGenerator.group_belongs_to_player(group_index_clicked_before, active_index)
 		var is_enemy_region : bool = not group_belongs_to_active
 		var is_neighbor : bool = NeighborManager.group_is_neighbor_of_group(group_index_clicked_before, group_index)
 		var is_selected_region : bool = group_index_clicked_before == group_index
-		if (is_enemy_region and is_neighbor) or is_selected_region:
+		if (is_enemy_region and is_neighbor and last_clicked_belongs_to_active) or is_selected_region:
 			is_disregard = false
 	return is_disregard
 
