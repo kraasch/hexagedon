@@ -1,8 +1,6 @@
 @tool
 extends Node
 
-var scan_type : int = 0 # one of 4 ways to arrange a hexagon grid.
-
 var ALL_REGIONS_NEIGHBORS : Array = []
 
 func is_neighbor(center_group_index : int, neighbor_group_index : int):
@@ -13,10 +11,9 @@ func create_new_field_neighbors(length_val : int):
 	for x in range(length_val):
 		ALL_REGIONS_NEIGHBORS.push_back({})# NOTE: use dict as SET with SET[x] = null
 
-## TODO: implement.
-func group_is_neighbor_of_player(group_num : int, player_index : int) -> bool:
-	var region_neighbors : Dictionary = ALL_REGIONS_NEIGHBORS[group_num - 1]
-	return region_neighbors.has(player_index)
+func group_is_neighbor_of_group(center_group_num : int, candidate_group_num : int) -> bool:
+	var region_neighbors : Dictionary = ALL_REGIONS_NEIGHBORS[center_group_num - 1]
+	return region_neighbors.has(candidate_group_num)
 
 func get_neighbors(x : int, y : int) -> Array:
 	var is_even : bool = x % 2 == 0
@@ -35,8 +32,7 @@ func get_neighbors(x : int, y : int) -> Array:
 			neighbors.push_back([nx, ny])
 	return neighbors
 
-# TODO: implement.
-func add_neighbor_data(map : Array):
+func add_neighbor_data():
 	# for each region.
 	for i in range(len(ALL_REGIONS_NEIGHBORS)):
 		var tiles : Array = GroupManager.get_field_group_coords(i)
@@ -87,9 +83,9 @@ func add_neighbor_data(map : Array):
 # | . 0,1 .---' 2,1 .---'
 # |  ,---' 1,2 .---' 3,2 .
 # | . 0,2 .---' 2,2 .---'
-# |  `---'     `---'      `
-# v
-# z
+# |  `---'  |  `---'      `
+# v         |    |
+# z        odd  even
 #
 var RELATIVE_NEIGHBOR_INDEXES_EVEN : Array = [
 	{ 'x':  0,  'y': -1}, # center top.
