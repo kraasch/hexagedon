@@ -71,10 +71,13 @@ func active_player_has_attack():
 	return MapGenerator.player_has_draw(active_player_index)
 
 func next_active_player():
-	print('next!')
+	print('############################')
+	print('next player!')
+	print('  before: ' + str(active_player_index))
 	# increment active player index.
 	active_player_index = (active_player_index + 1) % num_of_players
 	active_player_changed.emit()
+	print('  after: ' + str(active_player_index))
 
 func start_new_match():
 	# get game grid data.

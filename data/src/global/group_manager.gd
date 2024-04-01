@@ -14,6 +14,15 @@ var SELECTION_COLOR            : int = 10
 # was selected. Make the MatchOrchestrator/AttackManager call the GroupManager in order to set
 # which group to highlight.
 
+func remove_old_focus() -> void:
+	if group_index_clicked_before != -1: # remove old focus, if already exists.
+		AttackManager.deselect_group(group_index_clicked_before)
+		set_field_group_highlight(group_index_clicked_before, false)
+
+# TODO: implement.
+func reset_selection() -> void:
+	print('RESET SELECTION')
+
 func create_new_field_groups(length_val : int) -> void:
 	FIELD_GROUPS = []
 	FIELD_GROUPS_COORDS = []
@@ -76,9 +85,7 @@ func group_was_clicked(group_index : int) -> void:
 	# another group was clicked.
 	set_field_group_highlight(group_index, true, CLICK_COLOR) # set new focus.
 	AttackManager.select_group(group_index)
-	if group_index_clicked_before != -1: # remove old focus, if already exists.
-		AttackManager.deselect_group(group_index_clicked_before)
-		set_field_group_highlight(group_index_clicked_before, false)
+	remove_old_focus()
 	group_index_clicked_before = group_index # make new focus the old focus for next time.
 
 # hover.
