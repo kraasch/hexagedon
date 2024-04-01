@@ -3,8 +3,10 @@ extends Node
 
 var ALL_REGIONS_NEIGHBORS : Array = []
 
+# TODO: fix.
 func is_neighbor(center_group_index : int, neighbor_group_index : int):
-	return ALL_REGIONS_NEIGHBORS[center_group_index].has(neighbor_group_index)
+	var regions_neighbors : Dictionary = ALL_REGIONS_NEIGHBORS[center_group_index]
+	return regions_neighbors.has(neighbor_group_index)
 
 func create_new_field_neighbors(length_val : int):
 	ALL_REGIONS_NEIGHBORS = []

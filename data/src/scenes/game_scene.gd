@@ -46,6 +46,7 @@ func _ready():
 	%SfxBar.initialize(AudioManager.SFX_BUS, 'SFX Volume')
 	%MusicBar.initialize(AudioManager.MUSIC_BUS, 'Music Volume')
 	%CloseOverlayButton.pressed.connect(self.close_overlay_button_pressed)
+	%NextTurnButton.pressed.connect(self.next_turn_button_pressed)
 	# initialize first perspective.
 	reset_perspective()
 
@@ -56,6 +57,9 @@ func _input(event):
 		previous_perspective()
 	if event.is_action_pressed("my_cycle_center"):
 		reset_perspective()
+
+func next_turn_button_pressed():
+	MatchOrchestrator.request_next_turn()
 
 func settings_button_pressed():
 	%OverlayMenu.visible = true

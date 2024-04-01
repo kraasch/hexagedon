@@ -22,6 +22,12 @@ const PLAYER_TYPE_REMOTE   : int = 2 # TODO: implement.
 var active_player_index : int   = -1 # TODO: rename to NUM instead of INDEX.
 var player_types        : Array = []
 
+func request_next_turn() -> void:
+	# TODO: queue change of turn.
+	# TODO: wait until last turn ended (animation ended, values are updated).
+	# TODO: block for for button spam.
+	next_active_player()
+
 func current_player_is_local() -> bool:
 	return player_has_type_one_of(active_player_index, [PLAYER_TYPE_LOCAL])
 
