@@ -61,7 +61,8 @@ func is_disregard_region(group_index : int) -> bool:
 	var group_belongs_to_active : bool = MapGenerator.group_belongs_to_player(group_index, active_index)
 	if group_index_clicked_before == -1:
 		var player_is_local : bool = MatchOrchestrator.current_player_is_local()
-		if player_is_local and group_belongs_to_active:
+		var has_power : bool = AttackManager.is_attacker_has_enough_power(group_index)
+		if player_is_local and group_belongs_to_active and has_power:
 			is_disregard = false
 	else:
 		var last_clicked_belongs_to_active : bool = MapGenerator.group_belongs_to_player(group_index_clicked_before, active_index)
