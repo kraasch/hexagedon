@@ -25,6 +25,7 @@ func can_attack(from_region : int, to_region : int):
 	var are_neighbors : bool = is_neighbor(from_region, to_region)
 	var are_different : bool = is_have_different_owner(from_region, to_region)
 	var has_power     : bool = is_attacker_has_enough_power(from_region)
+	print('can attack: ' + str(are_neighbors and are_different and has_power))
 	return are_neighbors and are_different and has_power
 
 # defines the wind condition for an attack.
@@ -51,10 +52,13 @@ func attack_if_possible(from_region : int, to_region : int):
 			# play sound.
 			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_WIN)
 			# set attacking field power to 1.
+			# TODO: signal change of power to UI.
 			MapGenerator.set_power_of_region(from_region, 1)
 			# set attacked field power to attacking field power - 1.
+			# TODO: signal change of power to UI.
 			MapGenerator.set_power_of_region(to_region, MapGenerator.get_power_of_region(from_region) - 1)
 			# set attacked field owner to attacker.
+			# TODO: signal change of owner to UI.
 			MapGenerator.set_owner_of_region(to_region, MatchOrchestrator.active_player_index)
 		else:
 			print('defender wins') # TODO: remove later.
@@ -62,6 +66,7 @@ func attack_if_possible(from_region : int, to_region : int):
 			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_LOST)
 			# set attacking field power to 1.
 			MapGenerator.set_power_of_region(from_region, 1)
+			# TODO: signal change of power to UI.
 		MatchOrchestrator.next_active_player()
 	else:
 		# TODO: call GroupManager actively here and manage highlighting on map: show visually that region cannot be attacked.
