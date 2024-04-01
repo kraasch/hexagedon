@@ -8,8 +8,8 @@ var group_num  : int = -1
 var last_selected_group = -1
 
 # TODO: implements, look up in NeighborManager.
-func is_neighbor(center_tile : int, neighbor_candidate_tile : int):
-	return NeighborManager.is_neighbor(center_tile, neighbor_candidate_tile)
+func is_neighbor(center_region : int, neighbor_candidate_region : int):
+	return NeighborManager.is_neighbor(center_region, neighbor_candidate_region)
 
 # TODO: implement, look up in group_data.
 func is_have_different_owner(tile_a : int, tile_b : int):
@@ -19,24 +19,24 @@ func is_have_different_owner(tile_a : int, tile_b : int):
 func is_attacker_has_enough_power(tile : int):
 	return true
 
-func can_attack(from_tile : int, to_tile : int):
-	var are_neighbors : bool = is_neighbor(from_tile, to_tile)
-	var are_different : bool = is_have_different_owner(from_tile, to_tile)
-	var has_power     : bool = is_attacker_has_enough_power(from_tile)
+func can_attack(from_region : int, to_region : int):
+	var are_neighbors : bool = is_neighbor(from_region, to_region)
+	var are_different : bool = is_have_different_owner(from_region, to_region)
+	var has_power     : bool = is_attacker_has_enough_power(from_region)
 	return are_neighbors and are_different and has_power
 
-func execute_attack(from_tile : int, to_tile : int):
+func execute_attack(from_region : int, to_region : int):
 	print('attack now!')
 	return Vector2(0.0, 1.0)
 
 func is_attacker_wins(attack_result : Vector2):
 	return attack_result[0] > attack_result[1]
 
-func attack_if_possible(from_tile : int, to_tile : int):
+func attack_if_possible(from_region : int, to_region : int):
 	print('attack if possible')
-	if can_attack(from_tile, to_tile):
-		var attack_result : Vector2 = execute_attack(from_tile, to_tile)
-		print('Tile ' + str(from_tile) + ' attacks tile ' + str(to_tile))
+	if can_attack(from_region, to_region):
+		var attack_result : Vector2 = execute_attack(from_region, to_region)
+		print('Tile ' + str(from_region) + ' attacks tile ' + str(to_region))
 		if is_attacker_wins(attack_result):
 			print('attacker wins')
 			# TODO: set attacking field power to 1.
