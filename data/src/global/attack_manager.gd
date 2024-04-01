@@ -74,6 +74,14 @@ func attack_if_possible(from_region : int, to_region : int):
 		# update fields.
 		GroupManager.update_field_group_owner_and_stack(from_region)
 		GroupManager.update_field_group_owner_and_stack(to_region)
+		# TODO: update color of tiles.
+		# TODO: update player list (in case one of them lost).
+		# TODO: redistribute new cubes after round.
+
+		# More tasks:
+		# TODO: calculate the maximum number of connected regions.
+		# TODO: use connected regions for redistribute at end of turn.
+		# TODO: use connected regions in player list display.
 
 	else:
 		# TODO: call GroupManager actively here and manage highlighting on map: show visually that region cannot be attacked.

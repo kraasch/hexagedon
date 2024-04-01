@@ -74,6 +74,7 @@ func continue_main_game_loop() -> void:
 		load_gameover_screen()
 
 func match_continues():
+	# TODO: recalculate the number of players here.
 	return num_of_players != 1
 
 # TODO: implement; ask for ComputerPlayers.

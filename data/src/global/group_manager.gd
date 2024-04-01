@@ -44,6 +44,7 @@ func add_tile_to_group(tile, index : int) -> void:
 func add_coordinates_to_group(x : int, y : int, index : int) -> void:
 	FIELD_GROUPS_COORDS[index - 1].push_back([x, y])
 
+# TODO: after implementation split into two methods for stack height or field color, to update individually.
 # TODO: implement.
 func update_field_group_owner_and_stack(index : int) -> void:
 	print('update field group')

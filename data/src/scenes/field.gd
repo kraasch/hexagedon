@@ -16,6 +16,7 @@ var   is_center      : bool  = false
 var   callback_clicked = null
 var   stack_buffer   : Array = []
 
+# TODO: after implementation split into two methods for stack height or field color, to update individually.
 # TODO: implement.
 func update_owner_and_stack():
 	power_value = MapGenerator.get_power_of_region(field_group_id)
