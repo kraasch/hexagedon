@@ -68,6 +68,8 @@ unique_name_in_owner = true
 [node name="CenterContainer" type="CenterContainer" parent="UserInterface/TopBar"]
 anchors_preset = 10
 anchor_right = 1.0
+offset_top = -2.0
+offset_bottom = 52.0
 grow_horizontal = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UserInterface/TopBar/CenterContainer"]

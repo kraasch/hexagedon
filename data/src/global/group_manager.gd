@@ -5,6 +5,7 @@ extends Node
 # TODO: rename everything to REGION.
 
 var FIELD_GROUPS               : Array = []
+var FIELD_GROUPS_COORDS        : Array = []
 var group_index_clicked_before : int = -1
 var CLICK_COLOR                : int = 0
 var SELECTION_COLOR            : int = 10
@@ -15,14 +16,22 @@ var SELECTION_COLOR            : int = 10
 
 func create_new_field_groups(length_val : int) -> void:
 	FIELD_GROUPS = []
+	FIELD_GROUPS_COORDS = []
 	for x in range(length_val):
 		FIELD_GROUPS.push_back([])
+		FIELD_GROUPS_COORDS.push_back([])
 
 func get_field_group(index : int) -> Array:
 	return FIELD_GROUPS[index - 1]
 
+func get_field_group_coords(index : int) -> Array:
+	return FIELD_GROUPS_COORDS[index - 1]
+
 func add_tile_to_group(tile, index : int) -> void:
 	FIELD_GROUPS[index - 1].push_back(tile)
+
+func add_coordinates_to_group(x : int, y : int, index : int) -> void:
+	FIELD_GROUPS_COORDS[index - 1].push_back([x, y])
 
 func set_field_group_highlight(index : int, turn_on : bool, color_index : int = -1) -> void:
 	# TODO: FIXBUG: sometimes the menu tries to access index 3 or 4 but index doesn't exist.

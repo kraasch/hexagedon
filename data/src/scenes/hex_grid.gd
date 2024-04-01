@@ -15,6 +15,8 @@ func build_grid():
 	var grid_size : int   = Globals.GRID_SIZE
 
 	##########################################################
+	# START OF GLOBALS 1.
+	##########################################################
 	# TODO: pull out the globals of the following section.
 	# TODO: pull out MatchOrchestrator.
 	# TODO: let HEX_GRID only manage displaying the data.
@@ -25,13 +27,8 @@ func build_grid():
 	GroupManager.create_new_field_groups(MapGenerator.groups_num)
 	var group_data = MapGenerator.group_data
 	var group_grid = MapGenerator.group_grid
-	# create neighbor lists for each field group.
-	NeighborManager.create_new_field_neighbors(MapGenerator.groups_num)
-	NeighborManager.add_neighbor_data(group_grid)
-	# create a new game.
-	MatchOrchestrator.start_new_match()
 	##########################################################
-	# END OF GLOBALS.
+	# END OF GLOBALS 1.
 	##########################################################
 
 	# build grid.
@@ -50,6 +47,7 @@ func build_grid():
 			var tile = HEX_TILE.instantiate()
 			tile.set_data(party_index, power_value, group_index, is_at_center)
 			GroupManager.add_tile_to_group(tile, group_index)
+			GroupManager.add_coordinates_to_group(x, y, group_index)
 			%GridContainer.add_child(tile)
 			var x_offset : float = 0.0 if x % 2 == 0 else tile_size / 2.0
 			var x_coord  : float = x * tile_size * OFFSET_RATIO
@@ -66,6 +64,18 @@ func build_grid():
 #			#   - [ ] IF neighbor is different group OR outside of bounds OR empty field
 #			#     - [ ] THEN create border object from mesh.
 #			#     - [ ] AND THEN add border object id to bucket of both groups (if bucket doesn't contain border yet).
+
+	##########################################################
+	# START OF GLOBALS 2.
+	##########################################################
+	# create neighbor lists for each field group.
+	NeighborManager.create_new_field_neighbors(MapGenerator.groups_num)
+	NeighborManager.add_neighbor_data(group_grid)
+	# create a new game.
+	MatchOrchestrator.start_new_match()
+	##########################################################
+	# END OF GLOBALS 2.
+	##########################################################
 
 func clean_grid():
 	if %GridContainer.get_child_count() > 0:
