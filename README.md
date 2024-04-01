@@ -7,16 +7,16 @@ Play [hexagedon](https://kraasch.itch.io/hexagedon) on itch.io.
 
 Current:
 
- - [ ] basic: add game object.
- - [ ] basic: click on second field group executes attack.
- - [ ] basic: implement basic AI behavior.
- - [ ] basic: implement in-game settings menu.
+ - [ ] basic: update color of tiles after attack.
+ - [ ] basic: implement basic redistribution.
  - [ ] basic: implement session review screen.
  - [ ] basic: implement about screen.
+ - [ ] basic: implement basic AI behavior.
+ - [ ] basic: implement basic map generator.
 
 Next:
 
- - [ ] advanced: implement basic map generation.
+ - [ ] advanced: implement a redistribution which calculates max num of connected regions.
  - [ ] advanced: draw borders around field groups (ie good looking field group borders).
  - [ ] advanced: implement good UI design.
  - [ ] advanced: implement good map generation.
@@ -42,9 +42,13 @@ Later:
  - [ ] maybe: implement more AI behavior.
  - [ ] maybe: implement in-game menu.
  - [ ] maybe: export game for mobile.
+ - [ ] maybe: implement a hex map on a sphere.
 
 Done:
 
+ - [X] basic: add game object.
+ - [X] basic: click on second field group executes attack.
+ - [X] basic: implement in-game settings menu.
  - [X] basic: do basic sound design.
  - [X] basic: create basic soundtrack.
  - [X] basic: implement free camera movement.
