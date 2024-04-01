@@ -1,5 +1,7 @@
 extends Node
 
+var rng = RandomNumberGenerator.new()
+
 # TODO: remove these fields from here and use MatchOrchestrator as single source of truth.
 var group_grid : Array = []
 var group_data : Dictionary = {}
@@ -27,6 +29,8 @@ func can_attack(from_region : int, to_region : int):
 
 func execute_attack(from_region : int, to_region : int):
 	print('attack now!')
+	# TODO: get strength of both regions.
+	# TODO: get random value depending on strengths.
 	return Vector2(0.0, 1.0)
 
 func is_attacker_wins(attack_result : Vector2):
@@ -38,11 +42,13 @@ func attack_if_possible(from_region : int, to_region : int):
 		var attack_result : Vector2 = execute_attack(from_region, to_region)
 		print('Tile ' + str(from_region) + ' attacks tile ' + str(to_region))
 		if is_attacker_wins(attack_result):
+			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_WIN)
 			print('attacker wins')
 			# TODO: set attacking field power to 1.
 			# TODO: set attacked field power to attacking field power - 1.
 			# TODO: set attacked field owner to attacker.
 		else:
+			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_LOST)
 			print('defender wins')
 			# TODO: set attacking field power to 1.
 	else:
