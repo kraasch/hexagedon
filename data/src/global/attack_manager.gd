@@ -27,16 +27,18 @@ func can_attack(from_region : int, to_region : int):
 	var has_power     : bool = is_attacker_has_enough_power(from_region)
 	return are_neighbors and are_different and has_power
 
-# TODO: implement.
-func execute_attack(from_region : int, to_region : int):
-	print('attack now!')
-	# TODO: get strength of both regions.
-	# TODO: get random value depending on strengths.
-	return Vector2(0.0, 1.0)
-
-# TODO: implement.
+# defines the wind condition for an attack.
 func is_attacker_wins(attack_result : Vector2):
 	return attack_result[0] > attack_result[1]
+
+# get results of dice toss for defending and attacking region.
+func execute_attack(from_region : int, to_region : int):
+	var from_strength : int = MapGenerator.get_power_of_region(from_region)
+	var to_strength   : int = MapGenerator.get_power_of_region(to_region)
+	var from_attack   : int = rng.randi_range(1, from_strength * 6)
+	var to_defence    : int = rng.randi_range(1, to_strength * 6)
+	print('attack now!!!    ... attack: ' + str(from_attack) + ', defence:' + str(to_defence))
+	return Vector2(from_attack, to_defence)
 
 # TODO: implement.
 func attack_if_possible(from_region : int, to_region : int):
