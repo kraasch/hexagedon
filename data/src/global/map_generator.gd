@@ -31,26 +31,26 @@ var groups_num : int = 0
 
 @warning_ignore("unused_parameter")
 func create_new_map(grid_size):
-#	group_grid = [
-#		[1, 0, 3, 3],
-#		[1, 1, 0, 3],
-#		[2, 0, 0, 4],
-#		[2, 2, 4, 4],
-#	]
-#	group_data = {
-#		1 : [1, 1, [0, 0]],
-#		2 : [2, 2, [0, 3]],
-#		3 : [3, 3, [3, 0]],
-#		4 : [4, 4, [3, 3]],
-#	}
 	group_grid = [
-		[1, 0],
-		[0, 2],
+		[1, 0, 3, 3],
+		[1, 1, 0, 3],
+		[2, 0, 0, 4],
+		[2, 2, 4, 4],
 	]
 	group_data = {
 		1 : [1, 1, [0, 0]],
-		2 : [2, 2, [1, 1]],
+		2 : [2, 2, [0, 3]],
+		3 : [3, 3, [3, 0]],
+		4 : [4, 4, [3, 3]],
 	}
+#	group_grid = [
+#		[1, 0],
+#		[0, 2],
+#	]
+#	group_data = {
+#		1 : [1, 1, [0, 0]],
+#		2 : [2, 2, [1, 1]],
+#	}
 	groups_num = len(group_data)
 
 func region_index_of_tile(x : int, y : int) -> int:
@@ -62,8 +62,8 @@ func is_empty_space(x : int, y : int) -> bool:
 func is_inside(x : int, y : int) -> bool:
 	return x >= 0 and y >= 0 and x < len(group_grid[0]) and y < len(group_grid)
 
-func group_belongs_to_player(group_index : int, player_index : int) -> bool:
-	return group_data[group_index][0] == player_index + 1
+func group_belongs_to_player(group_num : int, player_index : int) -> bool:
+	return group_data[group_num][0] == player_index + 1
 
 func number_of_players() -> int:
 	var players : Dictionary = {}

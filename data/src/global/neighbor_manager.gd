@@ -14,16 +14,20 @@ func create_new_field_neighbors(length_val : int):
 	for x in range(length_val):
 		ALL_REGIONS_NEIGHBORS.push_back({})# NOTE: use dict as SET with SET[x] = null
 
-# TODO: implement.
-func group_is_neighbor_of_player(group_index : int, player_index : int) -> bool:
-#	var region_neighbors = ALL_REGIONS_NEIGHBORS[group_index]
-	return false
+## TODO: implement.
+func group_is_neighbor_of_player(group_num : int, player_index : int) -> bool:
+	var region_neighbors : Dictionary = ALL_REGIONS_NEIGHBORS[group_num - 1]
+	return region_neighbors.has(player_index)
 
-# TODO: implement.
 func get_neighbors(x : int, y : int) -> Array:
+	var is_even : bool = x % 2 == 0
 	var neighbors : Array = []
-	for i in range(len(RELATIVE_NEIGHBOR_INDEXES)):
-		var relative_neighbor : Dictionary = RELATIVE_NEIGHBOR_INDEXES[i]
+	for i in range(6):
+		var relative_neighbor : Dictionary = {}
+		if is_even:
+			relative_neighbor = RELATIVE_NEIGHBOR_INDEXES_EVEN[i]
+		else:
+			relative_neighbor = RELATIVE_NEIGHBOR_INDEXES_ODD[i]
 		var rx : int = relative_neighbor['x']
 		var ry : int = relative_neighbor['y']
 		var nx : int = x + rx
@@ -44,10 +48,9 @@ func add_neighbor_data(map : Array):
 			var y : int = tile[1]
 			# for every neighbor of the tile.
 			var neighbor_tiles : Array = get_neighbors(x, y)
-			print(neighbor_tiles) # TODO: remove
+#			print(str(x) + ', ' + str(y) + ':' + str(neighbor_tiles)) # TODO: remove
 			for k in range(len(neighbor_tiles)):
 				var neighbor = neighbor_tiles[k]
-				# TODO: get region index of tile.
 				var region_index : int = MapGenerator.region_index_of_tile(neighbor[0], neighbor[1])
 				# add the tile's group index to the neighboring index list.
 				var region_neighbors = ALL_REGIONS_NEIGHBORS[i]
@@ -76,19 +79,27 @@ func add_neighbor_data(map : Array):
 #  Illustration.
 #   .y
 #  /
-# +------------------> x
-# |       ,---.
-# |  ,---. 1,0 .---.
-# | . 0,0 .---' 2,0 .
-# |  ,---' 1,1 .---'
-# | . 0,1 .---' 2,1 .
-# |  ,---' 1,2 .---'
-# | . 0,2 .---' 2,2 .
-# |  `---'     `---'
+# +------------------------> x
+# |       ,---.     ,---.
+# |  ,---. 1,0 .---. 3,0 .
+# | . 0,0 .---' 2,0 .---'
+# |  ,---' 1,1 .---' 3,1 .
+# | . 0,1 .---' 2,1 .---'
+# |  ,---' 1,2 .---' 3,2 .
+# | . 0,2 .---' 2,2 .---'
+# |  `---'     `---'      `
 # v
 # z
 #
-var RELATIVE_NEIGHBOR_INDEXES : Array = [
+var RELATIVE_NEIGHBOR_INDEXES_EVEN : Array = [
+	{ 'x':  0,  'y': -1}, # center top.
+	{ 'x':  0,  'y': +1}, # center bottom.
+	{ 'x': -1,  'y':  0}, # left top.
+	{ 'x': -1,  'y': +1}, # left bottom.
+	{ 'x': +1,  'y':  0}, # right top.
+	{ 'x': +1,  'y': +1}, # right bottom.
+]
+var RELATIVE_NEIGHBOR_INDEXES_ODD : Array = [
 	{ 'x':  0,  'y': -1}, # center top.
 	{ 'x':  0,  'y': +1}, # center bottom.
 	{ 'x': -1,  'y': -1}, # left top.
