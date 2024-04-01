@@ -25,7 +25,7 @@ func get_field_group(index : int) -> Array:
 	return FIELD_GROUPS[index - 1]
 
 func get_field_group_coords(index : int) -> Array:
-	return FIELD_GROUPS_COORDS[index - 1]
+	return FIELD_GROUPS_COORDS[index]
 
 func add_tile_to_group(tile, index : int) -> void:
 	FIELD_GROUPS[index - 1].push_back(tile)
