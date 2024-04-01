@@ -53,6 +53,9 @@ func create_new_map(grid_size):
 #	}
 	groups_num = len(group_data)
 
+func get_power_of_region(group_num : int) -> int:
+	return group_data[group_num][1]
+
 func region_index_of_tile(x : int, y : int) -> int:
 	return group_grid[y][x]
 

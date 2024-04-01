@@ -6,36 +6,39 @@ var rng = RandomNumberGenerator.new()
 var group_grid : Array = []
 var group_data : Dictionary = {}
 var group_num  : int = -1
-
 var last_selected_group = -1
 
-# TODO: implements, look up in NeighborManager.
+# look up if both regions are neighbors.
 func is_neighbor(center_region : int, neighbor_candidate_region : int):
 	return NeighborManager.is_neighbor(center_region, neighbor_candidate_region)
 
-# TODO: implement, look up in group_data.
-func is_have_different_owner(tile_a : int, tile_b : int):
-	return group_data[tile_a] != group_data[tile_b]
+# look up if field groups have different owners.
+func is_have_different_owner(region_a : int, region_b : int):
+	return group_data[region_a] != group_data[region_b]
 
-# TODO: implement; look up if field_group has a POWER >= 2.
-func is_attacker_has_enough_power(tile : int):
-	return true
+# look up if field group has a POWER >= 2.
+func is_attacker_has_enough_power(region : int):
+	return MapGenerator.get_power_of_region(region) >= 2
 
+# evaluate if a region is able to attack another region.
 func can_attack(from_region : int, to_region : int):
 	var are_neighbors : bool = is_neighbor(from_region, to_region)
 	var are_different : bool = is_have_different_owner(from_region, to_region)
 	var has_power     : bool = is_attacker_has_enough_power(from_region)
 	return are_neighbors and are_different and has_power
 
+# TODO: implement.
 func execute_attack(from_region : int, to_region : int):
 	print('attack now!')
 	# TODO: get strength of both regions.
 	# TODO: get random value depending on strengths.
 	return Vector2(0.0, 1.0)
 
+# TODO: implement.
 func is_attacker_wins(attack_result : Vector2):
 	return attack_result[0] > attack_result[1]
 
+# TODO: implement.
 func attack_if_possible(from_region : int, to_region : int):
 	print('attack if possible')
 	if can_attack(from_region, to_region):
@@ -51,6 +54,7 @@ func attack_if_possible(from_region : int, to_region : int):
 			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_LOST)
 			print('defender wins')
 			# TODO: set attacking field power to 1.
+		MatchOrchestrator.next_active_player()
 	else:
 		# TODO: call GroupManager actively here and manage highlighting on map.
 		pass

@@ -8,6 +8,8 @@ var rng = RandomNumberGenerator.new()
 # TODO: make AttackManager ask MatchOrchestrator is player is active, before
 # allowing to execute the attack.
 
+signal active_player_changed
+
 var group_grid      : Array      = []
 var group_data      : Dictionary = {}
 var num_of_players  : int        = -1
@@ -39,7 +41,7 @@ func player_has_type_one_of(index : int, types : Array) -> bool:
 
 func handle_local_player() -> void:
 		if not active_player_has_attack():
-			next_active_player()
+			pass
 		else:
 			pass # NOTE: let active player attack over GUI.
 			# TODO: in future multiplayer start a countdown here, which limits human player time.
@@ -69,8 +71,10 @@ func active_player_has_attack():
 	return MapGenerator.player_has_draw(active_player_index)
 
 func next_active_player():
+	print('next!')
 	# increment active player index.
 	active_player_index = (active_player_index + 1) % num_of_players
+	active_player_changed.emit()
 
 func start_new_match():
 	# get game grid data.
@@ -82,6 +86,8 @@ func start_new_match():
 	for i in range(num_of_players):
 		player_types.push_back(PLAYER_TYPE_LOCAL)
 	active_player_index = rng.randi_range(0, num_of_players - 1)
+	active_player_index = 1 # TODO: remove later.
+	print('random start: ' + str(active_player_index))
 
 	# start the initial setup of the AttackManager.
 	AttackManager.start_new_match() # TODO: make this AttackManager single source of truth instead.

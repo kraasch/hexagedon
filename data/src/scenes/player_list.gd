@@ -8,7 +8,6 @@ func _ready() -> void:
 	# variables.
 	var players_num  : int        = MapGenerator.number_of_players()
 	var powers       : Dictionary = MapGenerator.player_power_list()
-	var active_index : int        = MatchOrchestrator.active_player_index
 
 	# setup player list bar.
 	for i in range(players_num):
@@ -19,10 +18,13 @@ func _ready() -> void:
 		entry.set_data(player_num, player_power)
 		%PlayerContainer.add_child(entry)
 
-	# mark the active player.
-	set_mark(active_index)
+	# setup mark.
+	MatchOrchestrator.active_player_changed.connect(self.update_mark)
+	update_mark()
 
-func set_mark(index : int):
+# mark the active player.
+func update_mark():
+	var index : int = MatchOrchestrator.active_player_index
 	if index >= 0 and index < len(entries):
 		for i in range(len(entries)):
 			entries[i].set_mark(i == index)
