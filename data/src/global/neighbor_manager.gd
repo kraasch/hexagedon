@@ -6,7 +6,6 @@ var scan_type : int = 0 # one of 4 ways to arrange a hexagon grid.
 var ALL_REGIONS_NEIGHBORS : Array = []
 
 func is_neighbor(center_group_index : int, neighbor_group_index : int):
-	return false
 	return ALL_REGIONS_NEIGHBORS[center_group_index].has(neighbor_group_index)
 
 func create_new_field_neighbors(length_val : int):
@@ -46,16 +45,16 @@ func add_neighbor_data(map : Array):
 			var tile : Array = tiles[j]
 			var x : int = tile[0]
 			var y : int = tile[1]
+			var region_num : int = MapGenerator.region_index_of_tile(x, y)
 			# for every neighbor of the tile.
 			var neighbor_tiles : Array = get_neighbors(x, y)
-#			print(str(x) + ', ' + str(y) + ':' + str(neighbor_tiles)) # TODO: remove
 			for k in range(len(neighbor_tiles)):
 				var neighbor = neighbor_tiles[k]
-				var region_index : int = MapGenerator.region_index_of_tile(neighbor[0], neighbor[1])
+				var neighbor_region_num : int = MapGenerator.region_index_of_tile(neighbor[0], neighbor[1])
 				# add the tile's group index to the neighboring index list.
-				var region_neighbors = ALL_REGIONS_NEIGHBORS[i]
-				region_neighbors[region_index] = true
-	print('neighbors: ' + str(ALL_REGIONS_NEIGHBORS))
+				if region_num != neighbor_region_num:
+					var region_neighbors = ALL_REGIONS_NEIGHBORS[i]
+					region_neighbors[neighbor_region_num] = true
 
 #  HEXAGON GRID LAYOUT.
 #
