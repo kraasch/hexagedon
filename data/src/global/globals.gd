@@ -15,4 +15,4 @@ var CUBE_SIZE          : float = 0.45
 
 # Other values.
 const MIN_MUTE_VOLUME  : float = 0.1
-const INITIAL_VOLUME   : float = 0.0
+const INITIAL_VOLUME   : float = 0.2
