@@ -3,10 +3,11 @@ extends Node
 var rng = RandomNumberGenerator.new()
 
 # TODO: remove these fields from here and use MatchOrchestrator as single source of truth.
-var group_grid : Array = []
+var group_grid : Array      = []
 var group_data : Dictionary = {}
-var group_num  : int = -1
-var last_selected_group = -1
+var group_num  : int        = -1
+var last_selected_group     = -1
+var allow_selection : bool  = true
 
 # look up if field groups have different owners.
 func is_have_different_owner(region_a : int, region_b : int):
@@ -87,6 +88,13 @@ func attack_if_possible(from_region : int, to_region : int):
 		# TODO: call GroupManager actively here and manage highlighting on map: show visually that region cannot be attacked.
 		pass
 
+	# carry out attack.
+	get_tree().create_timer(2).timeout.connect(attack_over)
+
+func attack_over():
+	GroupManager.deselect_current()
+	allow_selection = true
+
 func start_new_match():
 	group_grid = MapGenerator.group_grid
 	group_data = MapGenerator.group_data
@@ -94,6 +102,7 @@ func start_new_match():
 
 func select_group(group_index : int):
 	if last_selected_group != -1 and last_selected_group != group_index:
+		allow_selection = false
 		attack_if_possible(last_selected_group, group_index)
 	last_selected_group = group_index
 

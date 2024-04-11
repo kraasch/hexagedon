@@ -14,10 +14,13 @@ var   group_index_clicked_before : int = -1
 # was selected. Make the MatchOrchestrator/AttackManager call the GroupManager in order to set
 # which group to highlight.
 
-func remove_old_focus() -> void:
-	if group_index_clicked_before != -1: # remove old focus, if already exists.
-		AttackManager.deselect_group()
-		set_field_group_highlight(group_index_clicked_before, false)
+# TODO: remove later.
+#func remove_old_focus() -> void:
+#	print('remove?')
+#	if group_index_clicked_before != -1: # remove old focus, if already exists.
+#		print('remove!')
+#		AttackManager.deselect_group()
+#		set_field_group_highlight(group_index_clicked_before, false)
 
 # TODO: implement.
 func reset_selection(new_color : int) -> void:
@@ -63,6 +66,9 @@ func set_field_group_highlight(index : int, turn_on : bool, color_index : int = 
 		else:
 			field.unhighlight_group_color()
 
+func is_first_selection() -> bool:
+	return group_index_clicked_before == -1
+
 # NOTE:
 # - before first selection only highlight active player (if he is of type LOCAL).
 # - after first selection  only highlight enemy regions (if they are neighbors of a active player region), or is the selected region.
@@ -70,7 +76,7 @@ func is_disregard_region(group_index : int) -> bool:
 	var is_disregard : bool = true
 	var active_index : int = MatchOrchestrator.active_player_index
 	var group_belongs_to_active : bool = MapGenerator.group_belongs_to_player(group_index, active_index)
-	if group_index_clicked_before == -1:
+	if is_first_selection():
 		var player_is_local : bool = MatchOrchestrator.current_player_is_local()
 		var has_power : bool = AttackManager.is_attacker_has_enough_power(group_index)
 		if player_is_local and group_belongs_to_active and has_power:
@@ -84,22 +90,32 @@ func is_disregard_region(group_index : int) -> bool:
 			is_disregard = false
 	return is_disregard
 
+func deselect_current():
+	print('deselect')
+	AttackManager.deselect_group()
+	set_field_group_highlight(group_index_clicked_before, false)
+	group_index_clicked_before = -1
+
 # click.
 func group_was_clicked(group_index : int) -> void:
-	print('click with last: ' + str(group_index_clicked_before) + ' and new: ' + str(group_index))
-	if is_disregard_region(group_index):
-		return
-	# selected group was clicked.
-	if group_index_clicked_before == group_index:
-		AttackManager.deselect_group()
-		set_field_group_highlight(group_index_clicked_before, false)
-		group_index_clicked_before = -1
-		return
-	# another group was clicked.
-	set_field_group_highlight(group_index, true, CLICK_COLOR) # set new focus.
-	AttackManager.select_group(group_index)
-	remove_old_focus()
-	group_index_clicked_before = group_index # make new focus the old focus for next time.
+	if AttackManager.allow_selection:
+		print('click with last: ' + str(group_index_clicked_before) + ' and new: ' + str(group_index))
+		if is_disregard_region(group_index):
+			return
+		# selected group was clicked.
+		if group_index_clicked_before == group_index:
+			deselect_current()
+			return
+		# another group was clicked.
+		if is_first_selection():
+			print('select first')
+		else:
+			print('select second')
+		set_field_group_highlight(group_index, true, CLICK_COLOR) # set new focus.
+		AttackManager.select_group(group_index)
+		group_index_clicked_before = group_index # make new focus the old focus for next time.
+	else:
+		print('NO CLICKING NOW')
 
 # hover.
 func group_was_selected(group_index : int) -> void:

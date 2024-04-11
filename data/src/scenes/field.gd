@@ -22,8 +22,10 @@ func update_owner_and_stack():
 	power_value = MapGenerator.get_power_of_region(field_group_id)
 	var owner : int = MapGenerator.get_owner_of_region(field_group_id)
 	print('UPDATE FIELD')
+	print('  old owner: ' + str(type_index))
+	print('  new owner: ' + str(owner))
 	# redraw tile.
-	highlight_group_color(owner)
+	change_tile_color(owner)
 	# redraw cube stack.
 	if is_center:
 		for i in range(len(stack_buffer)):
@@ -61,6 +63,10 @@ func was_selected():
 
 func was_deselected():
 	GroupManager.group_was_deselected(field_group_id)
+
+func change_tile_color(owner : int):
+	type_index = owner
+	highlight_group_color(owner)
 
 func highlight_group_color(color_index : int):
 	tile.mymaterial.set_shader_parameter("type", color_index)
