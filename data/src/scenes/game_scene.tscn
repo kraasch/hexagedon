@@ -145,6 +145,7 @@ layout_mode = 2
 
 [node name="OverlayMenu" type="CanvasLayer" parent="UserInterface"]
 unique_name_in_owner = true
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="UserInterface/OverlayMenu"]
 anchors_preset = 15
@@ -193,6 +194,7 @@ layout_mode = 2
 
 [node name="OverlayMessage" type="CanvasLayer" parent="UserInterface"]
 unique_name_in_owner = true
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="UserInterface/OverlayMessage"]
 anchors_preset = 15
@@ -223,6 +225,13 @@ theme_override_font_sizes/font_size = 100
 text = "YOU WON!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/OverlayMessage/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameOverButton" parent="UserInterface/OverlayMessage/ColorRect/CenterContainer/VBoxContainer/CenterContainer" instance=ExtResource("5_0144l")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="World" type="Node" parent="."]
 

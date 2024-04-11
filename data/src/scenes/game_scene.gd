@@ -49,6 +49,7 @@ func _ready():
 	%NextTurnButton.pressed.connect(self.next_turn_button_pressed)
 	%OverlayMessage.visible = false
 	MatchOrchestrator.game_over.connect(self.show_game_over_message)
+	%GameOverButton.pressed.connect(self.exit_button_pressed)
 	# initialize first perspective.
 	reset_perspective()
 
