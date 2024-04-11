@@ -118,12 +118,18 @@ func group_was_clicked(group_index : int) -> void:
 
 # hover.
 func group_was_selected(group_index : int) -> void:
-	if is_disregard_region(group_index):
-		return
-	if group_index != group_index_clicked_before:
-		set_field_group_highlight(group_index, true, SELECTION_COLOR)
+	if AttackManager.allow_selection:
+		if is_disregard_region(group_index):
+			return
+		if group_index != group_index_clicked_before:
+			set_field_group_highlight(group_index, true, SELECTION_COLOR)
+	else:
+		print('NO HOVER NOW')
 
 # un-hover.
 func group_was_deselected(group_index : int) -> void:
-	if group_index != group_index_clicked_before:
-		set_field_group_highlight(group_index, false)
+	if AttackManager.allow_selection:
+		if group_index != group_index_clicked_before:
+			set_field_group_highlight(group_index, false)
+	else:
+		print('NO UN-HOVER NOW')
