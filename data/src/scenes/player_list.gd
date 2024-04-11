@@ -17,10 +17,17 @@ func _ready() -> void:
 		entries.push_back(entry)
 		entry.set_data(player_num, player_power)
 		%PlayerContainer.add_child(entry)
+		# register in map-generator to receive signal in case player dies:
+		MapGenerator.player_gone.connect(remove_player)
 
 	# setup mark.
 	MatchOrchestrator.active_player_changed.connect(self.update_mark)
 	update_mark()
+
+func remove_player(player_index : int):
+	print('++++++++++++++++++++++++++++')
+#	if len(entries) < player_index:
+	entries[player_index].visible = false
 
 # mark the active player.
 func update_mark():

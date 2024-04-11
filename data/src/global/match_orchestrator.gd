@@ -86,9 +86,15 @@ func next_active_player():
 	print('next player!')
 	print('  before: ' + str(active_player_index))
 	# increment active player index.
-	active_player_index = (active_player_index + 1) % num_of_players
+	increment_active_player()
+	var list : Dictionary = MapGenerator.player_region_list()
+	while not list.has(active_player_index + 1):
+		increment_active_player()
 	active_player_changed.emit()
 	print('  after: ' + str(active_player_index))
+
+func increment_active_player():
+	active_player_index = (active_player_index + 1) % num_of_players
 
 func start_new_match():
 	# get game grid data.

@@ -1,6 +1,9 @@
 @tool
 extends Node
 
+# singals that a player died.
+signal player_gone
+
 # TODO: create simple map generator.
 #  - use 2D noise to make 2D array of 0s (no tile) and 1s (has tile, active region).
 #    - input a certain bias for the noise gneration and bias the nosie towards 1s.
@@ -54,9 +57,16 @@ func create_new_map(grid_size):
 	groups_num = len(group_data)
 
 func set_owner_of_region(group_num : int, new_owner : int) -> void:
-	print('   previous owner: ' + str(group_data[group_num][0]))
+	var prev_owner : int = group_data[group_num][0]
+	print('   previous owner: ' + str(prev_owner))
 	print('   new owner:      ' + str(new_owner))
 	group_data[group_num][0] = new_owner
+	# TODO: update player list (in case one of them died).
+	check_if_last_region(prev_owner)
+
+func check_if_last_region(owner : int):
+	if not player_region_list().has(owner):
+		player_gone.emit(owner - 1)
 
 func set_power_of_region(group_num : int, new_power : int) -> void:
 	group_data[group_num][1] = new_power

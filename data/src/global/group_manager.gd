@@ -22,7 +22,6 @@ var   group_index_clicked_before : int = -1
 #		AttackManager.deselect_group()
 #		set_field_group_highlight(group_index_clicked_before, false)
 
-# TODO: implement.
 func reset_selection(new_color : int) -> void:
 	group_index_clicked_before = -1
 	set_field_group_highlight(new_color, false)

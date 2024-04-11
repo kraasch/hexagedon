@@ -53,10 +53,10 @@ func attack_if_possible(from_region : int, to_region : int):
 			# play sound.
 			SfxQueueManager.queue_effect(SfxQueueManager.MOVE_WIN)
 			# set attacked field power to attacking field power - 1.
-			# TODO: signal change of power to UI.
+			# TODO: use signals for updating the change of power graphically.
 			MapGenerator.set_power_of_region(to_region, MapGenerator.get_power_of_region(from_region) - 1)
 			# set attacking field power to 1.
-			# TODO: signal change of power to UI.
+			# TODO: use signals for updating the change of power graphically.
 			MapGenerator.set_power_of_region(from_region, 1)
 			# set attacked field owner to attacker.
 			# TODO: signal change of owner to UI.
@@ -72,11 +72,9 @@ func attack_if_possible(from_region : int, to_region : int):
 		# reset slection.
 		AttackManager.deselect_group()
 		GroupManager.reset_selection(attacker_number)
-		# update fields.
+		# update fields (eg color of tiles).
 		GroupManager.update_field_group_owner_and_stack(from_region)
 		GroupManager.update_field_group_owner_and_stack(to_region)
-		# TODO: update color of tiles.
-		# TODO: update player list (in case one of them lost).
 		# TODO: redistribute new cubes after round.
 
 		# More tasks:
