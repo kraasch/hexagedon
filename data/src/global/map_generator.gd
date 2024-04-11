@@ -1,6 +1,8 @@
 @tool
 extends Node
 
+var rng = RandomNumberGenerator.new()
+
 # singals that a player died.
 signal player_gone
 
@@ -56,6 +58,46 @@ func create_new_map(grid_size):
 #	}
 	groups_num = len(group_data)
 
+func add_end_of_round_cubes(player_num : int):
+	print('redistribute .......... for player #' + str(player_num))
+	# TODO: in future calculate biggest connection of regions, for now just take total number of regions (no matter if connected or not).
+
+	# this algorithm tries to distrube as many cubes as a party owns regions.
+	# but it might distribute less cubes, if all the owned regions get unlucky.
+	# TODO: distribute all TOTAL NEW CUBES fairly over all regions.
+	var max : int = Globals.MAX_STACK_HEIGHT
+	var regions_num : int = regions_of_player(player_num - 1)
+	var new_cubes_num_total : int = rng.randi_range(0, regions_num)
+	print ('  new cubes: ' + str(new_cubes_num_total))
+	# loop over all regions.
+	for i in range(len(group_data)):
+		# stop if there is no new cubes to distribute.
+		if new_cubes_num_total <= 0:
+			break
+		# get current region.
+		var region_data : Array = group_data[i + 1]
+		var owning_player : int = region_data[0]
+		# if region is owned by player.
+		if owning_player == player_num:
+			# try to give region as many cubes as possible.
+			var region_strength : int = region_data[1]
+			var possible_strength : int = max - region_strength
+			# restrict the possible new cubes for the region to the total remaining cubes.
+			possible_strength = min(possible_strength, new_cubes_num_total)
+			print('  possible: ' + str(possible_strength))
+			var new_cubes_num_region : int = rng.randi_range(0, possible_strength)
+			print ('  add ' + str(new_cubes_num_region) + ' cubes to region #' + str(i))
+			# add the new cubes to the region.
+			print ('  cubes before: ' + str(region_data[1]))
+			region_data[1] += new_cubes_num_region
+			print ('  cubes after: ' + str(region_data[1]))
+			# remove current region's new cubes from total cubes to distribute.
+			new_cubes_num_total -= new_cubes_num_region
+
+			# TODO: signal redraw of region.
+			for j in range(len(group_data)): # TODO: remove later!
+				GroupManager.update_field_group_owner_and_stack(j) # TODO: remove later!
+
 func set_owner_of_region(group_num : int, new_owner : int) -> void:
 	var prev_owner : int = group_data[group_num][0]
 	print('   previous owner: ' + str(prev_owner))
@@ -89,6 +131,7 @@ func is_inside(x : int, y : int) -> bool:
 func group_belongs_to_player(group_num : int, player_index : int) -> bool:
 	return group_data[group_num][0] == player_index + 1
 
+# returns a dictionary with all the players who are still alive.
 func list_of_players() -> Dictionary:
 	var players : Dictionary = {}
 	for i in range(len(group_data)):
@@ -125,6 +168,7 @@ func player_region_list() -> Dictionary:
 			regions[owning_player] = 1
 	return regions
 
+# the number of regions each player has (contains only players with at least one region).
 func regions_of_player(index : int) -> int:
 	var regions_list : Dictionary = player_region_list()
 	return regions_list[index + 1]

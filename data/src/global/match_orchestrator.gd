@@ -28,6 +28,8 @@ func request_next_turn() -> void:
 	# TODO: queue change of turn.
 	# TODO: wait until last turn ended (animation ended, values are updated).
 	# TODO: block for for button spam.
+	print (active_player_index)
+	MapGenerator.add_end_of_round_cubes(active_player_index + 1)
 	next_active_player()
 	continue_main_game_loop()
 
