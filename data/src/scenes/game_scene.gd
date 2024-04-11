@@ -47,8 +47,14 @@ func _ready():
 	%MusicBar.initialize(AudioManager.MUSIC_BUS, 'Music Volume')
 	%CloseOverlayButton.pressed.connect(self.close_overlay_button_pressed)
 	%NextTurnButton.pressed.connect(self.next_turn_button_pressed)
+	%OverlayMessage.visible = false
+	MatchOrchestrator.game_over.connect(self.show_game_over_message)
 	# initialize first perspective.
 	reset_perspective()
+
+func show_game_over_message(winning_player_num : int):
+	%GameOverMsg.text = "Player " + str(winning_player_num) + "\n" + "YOU WON!"
+	%OverlayMessage.visible = true
 
 func _input(event):
 	if event.is_action_pressed("my_cycle_next"):

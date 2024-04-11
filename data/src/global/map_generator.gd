@@ -89,13 +89,16 @@ func is_inside(x : int, y : int) -> bool:
 func group_belongs_to_player(group_num : int, player_index : int) -> bool:
 	return group_data[group_num][0] == player_index + 1
 
-func number_of_players() -> int:
+func list_of_players() -> Dictionary:
 	var players : Dictionary = {}
 	for i in range(len(group_data)):
 		var region_data : Array = group_data[i + 1]
 		var owning_player : int = region_data[0]
 		players[owning_player] = true
-	return len(players)
+	return players
+
+func number_of_players() -> int:
+	return len(list_of_players())
 
 # TODO: buffer this list between turns, and only update after changes to grid happened. (ie detect updates in AttackManager global class).
 func player_power_list() -> Dictionary:

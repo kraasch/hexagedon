@@ -1,5 +1,7 @@
 extends Node
 
+signal game_over
+
 var rng = RandomNumberGenerator.new()
 
 # TODO: make the display (HEX_GRID etc) ask the MatchOrchestrator if user can 
@@ -27,6 +29,7 @@ func request_next_turn() -> void:
 	# TODO: wait until last turn ended (animation ended, values are updated).
 	# TODO: block for for button spam.
 	next_active_player()
+	continue_main_game_loop()
 
 func current_player_is_local() -> bool:
 	return player_has_type_one_of(active_player_index, [PLAYER_TYPE_LOCAL])
@@ -34,7 +37,8 @@ func current_player_is_local() -> bool:
 # TODO: implement later.
 func load_gameover_screen():
 	print('game is over') # TODO: remove later.
-	pass
+	print ('players: ' + str(MapGenerator.list_of_players()))
+	game_over.emit(MapGenerator.group_data[1][0]) # NOTE: who owns the first region.
 
 func player_has_type_one_of(index : int, types : Array) -> bool:
 	var has_type : bool = false
@@ -62,6 +66,7 @@ func handle_remote_player() -> void:
 
 # TODO: implement.
 func continue_main_game_loop() -> void:
+	print('CONTINUE LOOP') # TODO: remove later.
 	if match_continues():
 		if current_player_is_local():
 			handle_local_player()
@@ -74,24 +79,26 @@ func continue_main_game_loop() -> void:
 		load_gameover_screen()
 
 func match_continues():
+	var num : int = MapGenerator.number_of_players()
+	print('Now number of players ' + str(num)) # TODO: remove later.
 	# TODO: recalculate the number of players here.
-	return num_of_players != 1
+	return num != 1
 
 # TODO: implement; ask for ComputerPlayers.
 func active_player_has_attack():
 	return MapGenerator.player_has_draw(active_player_index)
 
 func next_active_player():
-	print('############################')
-	print('next player!')
-	print('  before: ' + str(active_player_index))
+	print('############################') # TODO: remove later.
+	print('next player!') # TODO: remove later.
+	print('  before: ' + str(active_player_index)) # TODO: remove later.
 	# increment active player index.
 	increment_active_player()
 	var list : Dictionary = MapGenerator.player_region_list()
 	while not list.has(active_player_index + 1):
 		increment_active_player()
 	active_player_changed.emit()
-	print('  after: ' + str(active_player_index))
+	print('  after: ' + str(active_player_index)) # TODO: remove later.
 
 func increment_active_player():
 	active_player_index = (active_player_index + 1) % num_of_players
@@ -107,7 +114,7 @@ func start_new_match():
 		player_types.push_back(PLAYER_TYPE_LOCAL)
 	active_player_index = rng.randi_range(0, num_of_players - 1)
 	active_player_index = 1 # TODO: remove later.
-	print('random start: ' + str(active_player_index))
+	print('random start: ' + str(active_player_index)) # TODO: remove later.
 
 	# start the initial setup of the AttackManager.
 	AttackManager.start_new_match() # TODO: make this AttackManager single source of truth instead.
