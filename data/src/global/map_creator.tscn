@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnoll6nxyicil"]
+
+[ext_resource type="Script" path="res://data/src/global/map_creator.gd" id="1_2k6y5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_70ivb"]
+noise_type = 2
+seed = 42
+frequency = 0.0352
+fractal_type = 0
+fractal_gain = 0.0
+cellular_distance_function = 1
+cellular_jitter = 2.0
+domain_warp_enabled = true
+domain_warp_amplitude = 10.0
+domain_warp_fractal_type = 0
+
+[node name="MapCreator" type="Node"]
+script = ExtResource("1_2k6y5")
+n = SubResource("FastNoiseLite_70ivb")
