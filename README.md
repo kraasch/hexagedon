@@ -7,15 +7,18 @@ Play [hexagedon](https://kraasch.itch.io/hexagedon) on itch.io.
 
 Current:
 
- - [ ] basic: update color of tiles after attack.
- - [ ] basic: implement basic redistribution.
- - [ ] basic: implement session review screen.
- - [ ] basic: implement about screen.
+ - [ ] basic: make overlay menu global.
+ - [ ] basic: add leave application button to overlay menu.
+ - [ ] basic: fix sound in the debug and release version.
  - [ ] basic: implement basic AI behavior.
  - [ ] basic: implement basic map generator.
+ - [ ] basic: implement about entry to main screen.
+ - [ ] basic: add go back button to map generation screen.
+ - [ ] basic: fix other errors in the debug and release version.
 
 Next:
 
+ - [ ] advanced: adapt map generation screen to map generation options.
  - [ ] advanced: implement a redistribution which calculates max num of connected regions.
  - [ ] advanced: draw borders around field groups (ie good looking field group borders).
  - [ ] advanced: implement good UI design.
@@ -46,6 +49,9 @@ Later:
 
 Done:
 
+ - [X] basic: implement session review screen.
+ - [X] basic: implement basic redistribution.
+ - [X] basic: update color of tiles after attack.
  - [X] basic: add game object.
  - [X] basic: click on second field group executes attack.
  - [X] basic: implement in-game settings menu.
