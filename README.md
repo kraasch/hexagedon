@@ -17,6 +17,7 @@ Current:
  - [ ] basic: fix other errors in the debug and release version.
  - [ ] basic: fix web export.
  - [ ] basic (design): add proper icon to windows export.
+ - [ ] basic: fix sound bug, music seems faster every second time the end screen loads.
 
 Next:
 
